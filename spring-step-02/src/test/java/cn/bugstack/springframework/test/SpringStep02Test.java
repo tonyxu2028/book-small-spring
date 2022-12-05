@@ -13,7 +13,7 @@ import org.junit.Test;
  *
  *
  */
-public class ApiTest {
+public class SpringStep02Test {
     @Test
     public void test_BeanFactory(){
         // 1.初始化 BeanFactory
