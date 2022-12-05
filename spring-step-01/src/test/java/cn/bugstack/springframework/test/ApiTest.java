@@ -6,11 +6,8 @@ import cn.bugstack.springframework.test.bean.UserService;
 import org.junit.Test;
 
 /**
- * @description 测试类
- *
- *
- *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
+ * {@code @description} 测试类
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
  * @date 2022/2/9
  *
  *
