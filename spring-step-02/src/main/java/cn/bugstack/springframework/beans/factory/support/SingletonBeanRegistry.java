@@ -1,4 +1,4 @@
-package cn.bugstack.springframework.beans.factory.config;
+package cn.bugstack.springframework.beans.factory.support;
 
 /**
  *

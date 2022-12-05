@@ -7,8 +7,9 @@ import cn.bugstack.springframework.beans.factory.config.BeanDefinition;
  *
  *
  *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
- * @description 实现默认bean创建的抽象bean工厂超类
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
+ * @author naixixu
+ * {@code @description} 实现默认bean创建的抽象bean工厂超类
  * @date 2022/03/07
  *
  *
@@ -17,7 +18,7 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 
     @Override
     protected Object createBean(String beanName, BeanDefinition beanDefinition) throws BeansException {
-        Object bean = null;
+        Object bean;
         try {
             bean = beanDefinition.getBeanClass().newInstance();
         } catch (InstantiationException | IllegalAccessException e) {

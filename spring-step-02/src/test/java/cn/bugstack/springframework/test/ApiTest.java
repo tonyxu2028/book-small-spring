@@ -7,9 +7,6 @@ import org.junit.Assert;
 import org.junit.Test;
 
 /**
- *
- *
- *
  * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
  * {@code @description} 测试类
  * @date 2022/03/07
@@ -17,7 +14,6 @@ import org.junit.Test;
  *
  */
 public class ApiTest {
-
     @Test
     public void test_BeanFactory(){
         // 1.初始化 BeanFactory

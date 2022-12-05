@@ -10,20 +10,27 @@ import java.util.Map;
  *
  *
  *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
- * @description 默认的Bean工厂实现类
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
+ * @author naixixu
+ * {@code @description} 默认的Bean工厂实现类
  * @date 2022/03/07
  *
  *
  */
 public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFactory implements BeanDefinitionRegistry {
 
-    private Map<String, BeanDefinition> beanDefinitionMap = new HashMap<>();
+    private final static String NO_BEAN_NAMED = "No bean named '";
+
+    private final static String IS_DEFINED = "' is defined";
+
+    private final Map<String, BeanDefinition> beanDefinitionMap = new HashMap<>();
 
     @Override
     protected BeanDefinition getBeanDefinition(String beanName) {
         BeanDefinition beanDefinition = beanDefinitionMap.get(beanName);
-        if (beanDefinition == null) throw new BeansException("No bean named '" + beanName + "' is defined");
+        if (beanDefinition == null) {
+            throw new BeansException(NO_BEAN_NAMED + beanName + IS_DEFINED);
+        }
         return beanDefinition;
     }
 
