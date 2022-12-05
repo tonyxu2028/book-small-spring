@@ -6,17 +6,24 @@ import cn.bugstack.springframework.beans.factory.config.BeanDefinition;
 import java.lang.reflect.Constructor;
 
 /**
- *
- *
- *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
- * @description Bean 实例化策略接口
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
+ * @author naixixu
+ * {@code @description} Bean 实例化策略接口
  * @date 2022/03/08
  *
  *
  */
 public interface InstantiationStrategy {
 
-    Object instantiate(BeanDefinition beanDefinition, String beanName, Constructor ctor, Object[] args) throws BeansException;
+    /**
+     * 实例化 Bean接口
+     * @param beanDefinition        Bean 定义
+     * @param beanName              Bean 名称
+     * @param ctor                  Bean构造函数
+     * @param args                  Bean构造函数参数
+     * @return                      Bean 实例
+     * @throws BeansException       Bean 异常
+     */
+    Object instantiate(BeanDefinition beanDefinition, String beanName, Constructor<?> ctor, Object[] args) throws BeansException;
 
 }

@@ -11,16 +11,13 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
 /**
- *
- *
- *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
- * @description 测试类
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
+ * {@code @description} 测试类
  * @date 2022/03/07
  *
  *
  */
-public class ApiTest {
+public class SpringStep03Test {
 
     @Test
     public void test_BeanFactory() {
