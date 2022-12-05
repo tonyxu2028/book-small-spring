@@ -19,15 +19,17 @@ public class ApiTest {
         // 1.初始化 BeanFactory
         DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
 
-        // 2.注册 bean
+        // 2.创建UserService的BeanDefinition, 并注册到BeanFactory#beanDefinitionMap的容器中
         BeanDefinition beanDefinition = new BeanDefinition(UserService.class);
         beanFactory.registerBeanDefinition("userService", beanDefinition);
 
         // 3.第一次获取 bean
+        // 此时只在BeanFactory#beanDefinitionMap的容器中获取
+        // 在创建bean的时候，会将bean放入到BeanFactory#singletonObjectMap的容器中
         UserService userService = (UserService) beanFactory.getBean("userService");
         userService.queryUserInfo();
 
-        // 4.第二次获取 bean from Singleton
+        // 4.第二次直接从BeanFactory#singletonObjectMap的容器中获取
         UserService userService_singleton = (UserService) beanFactory.getBean("userService");
         Assert.assertEquals(userService, userService_singleton);
         userService_singleton.queryUserInfo();

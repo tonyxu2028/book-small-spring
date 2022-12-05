@@ -12,13 +12,20 @@ import cn.bugstack.springframework.beans.factory.config.BeanDefinition;
  */
 public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry implements BeanFactory {
 
+    /**
+     * 定义Bean工厂接口的实现
+     * @param       name 要检索的bean的名称
+     * @return      实例化的 Bean 对象
+     * @throws      BeansException
+     */
     @Override
     public Object getBean(String name) throws BeansException {
+        // 从当前的容器中获取
         Object bean = getSingleton(name);
         if (bean != null) {
             return bean;
         }
-
+        // 在当前的容器中没有的情况下，获取 BeanDefinition，然后进行bean的实例化创建
         BeanDefinition beanDefinition = getBeanDefinition(name);
         return createBean(name, beanDefinition);
     }

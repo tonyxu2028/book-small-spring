@@ -1,4 +1,4 @@
-package cn.bugstack.springframework.beans.factory.support;
+package cn.bugstack.springframework.beans.factory;
 
 import cn.bugstack.springframework.beans.factory.config.BeanDefinition;
 
@@ -16,7 +16,7 @@ import cn.bugstack.springframework.beans.factory.config.BeanDefinition;
 public interface BeanDefinitionRegistry {
 
     /**
-     * 向注册表中注册 BeanDefinition
+     * 向BeanDefinition容器中注册 BeanDefinition
      *
      * @param beanName       Bean 名称
      * @param beanDefinition Bean 定义

@@ -1,5 +1,7 @@
 package cn.bugstack.springframework.beans.factory.support;
 
+import cn.bugstack.springframework.beans.factory.SingletonBeanRegistry;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,16 +18,19 @@ import java.util.Map;
  */
 public class DefaultSingletonBeanRegistry implements SingletonBeanRegistry {
 
-    private final Map<String, Object> singletonObjects = new HashMap<>();
+    /**
+     * 容器-已经创建的单例对象
+     */
+    private final Map<String, Object> singletonObjectMap = new HashMap<>();
 
     @Override
     public Object getSingleton(String beanName) {
-        return singletonObjects.get(beanName);
+        return singletonObjectMap.get(beanName);
     }
 
     @Override
     public void registerSingleton(String beanName, Object singletonObject) {
-        singletonObjects.put(beanName, singletonObject);
+        singletonObjectMap.put(beanName, singletonObject);
     }
 
 }
