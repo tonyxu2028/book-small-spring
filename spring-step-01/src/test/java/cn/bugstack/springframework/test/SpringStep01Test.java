@@ -12,7 +12,7 @@ import org.junit.Test;
  *
  *
  */
-public class ApiTest {
+public class SpringStep01Test {
 
     @Test
     public void test_BeanFactory(){
