@@ -1,6 +1,7 @@
 package cn.bugstack.springframework.beans.factory.support;
 
 import cn.bugstack.springframework.beans.BeansException;
+import cn.bugstack.springframework.beans.factory.BeanDefinitionRegistry;
 import cn.bugstack.springframework.beans.factory.config.BeanDefinition;
 
 import java.util.HashMap;

@@ -1,6 +1,7 @@
 package cn.bugstack.springframework.beans.factory.support;
 
 import cn.bugstack.springframework.beans.BeansException;
+import cn.bugstack.springframework.beans.factory.InstantiationStrategy;
 import cn.bugstack.springframework.beans.factory.config.BeanDefinition;
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.NoOp;
@@ -17,7 +18,7 @@ import java.lang.reflect.Constructor;
  *
  *
  */
-public class CglibSubclassingInstantiationStrategy implements InstantiationStrategy{
+public class CglibSubclassingInstantiationStrategy implements InstantiationStrategy {
 
     @Override
     public Object instantiate(BeanDefinition beanDefinition, String beanName, Constructor ctor, Object[] args) throws BeansException {
