@@ -1,6 +1,6 @@
 package cn.bugstack.springframework.beans.factory.support;
 
-import cn.bugstack.springframework.beans.factory.config.SingletonBeanRegistry;
+import cn.bugstack.springframework.beans.factory.SingletonBeanRegistry;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,15 +9,16 @@ import java.util.Map;
  *
  *
  *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
- * @description 通用的注册表实现
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
+ * @author naixixu
+ * {@code @description} 通用的注册表实现
  * @date 2022/03/07
  *
  *
  */
 public class DefaultSingletonBeanRegistry implements SingletonBeanRegistry {
 
-    private Map<String, Object> singletonObjects = new HashMap<>();
+    private final Map<String, Object> singletonObjects = new HashMap<>();
 
     @Override
     public Object getSingleton(String beanName) {

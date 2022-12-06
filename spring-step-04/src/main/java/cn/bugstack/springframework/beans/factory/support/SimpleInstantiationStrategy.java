@@ -1,6 +1,7 @@
 package cn.bugstack.springframework.beans.factory.support;
 
 import cn.bugstack.springframework.beans.BeansException;
+import cn.bugstack.springframework.beans.factory.InstantiationStrategy;
 import cn.bugstack.springframework.beans.factory.config.BeanDefinition;
 
 import java.lang.reflect.Constructor;
@@ -10,8 +11,9 @@ import java.lang.reflect.InvocationTargetException;
  *
  *
  *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
- * @description JDK实例化策略
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
+ * @author naixixu
+ * {@code @description} JDK实例化策略
  * @date 2022/03/08
  *
  *
@@ -19,8 +21,9 @@ import java.lang.reflect.InvocationTargetException;
 public class SimpleInstantiationStrategy implements InstantiationStrategy {
 
     @Override
-    public Object instantiate(BeanDefinition beanDefinition, String beanName, Constructor ctor, Object[] args) throws BeansException {
-        Class clazz = beanDefinition.getBeanClass();
+    public Object instantiate(BeanDefinition beanDefinition, String beanName, Constructor<?> ctor, Object[] args)
+            throws BeansException {
+        Class<?> clazz = beanDefinition.getBeanClass();
         try {
             if (null != ctor) {
                 return clazz.getDeclaredConstructor(ctor.getParameterTypes()).newInstance(args);

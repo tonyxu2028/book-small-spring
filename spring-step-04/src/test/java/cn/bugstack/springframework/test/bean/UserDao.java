@@ -7,15 +7,15 @@ import java.util.Map;
  *
  *
  *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
- * @description 模拟用户DAO类
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
+ * {@code @description} 模拟用户DAO类
  * @date 2022/03/09
  *
  *
  */
 public class UserDao {
 
-    private static Map<String, String> hashMap = new HashMap<>();
+    private static final Map<String, String> hashMap = new HashMap<>();
 
     static {
         hashMap.put("10001", "小傅哥");

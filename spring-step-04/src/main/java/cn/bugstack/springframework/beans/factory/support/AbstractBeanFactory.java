@@ -8,8 +8,9 @@ import cn.bugstack.springframework.beans.factory.config.BeanDefinition;
  *
  *
  *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
- * @description 抽象的 Bean 工厂基类，定义模板方法
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
+ * @author naixixu
+ * {@code @description} 抽象的 Bean 工厂基类，定义模板方法
  * @date 2022/03/07
  *
  *
@@ -26,6 +27,7 @@ public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry i
         return doGetBean(name, args);
     }
 
+    @SuppressWarnings("unchecked")
     protected <T> T doGetBean(final String name, final Object[] args) {
         Object bean = getSingleton(name);
         if (bean != null) {
@@ -36,8 +38,20 @@ public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry i
         return (T) createBean(name, beanDefinition, args);
     }
 
+    /**
+     * 获取 BeanDefinition
+     * @param   beanName        beanName名称
+     * @return  BeanDefinition  beanDefinition定义
+     */
     protected abstract BeanDefinition getBeanDefinition(String beanName);
 
+    /**
+     * 创建 Bean
+     * @param beanName          beanName名称
+     * @param beanDefinition    beanDefinition定义
+     * @param args              构造函数参数
+     * @return                  bean实例
+     */
     protected abstract Object createBean(String beanName, BeanDefinition beanDefinition, Object[] args);
 
 }
