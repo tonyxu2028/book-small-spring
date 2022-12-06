@@ -18,8 +18,8 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
- * @description 测试类
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
+ * {@code @description} 测试类
  * @date 2022/03/07
  *
  *
@@ -74,7 +74,8 @@ public class SpringStep05Test {
 
     @Test
     public void test_url() throws IOException {
-        Resource resource = resourceLoader.getResource("https://github.com/tonyxu2028/book-small-spring/blob/master/spring-step-05/src/test/resources/important.properties");
+        Resource resource = resourceLoader.getResource(
+                "https://github.com/tonyxu2028/book-small-spring/tree/master/spring-step-05/src/test/resources/important.properties");
         InputStream inputStream = resource.getInputStream();
         String content = IoUtil.readUtf8(inputStream);
         System.out.println(content);
