@@ -17,6 +17,7 @@ import java.lang.reflect.InvocationTargetException;
  *
  *
  */
+@SuppressWarnings("all")
 public class SpringStep03Test {
 
     @Test
@@ -70,6 +71,5 @@ public class SpringStep03Test {
         UserService userService = declaredConstructor.newInstance("小傅哥");
         System.out.println(userService);
     }
-
 
 }
