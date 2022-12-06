@@ -17,7 +17,6 @@ import java.lang.reflect.InvocationTargetException;
  *
  *
  */
-@SuppressWarnings("all")
 public class SpringStep03Test {
 
     @Test
@@ -49,13 +48,18 @@ public class SpringStep03Test {
     }
 
     @Test
-    public void test_newInstance() throws IllegalAccessException, InstantiationException {
-        UserService userService = UserService.class.newInstance();
-        System.out.println(userService);
+    public void test_newInstance() {
+        try{
+            UserService userService = UserService.class.newInstance();
+            System.out.println(userService);
+        }catch (Exception e){
+            System.out.println("newInstance()方法创建对象失败,由于没有无参构造函数 ::: "+e.getMessage());
+        }
     }
 
     @Test
-    public void test_constructor() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
+    public void test_constructor() throws NoSuchMethodException, IllegalAccessException,
+            InvocationTargetException, InstantiationException {
         Class<UserService> userServiceClass = UserService.class;
         Constructor<UserService> declaredConstructor = userServiceClass.getDeclaredConstructor(String.class);
         UserService userService = declaredConstructor.newInstance("小傅哥");
@@ -63,6 +67,7 @@ public class SpringStep03Test {
     }
 
     @Test
+    @SuppressWarnings("all")
     public void test_parameterTypes() throws Exception {
         Class<UserService> beanClass = UserService.class;
         Constructor<?>[] declaredConstructors = beanClass.getDeclaredConstructors();

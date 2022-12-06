@@ -8,9 +8,6 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
 /**
- *
- *
- *
  * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
  * @author naixixu
  * {@code @description} JDK实例化策略
@@ -21,16 +18,18 @@ import java.lang.reflect.InvocationTargetException;
 public class SimpleInstantiationStrategy implements InstantiationStrategy {
 
     @Override
-    public Object instantiate(BeanDefinition beanDefinition, String beanName, Constructor<?> ctor, Object[] args) throws BeansException {
-        Class<?> clazz = beanDefinition.getBeanClass();
+    public Object instantiate(BeanDefinition beanDefinition, String beanName, Constructor<?> ctor, Object[] args)
+            throws BeansException {
+        Class<?> beanDefinitionBeanClass = beanDefinition.getBeanClass();
         try {
-            if (null != ctor) {
-                return clazz.getDeclaredConstructor(ctor.getParameterTypes()).newInstance(args);
-            } else {
-                return clazz.getDeclaredConstructor().newInstance();
+            if (null != ctor) { // 有参构造
+                return beanDefinitionBeanClass.getDeclaredConstructor(ctor.getParameterTypes()).newInstance(args);
+            } else {            // 无参构造
+                return beanDefinitionBeanClass.getDeclaredConstructor().newInstance();
             }
-        } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
-            throw new BeansException("Failed to instantiate [" + clazz.getName() + "]", e);
+        } catch (NoSuchMethodException | InstantiationException
+                 | IllegalAccessException | InvocationTargetException e) {
+            throw new BeansException("Failed to instantiate [" + beanDefinitionBeanClass.getName() + "]", e);
         }
     }
 
