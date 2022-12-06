@@ -1,19 +1,17 @@
-package cn.bugstack.springframework.core.io;
+package cn.bugstack.springframework.core.io.impl;
 
+import cn.bugstack.springframework.core.io.Resource;
+import cn.bugstack.springframework.core.io.ResourceLoader;
 import cn.hutool.core.lang.Assert;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
- *
- *
- *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
- * @description 默认实现的资源处理器
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
+ * @author naixixu
+ * {@code @description} 默认实现的资源处理器
  * @date 2022/3/9
- *
- *
  */
 public class DefaultResourceLoader implements ResourceLoader {
 

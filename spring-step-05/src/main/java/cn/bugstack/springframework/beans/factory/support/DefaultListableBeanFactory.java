@@ -1,6 +1,7 @@
 package cn.bugstack.springframework.beans.factory.support;
 
 import cn.bugstack.springframework.beans.BeansException;
+import cn.bugstack.springframework.beans.factory.BeanDefinitionRegistry;
 import cn.bugstack.springframework.beans.factory.ConfigurableListableBeanFactory;
 import cn.bugstack.springframework.beans.factory.config.BeanDefinition;
 
@@ -11,8 +12,9 @@ import java.util.Map;
  *
  *
  *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
- * @description 默认的Bean工厂实现类
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
+ * @author naixixu
+ * {@code @description} 默认的Bean工厂实现类
  * @date 2022/03/07
  *
  *
@@ -24,7 +26,9 @@ public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFacto
     @Override
     public BeanDefinition getBeanDefinition(String beanName) {
         BeanDefinition beanDefinition = beanDefinitionMap.get(beanName);
-        if (beanDefinition == null) throw new BeansException("No bean named '" + beanName + "' is defined");
+        if (beanDefinition == null) {
+            throw new BeansException("No bean named '" + beanName + "' is defined");
+        }
         return beanDefinition;
     }
 
@@ -40,7 +44,7 @@ public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFacto
 
     @Override
     public <T> Map<String, T> getBeansOfType(Class<T> type) throws BeansException {
-        Map<String, T> result = new HashMap<>();
+        Map<String, T> result = new HashMap<>(1000);
         beanDefinitionMap.forEach((beanName, beanDefinition) -> {
             Class beanClass = beanDefinition.getBeanClass();
             if (type.isAssignableFrom(beanClass)) {

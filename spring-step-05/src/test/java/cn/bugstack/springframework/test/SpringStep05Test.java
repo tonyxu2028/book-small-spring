@@ -1,37 +1,37 @@
 package cn.bugstack.springframework.test;
 
-import cn.bugstack.springframework.beans.PropertyValue;
-import cn.bugstack.springframework.beans.PropertyValues;
+import cn.bugstack.springframework.beans.factory.config.PropertyValue;
+import cn.bugstack.springframework.beans.factory.config.PropertyValues;
 import cn.bugstack.springframework.beans.factory.config.BeanDefinition;
 import cn.bugstack.springframework.beans.factory.config.BeanReference;
 import cn.bugstack.springframework.beans.factory.support.DefaultListableBeanFactory;
 import cn.bugstack.springframework.beans.factory.xml.XmlBeanDefinitionReader;
-import cn.bugstack.springframework.core.io.DefaultResourceLoader;
+import cn.bugstack.springframework.core.io.impl.DefaultResourceLoader;
 import cn.bugstack.springframework.core.io.Resource;
 import cn.bugstack.springframework.test.bean.UserDao;
 import cn.bugstack.springframework.test.bean.UserService;
 import cn.hutool.core.io.IoUtil;
-import net.sf.cglib.proxy.Enhancer;
-import net.sf.cglib.proxy.NoOp;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 
 /**
- *
- *
- *
  * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
  * @description 测试类
  * @date 2022/03/07
  *
  *
  */
-public class ApiTest {
+public class SpringStep05Test {
+
+    private DefaultResourceLoader resourceLoader;
+
+    @Before
+    public void init() {
+        resourceLoader = new DefaultResourceLoader();
+    }
 
     @Test
     public void test_BeanFactory() {
@@ -56,13 +56,6 @@ public class ApiTest {
         System.out.println("测试结果：" + result);
     }
 
-    private DefaultResourceLoader resourceLoader;
-
-    @Before
-    public void init() {
-        resourceLoader = new DefaultResourceLoader();
-    }
-
     @Test
     public void test_classpath() throws IOException {
         Resource resource = resourceLoader.getResource("classpath:important.properties");
@@ -81,7 +74,7 @@ public class ApiTest {
 
     @Test
     public void test_url() throws IOException {
-        Resource resource = resourceLoader.getResource("https://github.com/fuzhengwei/small-spring/important.properties");
+        Resource resource = resourceLoader.getResource("https://github.com/tonyxu2028/book-small-spring/blob/master/spring-step-05/src/test/resources/important.properties");
         InputStream inputStream = resource.getInputStream();
         String content = IoUtil.readUtf8(inputStream);
         System.out.println(content);

@@ -1,11 +1,9 @@
 package cn.bugstack.springframework.core.io;
 
 /**
- *
- *
- *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
- * @description 资源加载器
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
+ * @author naixixu
+ * {@code @description} 资源加载器
  * @date 2022/3/9
  *
  *
@@ -17,6 +15,11 @@ public interface ResourceLoader {
      */
     String CLASSPATH_URL_PREFIX = "classpath:";
 
+    /**
+     * 获取资源
+     * @param location  资源路径
+     * @return          资源
+     */
     Resource getResource(String location);
 
 }

@@ -4,12 +4,13 @@ package cn.bugstack.springframework.test.bean;
  *
  *
  *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
- * @description 模拟用户服务类
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
+ * {@code @description} 模拟用户服务类
  * @date 2022/03/09
  *
  *
  */
+@SuppressWarnings("unused")
 public class UserService {
 
     private String uId;
