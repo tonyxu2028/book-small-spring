@@ -9,16 +9,13 @@ import cn.bugstack.springframework.test.common.MyBeanPostProcessor;
 import org.junit.Test;
 
 /**
- *
- *
- *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
- * @description 单元测试
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
+ * {@code @description} 单元测试
  * @date 2022/03/10
  *
  *
  */
-public class ApiTest {
+public class SpringStep06Test {
 
     @Test
     public void test_BeanFactoryPostProcessorAndBeanPostProcessor(){
@@ -40,7 +37,7 @@ public class ApiTest {
         // 5. 获取Bean对象调用方法
         UserService userService = beanFactory.getBean("userService", UserService.class);
         String result = userService.queryUserInfo();
-        System.out.println("测试结果：" + result);
+        System.out.println("test_BeanFactoryPostProcessorAndBeanPostProcessor ::: 测试结果 : " + result);
     }
 
     @Test
@@ -51,7 +48,7 @@ public class ApiTest {
         // 2. 获取Bean对象调用方法
         UserService userService = applicationContext.getBean("userService", UserService.class);
         String result = userService.queryUserInfo();
-        System.out.println("测试结果：" + result);
+        System.out.println("test_xml ::: 测试结果 : " + result);
     }
 
 }

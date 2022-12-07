@@ -2,19 +2,17 @@ package cn.bugstack.springframework.context.support;
 
 import cn.bugstack.springframework.beans.BeansException;
 import cn.bugstack.springframework.beans.factory.ConfigurableListableBeanFactory;
-import cn.bugstack.springframework.beans.factory.config.BeanFactoryPostProcessor;
-import cn.bugstack.springframework.beans.factory.config.BeanPostProcessor;
+import cn.bugstack.springframework.beans.factory.BeanFactoryPostProcessor;
+import cn.bugstack.springframework.beans.factory.BeanPostProcessor;
 import cn.bugstack.springframework.context.ConfigurableApplicationContext;
-import cn.bugstack.springframework.core.io.DefaultResourceLoader;
+import cn.bugstack.springframework.core.io.impl.DefaultResourceLoader;
 
 import java.util.Map;
 
 /**
- *
- *
- *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
- * @description 抽象应用上下文 Abstract implementation of the {@link cn.bugstack.springframework.context.ApplicationContext}
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
+ * @author naixixu
+ * {@code @description} 抽象应用上下文 Abstract implementation of the {@link cn.bugstack.springframework.context.ApplicationContext}
  * interface. Doesn't mandate the type of storage used for configuration; simply
  * implements common context functionality. Uses the Template Method design pattern,
  * requiring concrete subclasses to implement abstract methods.
@@ -42,8 +40,16 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader i
         beanFactory.preInstantiateSingletons();
     }
 
+    /**
+     * 在Bean实例化之前，执行refreshBeanFactory获取beanFactory
+     * @throws BeansException           获取beanFactory异常
+     */
     protected abstract void refreshBeanFactory() throws BeansException;
 
+    /**
+     * 获取BeanFactory
+     * @return  beanFactory
+     */
     protected abstract ConfigurableListableBeanFactory getBeanFactory();
 
     private void invokeBeanFactoryPostProcessors(ConfigurableListableBeanFactory beanFactory) {

@@ -1,18 +1,18 @@
 package cn.bugstack.springframework.test.common;
 
 import cn.bugstack.springframework.beans.BeansException;
-import cn.bugstack.springframework.beans.PropertyValue;
-import cn.bugstack.springframework.beans.PropertyValues;
+import cn.bugstack.springframework.beans.factory.config.PropertyValue;
+import cn.bugstack.springframework.beans.factory.config.PropertyValues;
 import cn.bugstack.springframework.beans.factory.ConfigurableListableBeanFactory;
 import cn.bugstack.springframework.beans.factory.config.BeanDefinition;
-import cn.bugstack.springframework.beans.factory.config.BeanFactoryPostProcessor;
+import cn.bugstack.springframework.beans.factory.BeanFactoryPostProcessor;
 
 /**
  *
  *
  *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
- * @description BeanFactoryPostProcessor 实例化 Bean 对象之前，修改 BeanDefinition 属性
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
+ * {@code @description} BeanFactoryPostProcessor 实例化 Bean 对象之前，修改 BeanDefinition 属性
  * @date 2022/03/10
  *
  *

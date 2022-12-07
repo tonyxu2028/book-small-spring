@@ -3,11 +3,9 @@ package cn.bugstack.springframework.beans.factory;
 import cn.bugstack.springframework.beans.BeansException;
 
 /**
- *
- *
- *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
- * @description 定义 Bean 工厂接口
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
+ * @author naixixu
+ * {@code @description} 定义 Bean 工厂接口
  * @date 2022/03/07
  *
  *

@@ -1,11 +1,11 @@
 package cn.bugstack.springframework.beans.factory.xml;
 
 import cn.bugstack.springframework.beans.BeansException;
-import cn.bugstack.springframework.beans.PropertyValue;
+import cn.bugstack.springframework.beans.factory.config.PropertyValue;
 import cn.bugstack.springframework.beans.factory.config.BeanDefinition;
 import cn.bugstack.springframework.beans.factory.config.BeanReference;
 import cn.bugstack.springframework.beans.factory.support.AbstractBeanDefinitionReader;
-import cn.bugstack.springframework.beans.factory.support.BeanDefinitionRegistry;
+import cn.bugstack.springframework.beans.factory.BeanDefinitionRegistry;
 import cn.bugstack.springframework.core.io.Resource;
 import cn.bugstack.springframework.core.io.ResourceLoader;
 import cn.hutool.core.util.StrUtil;
@@ -21,8 +21,9 @@ import java.io.InputStream;
  *
  *
  *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
- * @description Bean definition reader for XML bean definitions.
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
+ * @author naixixu
+ * {@code @description} Bean definition reader for XML bean definitions.
  * @date 2022/3/9
  *
  *
@@ -76,9 +77,13 @@ public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
 
         for (int i = 0; i < childNodes.getLength(); i++) {
             // 判断元素
-            if (!(childNodes.item(i) instanceof Element)) continue;
+            if (!(childNodes.item(i) instanceof Element)) {
+                continue;
+            }
             // 判断对象
-            if (!"bean".equals(childNodes.item(i).getNodeName())) continue;
+            if (!"bean".equals(childNodes.item(i).getNodeName())) {
+                continue;
+            }
             
             // 解析标签
             Element bean = (Element) childNodes.item(i);
@@ -97,8 +102,12 @@ public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
             BeanDefinition beanDefinition = new BeanDefinition(clazz);
             // 读取属性并填充
             for (int j = 0; j < bean.getChildNodes().getLength(); j++) {
-                if (!(bean.getChildNodes().item(j) instanceof Element)) continue;
-                if (!"property".equals(bean.getChildNodes().item(j).getNodeName())) continue;
+                if (!(bean.getChildNodes().item(j) instanceof Element)) {
+                    continue;
+                }
+                if (!"property".equals(bean.getChildNodes().item(j).getNodeName())) {
+                    continue;
+                }
                 // 解析标签：property
                 Element property = (Element) bean.getChildNodes().item(j);
                 String attrName = property.getAttribute("name");

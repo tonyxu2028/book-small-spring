@@ -1,15 +1,15 @@
 package cn.bugstack.springframework.test.common;
 
 import cn.bugstack.springframework.beans.BeansException;
-import cn.bugstack.springframework.beans.factory.config.BeanPostProcessor;
+import cn.bugstack.springframework.beans.factory.BeanPostProcessor;
 import cn.bugstack.springframework.test.bean.UserService;
 
 /**
  *
  *
  *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
- * @description BeanPostProcessor 在 Bean 对象执行初始化方法前后进行扩展
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
+ * {@code @description} BeanPostProcessor 在 Bean 对象执行初始化方法前后进行扩展
  * @date 2022/03/10
  *
  *

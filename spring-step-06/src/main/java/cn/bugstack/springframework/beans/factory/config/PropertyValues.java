@@ -1,4 +1,4 @@
-package cn.bugstack.springframework.beans;
+package cn.bugstack.springframework.beans.factory.config;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,8 +7,9 @@ import java.util.List;
  *
  *
  *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
- * @description 属性值集合
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
+ * @author naixixu
+ * {@code @description} 属性值集合
  * @date 2022/3/9
  *  /CodeDesignTutorials
  *
@@ -25,6 +26,7 @@ public class PropertyValues {
         return this.propertyValueList.toArray(new PropertyValue[0]);
     }
 
+    @SuppressWarnings("unused")
     public PropertyValue getPropertyValue(String propertyName) {
         for (PropertyValue pv : this.propertyValueList) {
             if (pv.getName().equals(propertyName)) {

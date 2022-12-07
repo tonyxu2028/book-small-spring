@@ -1,5 +1,8 @@
 package cn.bugstack.springframework.util;
 
+/**
+ * @author naixixu
+ */
 public class ClassUtils {
 
     public static ClassLoader getDefaultClassLoader() {
