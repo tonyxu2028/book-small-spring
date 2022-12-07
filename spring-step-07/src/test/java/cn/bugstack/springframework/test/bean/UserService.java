@@ -4,10 +4,11 @@ import cn.bugstack.springframework.beans.factory.DisposableBean;
 import cn.bugstack.springframework.beans.factory.InitializingBean;
 
 /**
- * 博客：https://bugstack.cn - 沉淀、分享、成长，让自己和他人都能有所收获！
+ * 博客：<a href="https://bugstack.cn">...</a> - 沉淀、分享、成长，让自己和他人都能有所收获！
  * 公众号：bugstack虫洞栈
  * Create by 小傅哥(fustack)
  */
+@SuppressWarnings("unused")
 public class UserService implements InitializingBean, DisposableBean {
 
     private String uId;
@@ -16,12 +17,12 @@ public class UserService implements InitializingBean, DisposableBean {
     private UserDao userDao;
 
     @Override
-    public void destroy() throws Exception {
+    public void destroy() {
         System.out.println("执行：UserService.destroy");
     }
 
     @Override
-    public void afterPropertiesSet() throws Exception {
+    public void afterPropertiesSet() {
         System.out.println("执行：UserService.afterPropertiesSet");
     }
 

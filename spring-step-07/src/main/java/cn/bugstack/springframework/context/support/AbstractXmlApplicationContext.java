@@ -8,6 +8,7 @@ import cn.bugstack.springframework.beans.factory.xml.XmlBeanDefinitionReader;
  *
  *
  * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
+ * @author naixixu
  * @description 抽象基类 XML 上下文 Convenient base class for {@link cn.bugstack.springframework.context.ApplicationContext}
  * implementations, drawing configuration from XML documents containing bean definitions
  * understood by an {@link cn.bugstack.springframework.beans.factory.xml.XmlBeanDefinitionReader}.
@@ -26,6 +27,10 @@ public abstract class AbstractXmlApplicationContext extends AbstractRefreshableA
         }
     }
 
+    /**
+     * 获取配置文件路径
+     * @return                  配置文件路径
+     */
     protected abstract String[] getConfigLocations();
 
 }
