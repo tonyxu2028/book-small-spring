@@ -2,6 +2,7 @@ package cn.bugstack.springframework.test.event;
 
 import cn.bugstack.springframework.context.event.ApplicationContextEvent;
 
+@SuppressWarnings("unused")
 public class CustomEvent extends ApplicationContextEvent {
 
     private Long id;

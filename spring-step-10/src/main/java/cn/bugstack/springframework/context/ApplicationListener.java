@@ -14,7 +14,7 @@ import java.util.EventListener;
  *  /CodeDesignTutorials
  *
  */
-public interface ApplicationListener<E extends ApplicationEvent> extends EventListener {
+public interface ApplicationListener<E extends AbstractApplicationEvent> extends EventListener {
 
     /**
      * Handle an application event.

@@ -12,6 +12,7 @@ import java.lang.reflect.Constructor;
  *
  *
  * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
+ * @author naixixu
  * @description Cglib 实例化策略
  * @date 2022/03/08
  *

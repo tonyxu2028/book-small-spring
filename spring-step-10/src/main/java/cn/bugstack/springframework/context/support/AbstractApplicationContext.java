@@ -4,7 +4,7 @@ import cn.bugstack.springframework.beans.BeansException;
 import cn.bugstack.springframework.beans.factory.ConfigurableListableBeanFactory;
 import cn.bugstack.springframework.beans.factory.config.BeanFactoryPostProcessor;
 import cn.bugstack.springframework.beans.factory.config.BeanPostProcessor;
-import cn.bugstack.springframework.context.ApplicationEvent;
+import cn.bugstack.springframework.context.AbstractApplicationEvent;
 import cn.bugstack.springframework.context.ApplicationListener;
 import cn.bugstack.springframework.context.ConfigurableApplicationContext;
 import cn.bugstack.springframework.context.event.ApplicationEventMulticaster;
@@ -20,7 +20,8 @@ import java.util.Map;
  *
  *
  *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
+ * @author naixixu
  * @description 抽象应用上下文 Abstract implementation of the {@link cn.bugstack.springframework.context.ApplicationContext}
  * interface. Doesn't mandate the type of storage used for configuration; simply
  * implements common context functionality. Uses the Template Method design pattern,
@@ -65,10 +66,16 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader i
         finishRefresh();
     }
 
-
-
+    /**
+     * 刷新BeanFactory
+     * @throws BeansException       异常
+     */
     protected abstract void refreshBeanFactory() throws BeansException;
 
+    /**
+     * 获取BeanFactory
+     * @return                      BeanFactory
+     */
     protected abstract ConfigurableListableBeanFactory getBeanFactory();
 
     private void invokeBeanFactoryPostProcessors(ConfigurableListableBeanFactory beanFactory) {
@@ -91,6 +98,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader i
         beanFactory.registerSingleton(APPLICATION_EVENT_MULTICASTER_BEAN_NAME, applicationEventMulticaster);
     }
 
+    @SuppressWarnings("all")
     private void registerListeners() {
         Collection<ApplicationListener> applicationListeners = getBeansOfType(ApplicationListener.class).values();
         for (ApplicationListener listener : applicationListeners) {
@@ -103,7 +111,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader i
     }
 
     @Override
-    public void publishEvent(ApplicationEvent event) {
+    public void publishEvent(AbstractApplicationEvent event) {
         applicationEventMulticaster.multicastEvent(event);
     }
 

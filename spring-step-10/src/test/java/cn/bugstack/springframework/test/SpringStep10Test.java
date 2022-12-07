@@ -14,7 +14,7 @@ import org.junit.Test;
  *
  *
  */
-public class ApiTest {
+public class SpringStep10Test {
 
     @Test
     public void test_event() {

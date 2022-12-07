@@ -7,6 +7,7 @@ import cn.bugstack.springframework.beans.BeansException;
  *
  *
  * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
+ * @author naixixu
  * @description 定义 Bean 工厂接口
  * @date 2022/03/07
  *

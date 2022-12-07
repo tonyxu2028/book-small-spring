@@ -10,27 +10,28 @@ import java.util.concurrent.ConcurrentHashMap;
  *
  *
  *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
+ * @author naixixu
  * @description Support base class for singleton registries which need to handle
- * {@link cn.bugstack.springframework.beans.factory.FactoryBean} instances,
+ * {@link FactoryBean} instances,
  * integrated with {@link DefaultSingletonBeanRegistry}'s singleton management.
  * @date 2022/3/11
  *  /CodeDesignTutorials
  *
  */
-public abstract class FactoryBeanRegistrySupport extends DefaultSingletonBeanRegistry{
+public abstract class AbstractFactoryBeanRegistrySupport extends DefaultSingletonBeanRegistry{
 
     /**
      * Cache of singleton objects created by FactoryBeans: FactoryBean name --> object
      */
-    private final Map<String, Object> factoryBeanObjectCache = new ConcurrentHashMap<String, Object>();
+    private final Map<String, Object> factoryBeanObjectCache = new ConcurrentHashMap<>();
 
     protected Object getCachedObjectForFactoryBean(String beanName) {
         Object object = this.factoryBeanObjectCache.get(beanName);
         return (object != NULL_OBJECT ? object : null);
     }
 
-    protected Object getObjectFromFactoryBean(FactoryBean factory, String beanName) {
+    protected Object getObjectFromFactoryBean(FactoryBean<?> factory, String beanName) {
         if (factory.isSingleton()) {
             Object object = this.factoryBeanObjectCache.get(beanName);
             if (object == null) {
@@ -43,7 +44,7 @@ public abstract class FactoryBeanRegistrySupport extends DefaultSingletonBeanReg
         }
     }
 
-    private Object doGetObjectFromFactoryBean(final FactoryBean factory, final String beanName){
+    private Object doGetObjectFromFactoryBean(final FactoryBean<?> factory, final String beanName){
         try {
             return factory.getObject();
         } catch (Exception e) {

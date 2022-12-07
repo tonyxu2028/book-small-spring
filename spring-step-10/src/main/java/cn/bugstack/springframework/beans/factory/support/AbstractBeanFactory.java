@@ -1,7 +1,6 @@
 package cn.bugstack.springframework.beans.factory.support;
 
 import cn.bugstack.springframework.beans.BeansException;
-import cn.bugstack.springframework.beans.factory.BeanFactory;
 import cn.bugstack.springframework.beans.factory.FactoryBean;
 import cn.bugstack.springframework.beans.factory.config.BeanDefinition;
 import cn.bugstack.springframework.beans.factory.config.BeanPostProcessor;
@@ -15,19 +14,21 @@ import java.util.List;
  *
  *
  *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
+ * @author naixixu
  * @description 抽象的 Bean 工厂基类，定义模板方法
  * @date 2022/03/07
  *
  *
  */
-public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport implements ConfigurableBeanFactory {
+@SuppressWarnings("unchecked")
+public abstract class AbstractBeanFactory extends AbstractFactoryBeanRegistrySupport implements ConfigurableBeanFactory {
 
     /** ClassLoader to resolve bean class names with, if necessary */
-    private ClassLoader beanClassLoader = ClassUtils.getDefaultClassLoader();
+    private final ClassLoader beanClassLoader = ClassUtils.getDefaultClassLoader();
 
     /** BeanPostProcessors to apply in createBean */
-    private final List<BeanPostProcessor> beanPostProcessors = new ArrayList<BeanPostProcessor>();
+    private final List<BeanPostProcessor> beanPostProcessors = new ArrayList<>();
 
     @Override
     public Object getBean(String name) throws BeansException {
@@ -71,8 +72,20 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
         return object;
     }
 
+    /**
+     * 从 FactoryBean 中获取对象
+     * @param beanName              bean名称
+     * @return                      bean定义实例
+     */
     protected abstract BeanDefinition getBeanDefinition(String beanName);
 
+    /**
+     * 创建 Bean
+     * @param beanName              bean名称
+     * @param beanDefinition        bean定义实例
+     * @param args                  构造函数参数
+     * @return                      bean实例
+     */
     protected abstract Object createBean(String beanName, BeanDefinition beanDefinition, Object[] args);
 
     @Override

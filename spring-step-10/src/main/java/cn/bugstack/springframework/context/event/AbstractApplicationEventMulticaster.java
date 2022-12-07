@@ -3,7 +3,7 @@ package cn.bugstack.springframework.context.event;
 import cn.bugstack.springframework.beans.BeansException;
 import cn.bugstack.springframework.beans.factory.BeanFactory;
 import cn.bugstack.springframework.beans.factory.BeanFactoryAware;
-import cn.bugstack.springframework.context.ApplicationEvent;
+import cn.bugstack.springframework.context.AbstractApplicationEvent;
 import cn.bugstack.springframework.context.ApplicationListener;
 import cn.bugstack.springframework.util.ClassUtils;
 
@@ -18,22 +18,24 @@ import java.util.Set;
  *
  *
  *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
+ * @author naixixu
  * @description Abstract implementation of the {@link ApplicationEventMulticaster} interface,
  * providing the basic listener registration facility.
  * @date 2022/3/13
  *  /CodeDesignTutorials
  *
  */
+@SuppressWarnings("all")
 public abstract class AbstractApplicationEventMulticaster implements ApplicationEventMulticaster, BeanFactoryAware {
 
-    public final Set<ApplicationListener<ApplicationEvent>> applicationListeners = new LinkedHashSet<>();
+    public final Set<ApplicationListener<AbstractApplicationEvent>> applicationListeners = new LinkedHashSet<>();
 
     private BeanFactory beanFactory;
 
     @Override
     public void addApplicationListener(ApplicationListener<?> listener) {
-        applicationListeners.add((ApplicationListener<ApplicationEvent>) listener);
+        applicationListeners.add((ApplicationListener<AbstractApplicationEvent>) listener);
     }
 
     @Override
@@ -54,10 +56,12 @@ public abstract class AbstractApplicationEventMulticaster implements Application
      * @return a Collection of ApplicationListeners
      * @see cn.bugstack.springframework.context.ApplicationListener
      */
-    protected Collection<ApplicationListener> getApplicationListeners(ApplicationEvent event) {
-        LinkedList<ApplicationListener> allListeners = new LinkedList<ApplicationListener>();
-        for (ApplicationListener<ApplicationEvent> listener : applicationListeners) {
-            if (supportsEvent(listener, event)) allListeners.add(listener);
+    protected Collection<ApplicationListener<AbstractApplicationEvent>> getApplicationListeners(AbstractApplicationEvent event) {
+        LinkedList<ApplicationListener<AbstractApplicationEvent>> allListeners = new LinkedList<>();
+        for (ApplicationListener<AbstractApplicationEvent> listener : applicationListeners) {
+            if (supportsEvent(listener, event)) {
+                allListeners.add(listener);
+            }
         }
         return allListeners;
     }
@@ -65,7 +69,7 @@ public abstract class AbstractApplicationEventMulticaster implements Application
     /**
      * 监听器是否对该事件感兴趣
      */
-    protected boolean supportsEvent(ApplicationListener<ApplicationEvent> applicationListener, ApplicationEvent event) {
+    protected boolean supportsEvent(ApplicationListener<AbstractApplicationEvent> applicationListener, AbstractApplicationEvent event) {
         Class<? extends ApplicationListener> listenerClass = applicationListener.getClass();
 
         // 按照 CglibSubclassingInstantiationStrategy、SimpleInstantiationStrategy 不同的实例化类型，需要判断后获取目标 class
