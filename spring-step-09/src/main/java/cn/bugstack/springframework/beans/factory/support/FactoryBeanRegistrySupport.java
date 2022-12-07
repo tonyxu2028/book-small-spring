@@ -11,6 +11,7 @@ import java.util.concurrent.ConcurrentHashMap;
  *
  *
  * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
+ * @author naixixu
  * @description Support base class for singleton registries which need to handle
  * {@link cn.bugstack.springframework.beans.factory.FactoryBean} instances,
  * integrated with {@link DefaultSingletonBeanRegistry}'s singleton management.
@@ -23,7 +24,7 @@ public abstract class FactoryBeanRegistrySupport extends DefaultSingletonBeanReg
     /**
      * Cache of singleton objects created by FactoryBeans: FactoryBean name --> object
      */
-    private final Map<String, Object> factoryBeanObjectCache = new ConcurrentHashMap<String, Object>();
+    private final Map<String, Object> factoryBeanObjectCache = new ConcurrentHashMap<>();
 
     protected Object getCachedObjectForFactoryBean(String beanName) {
         Object object = this.factoryBeanObjectCache.get(beanName);

@@ -6,8 +6,9 @@ import cn.bugstack.springframework.beans.factory.HierarchicalBeanFactory;
  *
  *
  *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
- * @description Configuration interface to be implemented by most bean factories. Provides
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
+ * @author naixixu
+ * {@code @description} Configuration interface to be implemented by most bean factories. Provides
  * facilities to configure a bean factory, in addition to the bean factory
  * client methods in the {@link cn.bugstack.springframework.beans.factory.BeanFactory}
  * interface.
@@ -21,6 +22,10 @@ public interface ConfigurableBeanFactory extends HierarchicalBeanFactory, Single
 
     String SCOPE_PROTOTYPE = "prototype";
 
+    /**
+     * Add Bean post processor
+     * @param beanPostProcessor             Bean post processor
+     */
     void addBeanPostProcessor(BeanPostProcessor beanPostProcessor);
 
     /**

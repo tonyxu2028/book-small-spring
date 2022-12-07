@@ -8,7 +8,8 @@ import cn.bugstack.springframework.beans.factory.support.DefaultListableBeanFact
  *
  *
  *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
+ * @author naixixu
  * @description 抽象基类刷新应用上下文 Base class for {@link cn.bugstack.springframework.context.ApplicationContext}
  * implementations which are supposed to support multiple calls to {@link #refresh()},
  * creating a new internal bean factory instance every time.
@@ -33,6 +34,10 @@ public abstract class AbstractRefreshableApplicationContext extends AbstractAppl
         return new DefaultListableBeanFactory();
     }
 
+    /**
+     * Load bean definitions into the given bean factory,
+     * @param beanFactory           the bean factory used by this context
+     */
     protected abstract void loadBeanDefinitions(DefaultListableBeanFactory beanFactory);
 
     @Override

@@ -11,7 +11,8 @@ import java.lang.reflect.Method;
  *
  *
  *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
+ * @author naixixu
  * @description Adapter that implements the {@link DisposableBean} and {@link Runnable} interfaces
  * performing various destruction steps on a given bean instance:
  * @date 2022/3/10
@@ -20,9 +21,11 @@ import java.lang.reflect.Method;
  */
 public class DisposableBeanAdapter implements DisposableBean {
 
+    private static final String DESTROY_CODE = "destroy";
+
     private final Object bean;
     private final String beanName;
-    private String destroyMethodName;
+    private final String destroyMethodName;
 
     public DisposableBeanAdapter(Object bean, String beanName, BeanDefinition beanDefinition) {
         this.bean = bean;
@@ -38,7 +41,8 @@ public class DisposableBeanAdapter implements DisposableBean {
         }
 
         // 2. 注解配置 destroy-method {判断是为了避免二次执行销毁}
-        if (StrUtil.isNotEmpty(destroyMethodName) && !(bean instanceof DisposableBean && "destroy".equals(this.destroyMethodName))) {
+        boolean isDestroy = !(bean instanceof DisposableBean && DESTROY_CODE.equals(this.destroyMethodName));
+        if (StrUtil.isNotEmpty(destroyMethodName) && isDestroy) {
             Method destroyMethod = bean.getClass().getMethod(destroyMethodName);
             if (null == destroyMethod) {
                 throw new BeansException("Couldn't find a destroy method named '" + destroyMethodName + "' on bean with name '" + beanName + "'");
