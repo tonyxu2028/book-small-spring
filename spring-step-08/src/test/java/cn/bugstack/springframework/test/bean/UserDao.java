@@ -3,9 +3,10 @@ package cn.bugstack.springframework.test.bean;
 import java.util.HashMap;
 import java.util.Map;
 
+@SuppressWarnings("unused")
 public class UserDao {
 
-    private static Map<String, String> hashMap = new HashMap<>();
+    private static final Map<String, String> hashMap = new HashMap<>();
 
     public void initDataMethod(){
         System.out.println("执行：init-method");

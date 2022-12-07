@@ -9,8 +9,9 @@ import cn.bugstack.springframework.context.ApplicationContextAware;
  *
  *
  *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
- * @description 通过 BeanPostProcessor 实现类感知应用上下文对象
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
+ * @author naixixu
+ * {@code @description} 通过 BeanPostProcessor 实现类感知应用上下文对象
  * @date 2022/3/11
  *  /CodeDesignTutorials
  *

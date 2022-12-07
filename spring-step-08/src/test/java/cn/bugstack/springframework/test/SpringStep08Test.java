@@ -8,13 +8,13 @@ import org.junit.Test;
  *
  *
  *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
- * @description 单元测试
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
+ * {@code @description} 单元测试
  * @date 2022/03/10
  *
  *
  */
-public class ApiTest {
+public class SpringStep08Test {
 
     @Test
     public void test_xml() {
