@@ -15,7 +15,7 @@ import org.openjdk.jol.info.ClassLayout;
  *
  *
  */
-public class ApiTest {
+public class SpringStep09Test {
 
     @Test
     public void test_prototype() {
