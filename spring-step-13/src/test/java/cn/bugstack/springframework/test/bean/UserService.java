@@ -32,6 +32,7 @@ public class UserService implements IUserService {
         return "UserService#token = { " + token + " }";
     }
 
+    @SuppressWarnings("unused")
     public String getToken() {
         return token;
     }

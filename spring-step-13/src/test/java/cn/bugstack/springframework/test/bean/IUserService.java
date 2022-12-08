@@ -4,5 +4,6 @@ public interface IUserService {
 
     String queryUserInfo();
 
+    @SuppressWarnings("unused")
     String register(String userName);
 }

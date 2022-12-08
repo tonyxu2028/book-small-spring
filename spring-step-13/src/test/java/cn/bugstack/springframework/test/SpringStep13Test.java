@@ -13,13 +13,13 @@ import java.util.List;
  *
  *
  *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
  * @description 单元测试
  * @date 2022/3/14
  *
  *
  */
-public class ApiTest {
+public class SpringStep13Test {
 
     @Test
     public void test_scan() {
@@ -37,7 +37,6 @@ public class ApiTest {
 
     @Test
     public void test_beanPost(){
-
         BeanPostProcessor beanPostProcessor = new BeanPostProcessor() {
             @Override
             public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
@@ -49,12 +48,10 @@ public class ApiTest {
                 return null;
             }
         };
-
-        List<BeanPostProcessor> beanPostProcessors = new ArrayList<BeanPostProcessor>();
+        List<BeanPostProcessor> beanPostProcessors = new ArrayList<>();
         beanPostProcessors.add(beanPostProcessor);
         beanPostProcessors.add(beanPostProcessor);
         beanPostProcessors.remove(beanPostProcessor);
-
         System.out.println(beanPostProcessors.size());
     }
 
