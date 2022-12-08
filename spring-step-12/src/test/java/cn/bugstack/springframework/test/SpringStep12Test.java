@@ -6,8 +6,6 @@ import cn.bugstack.springframework.aop.MethodMatcher;
 import cn.bugstack.springframework.aop.TargetSource;
 import cn.bugstack.springframework.aop.aspectj.AspectJExpressionPointcut;
 import cn.bugstack.springframework.aop.aspectj.AspectJExpressionPointcutAdvisor;
-import cn.bugstack.springframework.aop.framework.Cglib2AopProxy;
-import cn.bugstack.springframework.aop.framework.JdkDynamicAopProxy;
 import cn.bugstack.springframework.aop.framework.ProxyFactory;
 import cn.bugstack.springframework.aop.framework.ReflectiveMethodInvocation;
 import cn.bugstack.springframework.aop.framework.adapter.MethodBeforeAdviceInterceptor;
@@ -28,13 +26,13 @@ import java.lang.reflect.Proxy;
  *
  *
  *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
  * @description 单元测试
  * @date 2022/03/10
  *
  *
  */
-public class ApiTest {
+public class SpringStep12Test {
 
     private AdvisedSupport advisedSupport;
 
@@ -107,7 +105,7 @@ public class ApiTest {
         // AOP 代理
         IUserService proxy = (IUserService) Proxy.newProxyInstance(Thread.currentThread().getContextClassLoader(), targetObj.getClass().getInterfaces(), new InvocationHandler() {
             // 方法匹配器
-            MethodMatcher methodMatcher = new AspectJExpressionPointcut("execution(* cn.bugstack.springframework.test.bean.IUserService.*(..))");
+            final MethodMatcher methodMatcher = new AspectJExpressionPointcut("execution(* cn.bugstack.springframework.test.bean.IUserService.*(..))");
 
             @Override
             public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {

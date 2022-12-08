@@ -7,7 +7,8 @@ import cn.bugstack.springframework.beans.factory.config.BeanDefinition;
  *
  *
  *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
+ * @author naixixu
  * @description Bean 定义注册接口
  * @date 2022/03/07
  *

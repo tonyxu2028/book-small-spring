@@ -11,7 +11,8 @@ import java.lang.reflect.Constructor;
  *
  *
  *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
+ * @author naixixu
  * @description Cglib 实例化策略
  * @date 2022/03/08
  *
@@ -29,7 +30,9 @@ public class CglibSubclassingInstantiationStrategy implements InstantiationStrat
                 return super.hashCode();
             }
         });
-        if (null == ctor) return enhancer.create();
+        if (null == ctor) {
+            return enhancer.create();
+        }
         return enhancer.create(ctor.getParameterTypes(), args);
     }
 

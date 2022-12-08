@@ -1,7 +1,6 @@
 package cn.bugstack.springframework.beans.factory.support;
 
 import cn.bugstack.springframework.beans.BeansException;
-import cn.bugstack.springframework.beans.factory.BeanFactory;
 import cn.bugstack.springframework.beans.factory.FactoryBean;
 import cn.bugstack.springframework.beans.factory.config.BeanDefinition;
 import cn.bugstack.springframework.beans.factory.config.BeanPostProcessor;
@@ -15,7 +14,8 @@ import java.util.List;
  *
  *
  *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
+ * @author naixixu
  * @description 抽象的 Bean 工厂基类，定义模板方法
  * @date 2022/03/07
  *
@@ -24,10 +24,10 @@ import java.util.List;
 public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport implements ConfigurableBeanFactory {
 
     /** ClassLoader to resolve bean class names with, if necessary */
-    private ClassLoader beanClassLoader = ClassUtils.getDefaultClassLoader();
+    private final ClassLoader beanClassLoader = ClassUtils.getDefaultClassLoader();
 
     /** BeanPostProcessors to apply in createBean */
-    private final List<BeanPostProcessor> beanPostProcessors = new ArrayList<BeanPostProcessor>();
+    private final List<BeanPostProcessor> beanPostProcessors = new ArrayList<>();
 
     @Override
     public Object getBean(String name) throws BeansException {
@@ -40,10 +40,12 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public <T> T getBean(String name, Class<T> requiredType) throws BeansException {
         return (T) getBean(name);
     }
 
+    @SuppressWarnings("unchecked")
     protected <T> T doGetBean(final String name, final Object[] args) {
         Object sharedInstance = getSingleton(name);
         if (null != sharedInstance) {
@@ -71,8 +73,25 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
         return object;
     }
 
+    /**
+     * Create a bean instance for the given bean definition.
+     * The bean definition will already have been merged with the parent
+     * definition in case of a child definition.
+     * @param beanName the name of the bean
+     * @return a new bean Definition instance
+     */
     protected abstract BeanDefinition getBeanDefinition(String beanName);
 
+    /**
+     * Create a bean instance for the given bean definition.
+     * The bean definition will already have been merged with the parent
+     * definition in case of a child definition.
+     * @param beanName the name of the bean
+     * @param beanDefinition the merged bean definition for the bean
+     * @param args arguments to use if creating a prototype using explicit arguments to a
+     * static factory method. It is invalid to use a non-null args value in any other case.
+     * @return a new bean instance
+     */
     protected abstract Object createBean(String beanName, BeanDefinition beanDefinition, Object[] args);
 
     @Override
