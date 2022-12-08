@@ -7,6 +7,7 @@ import cn.bugstack.springframework.stereotype.Component;
 import java.util.Random;
 
 @Component("userService")
+@SuppressWarnings("unused")
 public class UserService implements IUserService {
 
     @Value("${token}")

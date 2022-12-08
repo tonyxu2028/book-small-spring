@@ -11,7 +11,8 @@ import java.io.InputStream;
  *
  *
  *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
+ * @author naixixu
  * @description 类路径资源
  * @date 2022/3/9
  *
@@ -21,10 +22,10 @@ public class ClassPathResource implements Resource {
 
     private final String path;
 
-    private ClassLoader classLoader;
+    private final ClassLoader classLoader;
 
     public ClassPathResource(String path) {
-        this(path, (ClassLoader) null);
+        this(path, null);
     }
 
     public ClassPathResource(String path, ClassLoader classLoader) {
@@ -42,4 +43,5 @@ public class ClassPathResource implements Resource {
         }
         return is;
     }
+
 }

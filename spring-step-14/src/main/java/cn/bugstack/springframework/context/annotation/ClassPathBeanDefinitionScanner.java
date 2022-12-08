@@ -13,26 +13,14 @@ import java.util.Set;
  * registering corresponding bean definitions with a given registry ({@code BeanFactory}
  * or {@code ApplicationContext}).
  * <p>
- * 博客：https://bugstack.cn - 沉淀、分享、成长，让自己和他人都能有所收获！
+ * 博客：<a href="https://bugstack.cn">...</a> - 沉淀、分享、成长，让自己和他人都能有所收获！
  * 公众号：bugstack虫洞栈
  * Create by 小傅哥(fustack)
- */
-
-/**
- *
- *
- *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
- * @description A bean definition scanner that detects bean candidates on the classpath,
- * registering corresponding bean definitions with a given registry ({@code BeanFactory}
- * or {@code ApplicationContext}).
- * @date 2022/3/14
- *
- *
+ * @author naixixu
  */
 public class ClassPathBeanDefinitionScanner extends ClassPathScanningCandidateComponentProvider {
 
-    private BeanDefinitionRegistry registry;
+    private final BeanDefinitionRegistry registry;
 
     public ClassPathBeanDefinitionScanner(BeanDefinitionRegistry registry) {
         this.registry = registry;
@@ -58,7 +46,9 @@ public class ClassPathBeanDefinitionScanner extends ClassPathScanningCandidateCo
     private String resolveBeanScope(BeanDefinition beanDefinition) {
         Class<?> beanClass = beanDefinition.getBeanClass();
         Scope scope = beanClass.getAnnotation(Scope.class);
-        if (null != scope) return scope.value();
+        if (null != scope) {
+            return scope.value();
+        }
         return StrUtil.EMPTY;
     }
 

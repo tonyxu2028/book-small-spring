@@ -7,7 +7,8 @@ import cn.bugstack.springframework.beans.factory.Aware;
  *
  *
  *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
+ * @author naixixu
  * @description 实现此接口，既能感知到所属的 ApplicationContext
  * @date 2022/3/11
  *  /CodeDesignTutorials
@@ -15,6 +16,11 @@ import cn.bugstack.springframework.beans.factory.Aware;
  */
 public interface ApplicationContextAware extends Aware {
 
+    /**
+     * 设置 ApplicationContext
+     * @param applicationContext                ApplicationContext
+     * @throws BeansException                   Bean 异常
+     */
     void setApplicationContext(ApplicationContext applicationContext) throws BeansException;
 
 }
