@@ -3,7 +3,6 @@ package cn.bugstack.springframework.context.event;
 import cn.bugstack.springframework.beans.BeansException;
 import cn.bugstack.springframework.beans.factory.BeanFactory;
 import cn.bugstack.springframework.beans.factory.BeanFactoryAware;
-import cn.bugstack.springframework.context.ApplicationEvent;
 import cn.bugstack.springframework.context.ApplicationListener;
 import cn.bugstack.springframework.util.ClassUtils;
 
@@ -18,13 +17,15 @@ import java.util.Set;
  *
  *
  *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
+ * @author naixixu
  * @description Abstract implementation of the {@link ApplicationEventMulticaster} interface,
  * providing the basic listener registration facility.
  * @date 2022/3/13
  *  /CodeDesignTutorials
  *
  */
+@SuppressWarnings("all")
 public abstract class AbstractApplicationEventMulticaster implements ApplicationEventMulticaster, BeanFactoryAware {
 
     public final Set<ApplicationListener<ApplicationEvent>> applicationListeners = new LinkedHashSet<>();
@@ -55,9 +56,11 @@ public abstract class AbstractApplicationEventMulticaster implements Application
      * @see cn.bugstack.springframework.context.ApplicationListener
      */
     protected Collection<ApplicationListener> getApplicationListeners(ApplicationEvent event) {
-        LinkedList<ApplicationListener> allListeners = new LinkedList<ApplicationListener>();
+        LinkedList<ApplicationListener> allListeners = new LinkedList<>();
         for (ApplicationListener<ApplicationEvent> listener : applicationListeners) {
-            if (supportsEvent(listener, event)) allListeners.add(listener);
+            if (supportsEvent(listener, event)) {
+                allListeners.add(listener);
+            }
         }
         return allListeners;
     }

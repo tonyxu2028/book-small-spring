@@ -8,7 +8,8 @@ import java.util.Map;
  *
  *
  *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
+ * @author naixixu
  * @description Extension of the {@link BeanFactory} interface to be implemented by bean factories
  * that can enumerate all their bean instances, rather than attempting bean lookup
  * by name one by one as requested by clients. BeanFactory implementations that
@@ -22,17 +23,17 @@ public interface ListableBeanFactory extends BeanFactory{
 
     /**
      * 按照类型返回 Bean 实例
-     * @param type
-     * @param <T>
-     * @return
-     * @throws BeansException
+     * @param type                      bean 类型
+     * @param <T>                       bean 类型
+     * @return                          bean 实例
+     * @throws BeansException           bean 异常
      */
     <T> Map<String, T> getBeansOfType(Class<T> type) throws BeansException;
 
     /**
      * Return the names of all beans defined in this registry.
      *
-     * 返回注册表中所有的Bean名称
+     * @return 返回注册表中所有的Bean名称
      */
     String[] getBeanDefinitionNames();
 

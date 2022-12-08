@@ -21,13 +21,13 @@ import java.lang.reflect.Proxy;
  *
  *
  *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
  * @description 单元测试
  * @date 2022/03/10
  *
  *
  */
-public class ApiTest {
+public class SpringStep11Test {
 
     @Test
     public void test_aop() throws NoSuchMethodException {
@@ -62,8 +62,11 @@ public class ApiTest {
     }
 
     @Test
+    @SuppressWarnings("all")
     public void test_proxy_class() {
-        IUserService userService = (IUserService) Proxy.newProxyInstance(Thread.currentThread().getContextClassLoader(), new Class[]{IUserService.class}, (proxy, method, args) -> "你被代理了！");
+        IUserService userService = (IUserService) Proxy.newProxyInstance(
+                Thread.currentThread().getContextClassLoader(), new Class[]{IUserService.class},
+                (proxy, method, args) -> "你被代理了！");
         String result = userService.queryUserInfo();
         System.out.println("测试结果：" + result);
     }
@@ -76,7 +79,7 @@ public class ApiTest {
         // AOP 代理
         IUserService proxy = (IUserService) Proxy.newProxyInstance(Thread.currentThread().getContextClassLoader(), targetObj.getClass().getInterfaces(), new InvocationHandler() {
             // 方法匹配器
-            MethodMatcher methodMatcher = new AspectJExpressionPointcut("execution(* cn.bugstack.springframework.test.bean.IUserService.*(..))");
+            final MethodMatcher methodMatcher = new AspectJExpressionPointcut("execution(* cn.bugstack.springframework.test.bean.IUserService.*(..))");
 
             @Override
             public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {

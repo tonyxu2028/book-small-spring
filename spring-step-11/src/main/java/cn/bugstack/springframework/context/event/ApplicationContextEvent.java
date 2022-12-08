@@ -1,13 +1,13 @@
 package cn.bugstack.springframework.context.event;
 
 import cn.bugstack.springframework.context.ApplicationContext;
-import cn.bugstack.springframework.context.ApplicationEvent;
 
 /**
  *
  *
  *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
+ * @author naixixu
  * @description Base class for events raised for an <code>ApplicationContext</code>.
  * @date 2022/3/13
  *  /CodeDesignTutorials
@@ -27,7 +27,9 @@ public class ApplicationContextEvent extends ApplicationEvent {
 
     /**
      * Get the <code>ApplicationContext</code> that the event was raised for.
+     * @return the <code>ApplicationContext</code> that the event was raised for
      */
+    @SuppressWarnings("unused")
     public final ApplicationContext getApplicationContext() {
         return (ApplicationContext) getSource();
     }

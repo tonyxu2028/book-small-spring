@@ -1,5 +1,7 @@
 package cn.bugstack.springframework.context;
 
+import cn.bugstack.springframework.context.event.ApplicationEvent;
+
 /**
  *
  *

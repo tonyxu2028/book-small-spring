@@ -7,9 +7,10 @@ package cn.bugstack.springframework.aop;
  * <p>
  * 被代理的目标对象
  * <p>
- * 博客：https://bugstack.cn - 沉淀、分享、成长，让自己和他人都能有所收获！
+ * 博客：<a href="https://bugstack.cn">...</a> - 沉淀、分享、成长，让自己和他人都能有所收获！
  * 公众号：bugstack虫洞栈
  * Create by 小傅哥(fustack)
+ * @author naixixu
  */
 public class TargetSource {
 
@@ -34,7 +35,6 @@ public class TargetSource {
      * Return a target instance. Invoked immediately before the
      * AOP framework calls the "target" of an AOP method invocation.
      * @return the target object, which contains the joinpoint
-     * @throws Exception if the target object can't be resolved
      */
     public Object getTarget(){
         return this.target;

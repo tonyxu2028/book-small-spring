@@ -7,6 +7,7 @@ import cn.bugstack.springframework.beans.BeansException;
  *
  *
  * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
+ * @author naixixu
  * @description 实现此接口，既能感知到所属的 BeanFactory
  * @date 2022/3/11
  *  /CodeDesignTutorials
@@ -14,6 +15,11 @@ import cn.bugstack.springframework.beans.BeansException;
  */
 public interface BeanFactoryAware extends Aware {
 
+    /**
+     * 设置 BeanFactory
+     * @param beanFactory
+     * @throws BeansException
+     */
     void setBeanFactory(BeanFactory beanFactory) throws BeansException;
 
 }
