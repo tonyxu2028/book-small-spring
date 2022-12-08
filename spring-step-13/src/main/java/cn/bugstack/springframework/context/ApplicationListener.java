@@ -6,7 +6,8 @@ import java.util.EventListener;
  *
  *
  *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
+ * @author naixixu
  * @description Interface to be implemented by application event listeners.
  * Based on the standard <code>java.util.EventListener</code> interface
  * for the Observer design pattern.

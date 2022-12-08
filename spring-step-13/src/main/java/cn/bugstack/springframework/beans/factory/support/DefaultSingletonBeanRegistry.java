@@ -12,7 +12,8 @@ import java.util.Set;
  *
  *
  *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
+ * @author naixixu
  * @description 通用的注册表实现
  * @date 2022/03/07
  *
@@ -26,7 +27,7 @@ public class DefaultSingletonBeanRegistry implements SingletonBeanRegistry {
      */
     protected static final Object NULL_OBJECT = new Object();
 
-    private Map<String, Object> singletonObjects = new HashMap<>();
+    private final Map<String, Object> singletonObjects = new HashMap<>();
 
     private final Map<String, DisposableBean> disposableBeans = new HashMap<>();
 
@@ -35,6 +36,7 @@ public class DefaultSingletonBeanRegistry implements SingletonBeanRegistry {
         return singletonObjects.get(beanName);
     }
 
+    @Override
     public void registerSingleton(String beanName, Object singletonObject) {
         singletonObjects.put(beanName, singletonObject);
     }
@@ -47,6 +49,7 @@ public class DefaultSingletonBeanRegistry implements SingletonBeanRegistry {
         disposableBeans.put(beanName, bean);
     }
 
+    @SuppressWarnings("all")
     public void destroySingletons() {
         Set<String> keySet = this.disposableBeans.keySet();
         Object[] disposableBeanNames = keySet.toArray();

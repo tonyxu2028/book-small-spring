@@ -1,20 +1,22 @@
 package cn.bugstack.springframework.core.io;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Files;
 
 /**
  *
  *
  *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
+ * @author naixixu
  * @description 文件资源
  * @date 2022/3/9
  *
  *
  */
+@SuppressWarnings("unused")
 public class FileSystemResource implements Resource {
 
     private final File file;
@@ -33,7 +35,7 @@ public class FileSystemResource implements Resource {
 
     @Override
     public InputStream getInputStream() throws IOException {
-        return new FileInputStream(this.file);
+        return Files.newInputStream(this.file.toPath());
     }
 
     public final String getPath() {

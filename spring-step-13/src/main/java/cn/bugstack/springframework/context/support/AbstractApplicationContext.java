@@ -20,7 +20,8 @@ import java.util.Map;
  *
  *
  *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
+ * @author naixixu
  * @description 抽象应用上下文 Abstract implementation of the {@link cn.bugstack.springframework.context.ApplicationContext}
  * interface. Doesn't mandate the type of storage used for configuration; simply
  * implements common context functionality. Uses the Template Method design pattern,
@@ -65,10 +66,17 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader i
         finishRefresh();
     }
 
-
-
+    /**
+     * refreshBeanFactory
+     *
+     * @throws BeansException       BeansException
+     */
     protected abstract void refreshBeanFactory() throws BeansException;
 
+    /**
+     * 获取 BeanFactory
+     * @return                      ConfigurableListableBeanFactory
+     */
     protected abstract ConfigurableListableBeanFactory getBeanFactory();
 
     private void invokeBeanFactoryPostProcessors(ConfigurableListableBeanFactory beanFactory) {
@@ -91,6 +99,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader i
         beanFactory.registerSingleton(APPLICATION_EVENT_MULTICASTER_BEAN_NAME, applicationEventMulticaster);
     }
 
+    @SuppressWarnings("all")
     private void registerListeners() {
         Collection<ApplicationListener> applicationListeners = getBeansOfType(ApplicationListener.class).values();
         for (ApplicationListener listener : applicationListeners) {

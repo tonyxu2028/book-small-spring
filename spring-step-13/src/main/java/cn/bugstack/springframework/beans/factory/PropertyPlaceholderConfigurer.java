@@ -15,7 +15,8 @@ import java.util.Properties;
  *
  *
  *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
+ * @author naixixu
  * @description Allows for configuration of individual bean property values from a property resource,
  * i.e. a properties file. Useful for custom config files targeted at system
  * administrators that override bean properties configured in the application context.
@@ -53,7 +54,9 @@ public class PropertyPlaceholderConfigurer implements BeanFactoryPostProcessor {
                 PropertyValues propertyValues = beanDefinition.getPropertyValues();
                 for (PropertyValue propertyValue : propertyValues.getPropertyValues()) {
                     Object value = propertyValue.getValue();
-                    if (!(value instanceof String)) continue;
+                    if (!(value instanceof String)) {
+                        continue;
+                    }
                     String strVal = (String) value;
                     StringBuilder buffer = new StringBuilder(strVal);
                     int startIdx = strVal.indexOf(DEFAULT_PLACEHOLDER_PREFIX);
