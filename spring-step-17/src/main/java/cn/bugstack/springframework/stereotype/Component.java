@@ -7,6 +7,7 @@ import java.lang.annotation.*;
  *
  *
  * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
+ * @author naixixu
  * @description Indicates that an annotated class is a "component".
  * Such classes are considered as candidates for auto-detection
  * when using annotation-based configuration and classpath scanning.
@@ -20,5 +21,4 @@ import java.lang.annotation.*;
 public @interface Component {
 
     String value() default "";
-
 }

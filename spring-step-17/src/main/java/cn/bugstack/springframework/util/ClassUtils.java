@@ -1,5 +1,9 @@
 package cn.bugstack.springframework.util;
 
+/**
+ * @description Simple strategy interface for resolving a String value.
+ * @author naixixu
+ */
 public class ClassUtils {
 
     public static ClassLoader getDefaultClassLoader() {

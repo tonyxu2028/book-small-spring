@@ -12,7 +12,7 @@ import java.util.Set;
 public class ConvertersFactoryBean implements FactoryBean<Set<?>> {
 
 	@Override
-	public Set<?> getObject() throws Exception {
+	public Set<?> getObject() {
 		HashSet<Object> converters = new HashSet<>();
 		StringToLocalDateConverter stringToLocalDateConverter = new StringToLocalDateConverter("yyyy-MM-dd");
 		converters.add(stringToLocalDateConverter);

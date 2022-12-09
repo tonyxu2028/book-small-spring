@@ -2,6 +2,7 @@ package cn.bugstack.springframework.test.bean;
 
 import java.time.LocalDate;
 
+@SuppressWarnings("unused")
 public class Husband {
 
     private String wifiName;
