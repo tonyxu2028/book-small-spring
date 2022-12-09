@@ -11,15 +11,16 @@ import java.lang.reflect.Method;
  * Adapter that implements the {@link DisposableBean} and {@link Runnable} interfaces
  * performing various destruction steps on a given bean instance:
  * <p>
- * 博客：https://bugstack.cn - 沉淀、分享、成长，让自己和他人都能有所收获！
+ * 博客：<a href="https://bugstack.cn">...</a> - 沉淀、分享、成长，让自己和他人都能有所收获！
  * 公众号：bugstack虫洞栈
  * Create by 小傅哥(fustack)
+ * @author naixixu
  */
 public class DisposableBeanAdapter implements DisposableBean {
 
     private final Object bean;
     private final String beanName;
-    private String destroyMethodName;
+    private final String destroyMethodName;
 
     public DisposableBeanAdapter(Object bean, String beanName, BeanDefinition beanDefinition) {
         this.bean = bean;
@@ -35,7 +36,8 @@ public class DisposableBeanAdapter implements DisposableBean {
         }
 
         // 2. 注解配置 destroy-method {判断是为了避免二次执行销毁}
-        if (StrUtil.isNotEmpty(destroyMethodName) && !(bean instanceof DisposableBean && "destroy".equals(this.destroyMethodName))) {
+        boolean hasDestroyMethod = StrUtil.isNotEmpty(destroyMethodName) && !(bean instanceof DisposableBean && "destroy".equals(this.destroyMethodName));
+        if (hasDestroyMethod) {
             Method destroyMethod = bean.getClass().getMethod(destroyMethodName);
             if (null == destroyMethod) {
                 throw new BeansException("Couldn't find a destroy method named '" + destroyMethodName + "' on bean with name '" + beanName + "'");

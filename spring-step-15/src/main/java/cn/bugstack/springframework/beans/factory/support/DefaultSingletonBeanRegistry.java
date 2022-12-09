@@ -4,16 +4,16 @@ import cn.bugstack.springframework.beans.BeansException;
 import cn.bugstack.springframework.beans.factory.DisposableBean;
 import cn.bugstack.springframework.beans.factory.config.SingletonBeanRegistry;
 
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * 博客：https://bugstack.cn - 沉淀、分享、成长，让自己和他人都能有所收获！
+ * 博客：<a href="https://bugstack.cn">...</a> - 沉淀、分享、成长，让自己和他人都能有所收获！
  * 公众号：bugstack虫洞栈
  * Create by 小傅哥(fustack)
+ * @author naixixu
  */
 public class DefaultSingletonBeanRegistry implements SingletonBeanRegistry {
 
@@ -23,7 +23,7 @@ public class DefaultSingletonBeanRegistry implements SingletonBeanRegistry {
      */
     protected static final Object NULL_OBJECT = new Object();
 
-    private Map<String, Object> singletonObjects = new ConcurrentHashMap<>();
+    private final Map<String, Object> singletonObjects = new ConcurrentHashMap<>();
 
     private final Map<String, DisposableBean> disposableBeans = new LinkedHashMap<>();
 
@@ -32,6 +32,7 @@ public class DefaultSingletonBeanRegistry implements SingletonBeanRegistry {
         return singletonObjects.get(beanName);
     }
 
+    @Override
     public void registerSingleton(String beanName, Object singletonObject) {
         singletonObjects.put(beanName, singletonObject);
     }
@@ -40,6 +41,7 @@ public class DefaultSingletonBeanRegistry implements SingletonBeanRegistry {
         disposableBeans.put(beanName, bean);
     }
 
+    @SuppressWarnings("all")
     public void destroySingletons() {
         Set<String> keySet = this.disposableBeans.keySet();
         Object[] disposableBeanNames = keySet.toArray();

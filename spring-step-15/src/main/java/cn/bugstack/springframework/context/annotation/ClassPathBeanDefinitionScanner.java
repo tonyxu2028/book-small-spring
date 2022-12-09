@@ -45,7 +45,9 @@ public class ClassPathBeanDefinitionScanner extends ClassPathScanningCandidateCo
     private String resolveBeanScope(BeanDefinition beanDefinition) {
         Class<?> beanClass = beanDefinition.getBeanClass();
         Scope scope = beanClass.getAnnotation(Scope.class);
-        if (null != scope) return scope.value();
+        if (null != scope) {
+            return scope.value();
+        }
         return StrUtil.EMPTY;
     }
 

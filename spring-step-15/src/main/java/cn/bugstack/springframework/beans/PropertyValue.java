@@ -6,6 +6,7 @@ package cn.bugstack.springframework.beans;
  * Create by 小傅哥(fustack)
  *
  * bean 属性信息
+ * @author naixixu
  */
 public class PropertyValue {
 

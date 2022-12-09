@@ -18,10 +18,12 @@ import java.util.Set;
  * Abstract implementation of the {@link ApplicationEventMulticaster} interface,
  * providing the basic listener registration facility.
  * <p>
- * 博客：https://bugstack.cn - 沉淀、分享、成长，让自己和他人都能有所收获！
+ * 博客：<a href="https://bugstack.cn">...</a> - 沉淀、分享、成长，让自己和他人都能有所收获！
  * 公众号：bugstack虫洞栈
  * Create by 小傅哥(fustack)
+ * @author naixixu
  */
+@SuppressWarnings("all")
 public abstract class AbstractApplicationEventMulticaster implements ApplicationEventMulticaster, BeanFactoryAware {
 
     public final Set<ApplicationListener<ApplicationEvent>> applicationListeners = new LinkedHashSet<>();
@@ -52,9 +54,11 @@ public abstract class AbstractApplicationEventMulticaster implements Application
      * @see cn.bugstack.springframework.context.ApplicationListener
      */
     protected Collection<ApplicationListener> getApplicationListeners(ApplicationEvent event) {
-        LinkedList<ApplicationListener> allListeners = new LinkedList<ApplicationListener>();
+        LinkedList<ApplicationListener> allListeners = new LinkedList<>();
         for (ApplicationListener<ApplicationEvent> listener : applicationListeners) {
-            if (supportsEvent(listener, event)) allListeners.add(listener);
+            if (supportsEvent(listener, event)) {
+                allListeners.add(listener);
+            }
         }
         return allListeners;
     }

@@ -11,25 +11,26 @@ import java.util.Map;
  * preload all their bean definitions (such as XML-based factories) may implement
  * this interface.
  * <p>
- * 博客：https://bugstack.cn - 沉淀、分享、成长，让自己和他人都能有所收获！
+ * 博客：<a href="https://bugstack.cn">...</a> - 沉淀、分享、成长，让自己和他人都能有所收获！
  * 公众号：bugstack虫洞栈
  * Create by 小傅哥(fustack)
+ * @author naixixu
  */
 public interface ListableBeanFactory extends BeanFactory{
 
     /**
      * 按照类型返回 Bean 实例
-     * @param type
-     * @param <T>
-     * @return
-     * @throws BeansException
+     * @param type                          bean 类型
+     * @param <T>                           bean 类型
+     * @return                              bean 实例
+     * @throws BeansException               bean 异常
      */
     <T> Map<String, T> getBeansOfType(Class<T> type) throws BeansException;
 
     /**
      * Return the names of all beans defined in this registry.
      *
-     * 返回注册表中所有的Bean名称
+     * @return 返回注册表中所有的Bean名称
      */
     String[] getBeanDefinitionNames();
 

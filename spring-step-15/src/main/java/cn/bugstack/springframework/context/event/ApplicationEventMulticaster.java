@@ -6,12 +6,13 @@ import cn.bugstack.springframework.context.ApplicationListener;
 /**
  * Interface to be implemented by objects that can manage a number of
  * {@link ApplicationListener} objects, and publish events to them.
- *
+ * <p>
  * 事件广播器
- *
- * 博客：https://bugstack.cn - 沉淀、分享、成长，让自己和他人都能有所收获！
+ * <p>
+ * 博客：<a href="https://bugstack.cn">...</a> - 沉淀、分享、成长，让自己和他人都能有所收获！
  * 公众号：bugstack虫洞栈
  * Create by 小傅哥(fustack)
+ * @author naixixu
  */
 public interface ApplicationEventMulticaster {
 
@@ -25,6 +26,7 @@ public interface ApplicationEventMulticaster {
      * Remove a listener from the notification list.
      * @param listener the listener to remove
      */
+    @SuppressWarnings("unused")
     void removeApplicationListener(ApplicationListener<?> listener);
 
     /**

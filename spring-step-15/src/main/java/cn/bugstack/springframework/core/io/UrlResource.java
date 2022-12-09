@@ -8,6 +8,9 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 
+/**
+ * @author naixixu
+ */
 public class UrlResource implements Resource{
 
     private final URL url;

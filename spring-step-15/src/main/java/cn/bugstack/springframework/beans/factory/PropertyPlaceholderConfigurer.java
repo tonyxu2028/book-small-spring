@@ -17,10 +17,12 @@ import java.util.Properties;
  * i.e. a properties file. Useful for custom config files targeted at system
  * administrators that override bean properties configured in the application context.
  * <p>
- * 博客：https://bugstack.cn - 沉淀、分享、成长，让自己和他人都能有所收获！
+ * 博客：<a href="https://bugstack.cn">...</a> - 沉淀、分享、成长，让自己和他人都能有所收获！
  * 公众号：bugstack虫洞栈
  * Create by 小傅哥(fustack)
+ * @author naixixu
  */
+@SuppressWarnings("unused")
 public class PropertyPlaceholderConfigurer implements BeanFactoryPostProcessor {
 
     /**
@@ -53,7 +55,9 @@ public class PropertyPlaceholderConfigurer implements BeanFactoryPostProcessor {
                 PropertyValues propertyValues = beanDefinition.getPropertyValues();
                 for (PropertyValue propertyValue : propertyValues.getPropertyValues()) {
                     Object value = propertyValue.getValue();
-                    if (!(value instanceof String)) continue;
+                    if (!(value instanceof String)) {
+                        continue;
+                    }
                     value = resolvePlaceholder((String) value, properties);
                     propertyValues.addPropertyValue(new PropertyValue(propertyValue.getName(), value));
                 }
@@ -69,12 +73,11 @@ public class PropertyPlaceholderConfigurer implements BeanFactoryPostProcessor {
     }
 
     private String resolvePlaceholder(String value, Properties properties) {
-        String strVal = value;
-        StringBuilder buffer = new StringBuilder(strVal);
-        int startIdx = strVal.indexOf(DEFAULT_PLACEHOLDER_PREFIX);
-        int stopIdx = strVal.indexOf(DEFAULT_PLACEHOLDER_SUFFIX);
+        StringBuilder buffer = new StringBuilder(value);
+        int startIdx = value.indexOf(DEFAULT_PLACEHOLDER_PREFIX);
+        int stopIdx = value.indexOf(DEFAULT_PLACEHOLDER_SUFFIX);
         if (startIdx != -1 && stopIdx != -1 && startIdx < stopIdx) {
-            String propKey = strVal.substring(startIdx + 2, stopIdx);
+            String propKey = value.substring(startIdx + 2, stopIdx);
             String propVal = properties.getProperty(propKey);
             buffer.replace(startIdx, stopIdx + 1, propVal);
         }

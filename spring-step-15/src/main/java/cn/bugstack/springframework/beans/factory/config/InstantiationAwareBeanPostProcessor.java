@@ -8,9 +8,10 @@ import cn.bugstack.springframework.beans.PropertyValues;
  * and a callback after instantiation but before explicit properties are set or
  * autowiring occurs.
  * <p>
- * 博客：https://bugstack.cn - 沉淀、分享、成长，让自己和他人都能有所收获！
+ * 博客：<a href="https://bugstack.cn">...</a> - 沉淀、分享、成长，让自己和他人都能有所收获！
  * 公众号：bugstack虫洞栈
  * Create by 小傅哥(fustack)
+ * @author naixixu
  */
 public interface InstantiationAwareBeanPostProcessor extends BeanPostProcessor {
 
@@ -21,10 +22,10 @@ public interface InstantiationAwareBeanPostProcessor extends BeanPostProcessor {
      * <p>
      * 在 Bean 对象执行初始化方法之前，执行此方法
      *
-     * @param beanClass
-     * @param beanName
-     * @return
-     * @throws BeansException
+     * @param beanClass                     the raw class of the bean
+     * @param beanName                      the name of the bean
+     * @return                              the bean object to use instead of a default instance
+     * @throws BeansException               in case of errors
      */
     Object postProcessBeforeInstantiation(Class<?> beanClass, String beanName) throws BeansException;
 
@@ -37,10 +38,10 @@ public interface InstantiationAwareBeanPostProcessor extends BeanPostProcessor {
      * <p>
      * 在 Bean 对象执行初始化方法之后，执行此方法
      *
-     * @param bean
-     * @param beanName
-     * @return
-     * @throws BeansException
+     * @param bean                          the new bean instance
+     * @param beanName                      the name of the bean
+     * @return                              the bean instance to use, either the original or a wrapped one;
+     * @throws BeansException               in case of errors
      */
     boolean postProcessAfterInstantiation(Object bean, String beanName) throws BeansException;
 
@@ -51,11 +52,11 @@ public interface InstantiationAwareBeanPostProcessor extends BeanPostProcessor {
      * <p>
      * 在 Bean 对象实例化完成后，设置属性操作之前执行此方法
      *
-     * @param pvs
-     * @param bean
-     * @param beanName
-     * @return
-     * @throws BeansException
+     * @param pvs                           the property values that the factory is about to apply
+     * @param bean                          the bean instance created but whose properties have not yet been set
+     * @param beanName                      the name of the bean
+     * @return                              the property values to apply to the given bean
+     * @throws BeansException               in case of errors
      */
     PropertyValues postProcessPropertyValues(PropertyValues pvs, Object bean, String beanName) throws BeansException;
 

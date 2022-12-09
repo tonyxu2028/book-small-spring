@@ -7,14 +7,17 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 
+/**
+ * @author naixixu
+ */
 public class ClassPathResource implements Resource {
 
     private final String path;
 
-    private ClassLoader classLoader;
+    private final ClassLoader classLoader;
 
     public ClassPathResource(String path) {
-        this(path, (ClassLoader) null);
+        this(path, null);
     }
 
     public ClassPathResource(String path, ClassLoader classLoader) {
