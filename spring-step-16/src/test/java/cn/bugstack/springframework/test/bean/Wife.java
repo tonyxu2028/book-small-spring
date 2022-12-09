@@ -1,5 +1,6 @@
 package cn.bugstack.springframework.test.bean;
 
+@SuppressWarnings("unused")
 public class Wife {
 
     private Husband husband;

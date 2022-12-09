@@ -8,7 +8,7 @@ import cn.bugstack.springframework.core.io.ResourceLoader;
  *
  *
  *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
  * @author naixixu
  * @description Simple interface for bean definition readers.
  * @date 2022/3/9
@@ -41,6 +41,7 @@ public interface BeanDefinitionReader {
      * @param resources             the resource descriptors
      * @throws BeansException       in case of loading or parsing errors
      */
+    @SuppressWarnings("unused")
     void loadBeanDefinitions(Resource... resources) throws BeansException;
 
     /**

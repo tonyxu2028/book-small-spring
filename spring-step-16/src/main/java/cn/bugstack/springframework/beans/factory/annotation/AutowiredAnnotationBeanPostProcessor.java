@@ -15,7 +15,7 @@ import java.lang.reflect.Field;
  *
  *
  *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
  * @author naixixu
  * @description 处理 @Value、@Autowired，注解的 BeanPostProcessor {@link cn.bugstack.springframework.beans.factory.config.BeanPostProcessor} implementation
  * that autowires annotated fields, setter methods and arbitrary config methods.
@@ -56,9 +56,9 @@ public class AutowiredAnnotationBeanPostProcessor implements InstantiationAwareB
             Autowired autowiredAnnotation = field.getAnnotation(Autowired.class);
             if (null != autowiredAnnotation) {
                 Class<?> fieldType = field.getType();
-                String dependentBeanName = null;
+                String dependentBeanName;
                 Qualifier qualifierAnnotation = field.getAnnotation(Qualifier.class);
-                Object dependentBean = null;
+                Object dependentBean;
                 if (null != qualifierAnnotation) {
                     dependentBeanName = qualifierAnnotation.value();
                     dependentBean = beanFactory.getBean(dependentBeanName, fieldType);

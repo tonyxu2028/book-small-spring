@@ -8,6 +8,7 @@ public class Husband {
         return "Husband.wife";
     }
 
+    @SuppressWarnings("unused")
     public Wife getWife() {
         return wife;
     }

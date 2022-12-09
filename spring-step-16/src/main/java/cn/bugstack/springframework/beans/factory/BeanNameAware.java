@@ -4,7 +4,7 @@ package cn.bugstack.springframework.beans.factory;
  *
  *
  *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
  * @author naixixu
  * @description Interface to be implemented by beans that want to be aware of their
  * bean name in a bean factory. Note that it is not usually recommended
@@ -19,7 +19,7 @@ public interface BeanNameAware {
 
     /**
      * Set the name of the bean in the bean factory that created this bean.
-     * @param name
+     * @param name                          the name of the bean in the factory.
      */
     void setBeanName(String name);
 

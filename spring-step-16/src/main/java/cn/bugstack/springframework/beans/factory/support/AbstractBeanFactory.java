@@ -78,8 +78,20 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
         return object;
     }
 
+    /**
+     * Create a bean instance for the given bean definition.
+     * @param beanName              the name of the bean
+     * @return                      the bean instance
+     */
     protected abstract BeanDefinition getBeanDefinition(String beanName);
 
+    /**
+     * Create a bean instance for the given bean definition.
+     * @param beanName              the name of the bean
+     * @param beanDefinition        the bean definition for the bean
+     * @param args                  arguments to use if creating a prototype using explicit arguments to a
+     * @return                      the bean instance
+     */
     protected abstract Object createBean(String beanName, BeanDefinition beanDefinition, Object[] args);
 
     @Override

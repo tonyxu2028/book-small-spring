@@ -8,7 +8,7 @@ import java.util.concurrent.ConcurrentHashMap;
  *
  *
  *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
  * @description 循环依赖案例
  * @date 2022/3/16
  *
@@ -23,13 +23,14 @@ public class CircleTest {
         System.out.println(getBean(A.class).getB());
     }
 
+    @SuppressWarnings("unchecked")
     private static <T> T getBean(Class<T> beanClass) throws Exception {
         String beanName = beanClass.getSimpleName().toLowerCase();
         if (singletonObjects.containsKey(beanName)) {
             return (T) singletonObjects.get(beanName);
         }
         // 实例化对象入缓存
-        Object obj = beanClass.newInstance();
+        T obj = beanClass.newInstance();
         singletonObjects.put(beanName, obj);
         // 属性填充补全对象
         Field[] fields = obj.getClass().getDeclaredFields();
@@ -40,11 +41,12 @@ public class CircleTest {
             field.set(obj, singletonObjects.containsKey(fieldBeanName) ? singletonObjects.get(fieldBeanName) : getBean(fieldClass));
             field.setAccessible(false);
         }
-        return (T) obj;
+        return obj;
     }
 
 }
 
+@SuppressWarnings("unused")
 class A {
 
     private B b;
@@ -58,6 +60,7 @@ class A {
     }
 }
 
+@SuppressWarnings("unused")
 class B {
 
     private A a;

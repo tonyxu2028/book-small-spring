@@ -4,7 +4,7 @@ package cn.bugstack.springframework.beans.factory;
  *
  *
  *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
  * @author naixixu
  * @description Callback that allows a bean to be aware of the bean
  * {@link ClassLoader class loader}; that is, the class loader used by the

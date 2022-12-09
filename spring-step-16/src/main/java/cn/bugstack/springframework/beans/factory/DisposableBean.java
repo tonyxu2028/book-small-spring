@@ -4,7 +4,7 @@ package cn.bugstack.springframework.beans.factory;
  *
  *
  *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
  * @author naixixu
  * @description Interface to be implemented by beans that want to release resources
  * on destruction. A BeanFactory is supposed to invoke the destroy
