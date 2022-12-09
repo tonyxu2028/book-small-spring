@@ -7,13 +7,14 @@ import cn.bugstack.springframework.aop.AdvisedSupport;
  * factory. This class provides a simple way of obtaining and configuring
  * AOP proxies in code.
  * <p>
- * 博客：https://bugstack.cn - 沉淀、分享、成长，让自己和他人都能有所收获！
+ * 博客：<a href="https://bugstack.cn">...</a> - 沉淀、分享、成长，让自己和他人都能有所收获！
  * 公众号：bugstack虫洞栈
  * Create by 小傅哥(fustack)
+ * @author naixixu
  */
 public class ProxyFactory {
 
-    private AdvisedSupport advisedSupport;
+    private final AdvisedSupport advisedSupport;
 
     public ProxyFactory(AdvisedSupport advisedSupport) {
         this.advisedSupport = advisedSupport;

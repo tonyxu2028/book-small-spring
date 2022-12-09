@@ -16,6 +16,7 @@ import java.lang.reflect.Method;
  * <p>Objects of this type should be obtained through proxy factories,
  * configured by an AdvisedSupport object. This class is internal
  * to Spring's AOP framework and need not be used directly by client code.
+ * @author naixixu
  */
 public class Cglib2AopProxy implements AopProxy {
 

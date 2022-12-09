@@ -7,20 +7,28 @@ import org.aopalliance.intercept.MethodInterceptor;
  * These are not themselves AOP proxies, but subclasses of this class are
  * normally factories from which AOP proxy instances are obtained directly.
  * <p>
- * 博客：https://bugstack.cn - 沉淀、分享、成长，让自己和他人都能有所收获！
+ * 博客：<a href="https://bugstack.cn">...</a> - 沉淀、分享、成长，让自己和他人都能有所收获！
  * 公众号：bugstack虫洞栈
  * Create by 小傅哥(fustack)
+ * @author naixixu
  */
 public class AdvisedSupport {
-
-    // ProxyConfig
+    /**
+     * TargetSource holding the target object, used to create the proxy.
+     */
     private boolean proxyTargetClass = false;
-
-    // 被代理的目标对象
+    /**
+     * TargetSource holding the target object, used to create the proxy.
+     * 被代理的目标对象
+     */
     private TargetSource targetSource;
-    // 方法拦截器
+    /**
+     * 方法拦截器
+     */
     private MethodInterceptor methodInterceptor;
-    // 方法匹配器(检查目标方法是否符合通知条件)
+    /**
+     * 方法匹配器(检查目标方法是否符合通知条件)
+     */
     private MethodMatcher methodMatcher;
 
     public boolean isProxyTargetClass() {
