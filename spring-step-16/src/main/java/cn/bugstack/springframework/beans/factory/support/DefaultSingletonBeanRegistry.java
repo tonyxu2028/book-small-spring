@@ -13,7 +13,8 @@ import java.util.Set;
  *
  *
  *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
+ * @author naixixu
  * @description 通用的注册表实现
  * @date 2022/03/07
  *
@@ -31,19 +32,19 @@ public class DefaultSingletonBeanRegistry implements SingletonBeanRegistry {
      * 一级缓存，普通对象
      * Cache of singleton objects: bean name --> bean instance
      */
-    private Map<String, Object> singletonObjects = new HashMap<>();
+    private final Map<String, Object> singletonObjects = new HashMap<>();
 
     /**
      * 二级缓存，提前暴漏对象，没有完全实例化的对象
      * Cache of early singleton objects: bean name --> bean instance
      */
-    protected final Map<String, Object> earlySingletonObjects = new HashMap<String, Object>();
+    protected final Map<String, Object> earlySingletonObjects = new HashMap<>();
 
     /**
      * 三级缓存，存放代理对象
      * Cache of singleton factories: bean name --> ObjectFactory
      */
-    private final Map<String, ObjectFactory<?>> singletonFactories = new HashMap<String, ObjectFactory<?>>();
+    private final Map<String, ObjectFactory<?>> singletonFactories = new HashMap<>();
 
     private final Map<String, DisposableBean> disposableBeans = new HashMap<>();
 
@@ -66,6 +67,7 @@ public class DefaultSingletonBeanRegistry implements SingletonBeanRegistry {
         return singletonObject;
     }
 
+    @Override
     public void registerSingleton(String beanName, Object singletonObject) {
         singletonObjects.put(beanName, singletonObject);
         earlySingletonObjects.remove(beanName);
@@ -83,6 +85,7 @@ public class DefaultSingletonBeanRegistry implements SingletonBeanRegistry {
         disposableBeans.put(beanName, bean);
     }
 
+    @SuppressWarnings("all")
     public void destroySingletons() {
         Set<String> keySet = this.disposableBeans.keySet();
         Object[] disposableBeanNames = keySet.toArray();

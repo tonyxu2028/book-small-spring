@@ -23,6 +23,7 @@ import java.util.Set;
  *
  *
  * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
+ * @author naixixu
  * @description A bean definition scanner that detects bean candidates on the classpath,
  * registering corresponding bean definitions with a given registry ({@code BeanFactory}
  * or {@code ApplicationContext}).
@@ -58,7 +59,9 @@ public class ClassPathBeanDefinitionScanner extends ClassPathScanningCandidateCo
     private String resolveBeanScope(BeanDefinition beanDefinition) {
         Class<?> beanClass = beanDefinition.getBeanClass();
         Scope scope = beanClass.getAnnotation(Scope.class);
-        if (null != scope) return scope.value();
+        if (null != scope) {
+            return scope.value();
+        }
         return StrUtil.EMPTY;
     }
 

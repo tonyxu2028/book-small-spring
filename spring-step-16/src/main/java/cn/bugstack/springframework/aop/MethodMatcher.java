@@ -8,12 +8,15 @@ import java.lang.reflect.Method;
  * 博客：https://bugstack.cn - 沉淀、分享、成长，让自己和他人都能有所收获！
  * 公众号：bugstack虫洞栈
  * Create by 小傅哥(fustack)
+ * @author naixixu
  */
 public interface MethodMatcher {
 
     /**
-     * Perform static checking whether the given method matches. If this
-     * @return whether or not this method matches statically
+     * Perform static checking whether the given method matches.
+     * @param method                the candidate method
+     * @param targetClass           the target class (may be <code>null</code>,
+     * @return                      whether or not this method matches statically
      */
     boolean matches(Method method, Class<?> targetClass);
     

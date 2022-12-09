@@ -11,6 +11,7 @@ import cn.bugstack.springframework.beans.factory.config.ConfigurableBeanFactory;
  *
  *
  * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
+ * @author naixixu
  * @description Configuration interface to be implemented by most listable bean factories.
  * In addition to {@link ConfigurableBeanFactory}, it provides facilities to
  * analyze and modify bean definitions, and to pre-instantiate singletons.
@@ -20,8 +21,18 @@ import cn.bugstack.springframework.beans.factory.config.ConfigurableBeanFactory;
  */
 public interface ConfigurableListableBeanFactory extends ListableBeanFactory, AutowireCapableBeanFactory, ConfigurableBeanFactory {
 
+    /**
+     * Add a new BeanPostProcessor that will get applied to beans created
+     * @param beanName                  the name of the bean
+     * @return                          the merged BeanDefinition for the given bean
+     * @throws BeansException           if the initialization of the post processor failed
+     */
     BeanDefinition getBeanDefinition(String beanName) throws BeansException;
 
+    /**
+     * Add a new BeanPostProcessor that will get applied to beans created
+     * @throws BeansException           if the initialization of the post processor failed
+     */
     void preInstantiateSingletons() throws BeansException;
 
 }

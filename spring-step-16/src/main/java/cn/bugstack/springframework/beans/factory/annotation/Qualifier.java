@@ -7,6 +7,7 @@ import java.lang.annotation.*;
  *
  *
  * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
+ * @author naixixu
  * @description This annotation may be used on a field or parameter as a qualifier for
  * candidate beans when autowiring. It may also be used to annotate other
  * custom annotations that can then in turn be used as qualifiers.
