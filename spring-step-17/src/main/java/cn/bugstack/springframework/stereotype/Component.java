@@ -6,7 +6,7 @@ import java.lang.annotation.*;
  *
  *
  *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
  * @author naixixu
  * @description Indicates that an annotated class is a "component".
  * Such classes are considered as candidates for auto-detection

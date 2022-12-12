@@ -7,7 +7,8 @@ import cn.bugstack.springframework.context.ApplicationListener;
  *
  *
  *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
+ * @author naixixu
  * @description 事件广播器
  * @date 2022/3/13
  *  /CodeDesignTutorials

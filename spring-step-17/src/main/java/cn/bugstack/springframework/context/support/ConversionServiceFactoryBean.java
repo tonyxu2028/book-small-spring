@@ -17,7 +17,8 @@ import java.util.Set;
  *
  *
  *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
+ * @author naixixu
  * @description 提供创建 ConversionService 工厂
  * @date 2022/3/16
  *
@@ -32,7 +33,7 @@ public class ConversionServiceFactoryBean implements FactoryBean<ConversionServi
     private GenericConversionService conversionService;
 
     @Override
-    public ConversionService getObject() throws Exception {
+    public ConversionService getObject() {
         return conversionService;
     }
 
@@ -47,7 +48,7 @@ public class ConversionServiceFactoryBean implements FactoryBean<ConversionServi
     }
 
     @Override
-    public void afterPropertiesSet() throws Exception {
+    public void afterPropertiesSet() {
         this.conversionService = new DefaultConversionService();
         registerConverters(converters, conversionService);
     }

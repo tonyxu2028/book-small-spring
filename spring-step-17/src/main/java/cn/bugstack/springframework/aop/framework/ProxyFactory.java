@@ -7,6 +7,7 @@ import cn.bugstack.springframework.aop.AdvisedSupport;
  *
  *
  * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
+ * @author naixixu
  * @description Factory for AOP proxies for programmatic use, rather than via a bean
  * factory. This class provides a simple way of obtaining and configuring
  * AOP proxies in code.
