@@ -31,6 +31,7 @@ public class PropertyValues {
      * @param propertyName          属性名称
      * @return                      属性值
      */
+    @SuppressWarnings("unused")
     public PropertyValue getPropertyValue(String propertyName) {
         for (PropertyValue pv : this.propertyValueList) {
             if (pv.getName().equals(propertyName)) {

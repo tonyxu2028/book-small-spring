@@ -4,7 +4,8 @@ package cn.bugstack.springframework.beans.factory.config;
  *
  *
  *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
+ * @author naixixu
  * @description 单例 Bean 注册表
  * @date 2022/03/07
  *
@@ -19,6 +20,11 @@ public interface SingletonBeanRegistry {
      */
     Object getSingleton(String beanName);
 
+    /**
+     * 注册单例对象
+     * @param beanName              bean名称
+     * @param singletonObject       单例对象
+     */
     void registerSingleton(String beanName, Object singletonObject);
 
 }

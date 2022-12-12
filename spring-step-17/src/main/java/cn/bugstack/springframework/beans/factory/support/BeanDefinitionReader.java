@@ -8,12 +8,14 @@ import cn.bugstack.springframework.core.io.ResourceLoader;
  *
  *
  *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
+ * @author naixixu
  * @description Simple interface for bean definition readers.
  * @date 2022/3/9
  *
  *
  */
+@SuppressWarnings("all")
 public interface BeanDefinitionReader {
 
     BeanDefinitionRegistry getRegistry();

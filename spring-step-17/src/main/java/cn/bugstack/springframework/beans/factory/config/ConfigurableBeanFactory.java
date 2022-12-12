@@ -9,7 +9,8 @@ import com.sun.istack.internal.Nullable;
  *
  *
  *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
+ * @author naixixu
  * @description Configuration interface to be implemented by most bean factories. Provides
  * facilities to configure a bean factory, in addition to the bean factory
  * client methods in the {@link cn.bugstack.springframework.beans.factory.BeanFactory}
@@ -24,6 +25,10 @@ public interface ConfigurableBeanFactory extends HierarchicalBeanFactory, Single
 
     String SCOPE_PROTOTYPE = "prototype";
 
+    /**
+     * Set the parent of this bean factory.
+     * @param beanPostProcessor             bean后置处理器
+     */
     void addBeanPostProcessor(BeanPostProcessor beanPostProcessor);
 
     /**
@@ -50,12 +55,14 @@ public interface ConfigurableBeanFactory extends HierarchicalBeanFactory, Single
      * Specify a Spring 3.0 ConversionService to use for converting
      * property values, as an alternative to JavaBeans PropertyEditors.
      * @since 3.0
+     * @param conversionService the new ConversionService to use
      */
     void setConversionService(ConversionService conversionService);
 
     /**
      * Return the associated ConversionService, if any.
      * @since 3.0
+     * @return conversionService the new ConversionService to use
      */
     @Nullable
     ConversionService getConversionService();

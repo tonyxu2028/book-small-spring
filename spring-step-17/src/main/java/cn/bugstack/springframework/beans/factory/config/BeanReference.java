@@ -4,7 +4,7 @@ package cn.bugstack.springframework.beans.factory.config;
  *
  *
  *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
  * @description Bean 引用
  * @date 2022/3/9
  *  /CodeDesignTutorials

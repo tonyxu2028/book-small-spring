@@ -164,7 +164,6 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
         return wrappedBean;
     }
 
-    @SuppressWarnings("unchecked")
     private void invokeInitMethods(String beanName, Object bean, BeanDefinition beanDefinition) throws Exception {
         // 1. 实现接口 InitializingBean
         if (bean instanceof InitializingBean) {

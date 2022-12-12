@@ -40,7 +40,6 @@ public class TargetSource {
      * Return a target instance. Invoked immediately before the
      * AOP framework calls the "target" of an AOP method invocation.
      * @return the target object, which contains the joinpoint
-     * @throws Exception if the target object can't be resolved
      */
     public Object getTarget(){
         return this.target;

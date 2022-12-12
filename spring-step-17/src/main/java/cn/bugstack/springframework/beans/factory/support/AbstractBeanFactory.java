@@ -1,7 +1,6 @@
 package cn.bugstack.springframework.beans.factory.support;
 
 import cn.bugstack.springframework.beans.BeansException;
-import cn.bugstack.springframework.beans.factory.BeanFactory;
 import cn.bugstack.springframework.beans.factory.FactoryBean;
 import cn.bugstack.springframework.beans.factory.config.BeanDefinition;
 import cn.bugstack.springframework.beans.factory.config.BeanPostProcessor;
@@ -17,19 +16,21 @@ import java.util.List;
  *
  *
  *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
+ * @author naixixu
  * @description 抽象的 Bean 工厂基类，定义模板方法
  * @date 2022/03/07
  *
  *
  */
+@SuppressWarnings("unchecked")
 public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport implements ConfigurableBeanFactory {
 
     /** ClassLoader to resolve bean class names with, if necessary */
-    private ClassLoader beanClassLoader = ClassUtils.getDefaultClassLoader();
+    private final ClassLoader beanClassLoader = ClassUtils.getDefaultClassLoader();
 
     /** BeanPostProcessors to apply in createBean */
-    private final List<BeanPostProcessor> beanPostProcessors = new ArrayList<BeanPostProcessor>();
+    private final List<BeanPostProcessor> beanPostProcessors = new ArrayList<>();
 
     /**
      * String resolvers to apply e.g. to annotation attribute values
@@ -58,6 +59,11 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
         return containsBeanDefinition(name);
     }
 
+    /**
+     * Get the bean for the given name, creating it if necessary.
+     * @param beanName          the name of the bean to retrieve
+     * @return                  the instance of the beans
+     */
     protected abstract boolean containsBeanDefinition(String beanName);
 
     protected <T> T doGetBean(final String name, final Object[] args) {
@@ -87,8 +93,20 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
         return object;
     }
 
+    /**
+     * Get the bean definition for the given bean name.
+     * @param beanName             the name of the bean to find a definition for
+     * @return                     the BeanDefinition for the given name
+     */
     protected abstract BeanDefinition getBeanDefinition(String beanName);
 
+    /**
+     * Create a bean instance for the given bean definition.
+     * @param beanName              the name of the bean
+     * @param beanDefinition        the bean definition to create an instance for
+     * @param args                  explicit arguments to use for constructor or factory method invocation
+     * @return                      a new bean instance
+     */
     protected abstract Object createBean(String beanName, BeanDefinition beanDefinition, Object[] args);
 
     @Override
