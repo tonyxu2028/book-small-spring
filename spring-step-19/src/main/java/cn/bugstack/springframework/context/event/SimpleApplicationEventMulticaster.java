@@ -6,6 +6,7 @@ import cn.bugstack.springframework.context.ApplicationListener;
 
 /**
  *
+ * @author naixixu
  * @description Simple implementation of the {@link ApplicationEventMulticaster} interface.
  * @date 2022/3/13
  *  /CodeDesignTutorials

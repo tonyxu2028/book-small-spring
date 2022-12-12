@@ -5,15 +5,15 @@ import cn.bugstack.springframework.tx.transaction.SavepointManager;
 import cn.bugstack.springframework.tx.transaction.TransactionException;
 import cn.bugstack.springframework.tx.transaction.TransactionStatus;
 
-import java.io.IOException;
-
 /**
  *
+ * @author naixixu
  * @description Abstract base implementation of the TransactionStatus interface.
  * @date 2022/3/16
  *  /CodeDesignTutorials
  *
  */
+@SuppressWarnings("unused")
 public abstract class AbstractTransactionStatus implements TransactionStatus {
 
     private boolean rollbackOnly = false;
@@ -41,7 +41,7 @@ public abstract class AbstractTransactionStatus implements TransactionStatus {
     }
 
     @Override
-    public void flush() throws IOException {
+    public void flush() {
 
     }
 

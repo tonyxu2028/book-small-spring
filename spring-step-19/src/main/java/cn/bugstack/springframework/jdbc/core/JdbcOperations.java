@@ -10,6 +10,7 @@ import java.util.Map;
  *  /CodeDesignTutorials
  *
  */
+@SuppressWarnings("all")
 public interface JdbcOperations {
 
     <T> T execute(StatementCallback<T> action);

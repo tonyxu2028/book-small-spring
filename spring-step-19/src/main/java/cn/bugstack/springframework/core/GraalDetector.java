@@ -7,9 +7,12 @@ package cn.bugstack.springframework.core;
  *  /CodeDesignTutorials
  *
  */
+@SuppressWarnings("all")
 public abstract class GraalDetector {
 
-    // See https://github.com/oracle/graal/blob/master/sdk/src/org.graalvm.nativeimage/src/org/graalvm/nativeimage/ImageInfo.java
+    /**
+     * @See <a href="https://github.com/oracle/graal/blob/master/sdk/src/org.graalvm.nativeimage/src/org/graalvm/nativeimage/ImageInfo.java">...</a>
+     */
     private static final boolean imageCode = (System.getProperty("org.graalvm.nativeimage.imagecode") != null);
 
     /**

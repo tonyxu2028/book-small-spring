@@ -12,11 +12,13 @@ import java.util.Map;
 
 /**
  *
+ * @author naixixu
  * @description JDBC 操作模板
  * @date 2022/3/16
  *  /CodeDesignTutorials
  *
  */
+@SuppressWarnings("unused")
 public class JdbcTemplate extends JdbcAccessor implements JdbcOperations {
 
     /**

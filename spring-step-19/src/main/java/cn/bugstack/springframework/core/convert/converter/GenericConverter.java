@@ -6,15 +6,18 @@ import java.util.Set;
 
 /**
  *
+ * @author naixixu
  * @description 通用的转换接口
  * @date 2022/3/16
  *
  *
  */
+@SuppressWarnings("unused")
 public interface GenericConverter {
 
     /**
-     * Return the source and target types that this converter can convert between.
+     * 获取转换器支持的源类型
+     * @return          源类型集合
      */
     Set<ConvertiblePair> getConvertibleTypes();
 
@@ -25,7 +28,7 @@ public interface GenericConverter {
      * @param targetType the type descriptor of the field we are converting to
      * @return the converted object
      */
-    Object convert(Object source, Class sourceType, Class targetType);
+    Object convert(Object source, Class<?> sourceType, Class<?> targetType);
 
     /**
      * Holder for a source-to-target class pair.

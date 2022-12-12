@@ -10,6 +10,7 @@ package cn.bugstack.springframework.tx.transaction;
  *  /CodeDesignTutorials
  *
  */
+@SuppressWarnings("all")
 public interface PlatformTransactionManager {
 
     TransactionStatus getTransaction(TransactionDefinition definition) throws TransactionException;

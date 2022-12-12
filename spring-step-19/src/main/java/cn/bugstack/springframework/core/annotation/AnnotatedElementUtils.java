@@ -16,6 +16,7 @@ import java.util.*;
  *  /CodeDesignTutorials
  *
  */
+@SuppressWarnings("all")
 public class AnnotatedElementUtils {
 
     private static final Annotation[] EMPTY_ANNOTATION_ARRAY = new Annotation[0];

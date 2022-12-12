@@ -15,6 +15,7 @@ import java.io.Serializable;
  *  /CodeDesignTutorials
  *
  */
+@SuppressWarnings("all")
 public abstract class DelegatingTransactionAttribute extends DelegatingTransactionDefinition implements TransactionAttribute, Serializable {
 
     private final TransactionAttribute targetAttribute;

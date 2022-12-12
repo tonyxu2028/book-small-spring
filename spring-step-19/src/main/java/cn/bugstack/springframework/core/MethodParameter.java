@@ -11,6 +11,7 @@ import java.util.Map;
 
 /**
  *
+ * @author naixixu
  * @description Helper class that encapsulates the specification of a method parameter
  * @date 2022/3/16
  *  /CodeDesignTutorials
@@ -24,7 +25,7 @@ public class MethodParameter {
 
     private final int parameterIndex;
 
-    private int nestingLevel = 1;
+    private final int nestingLevel;
 
     private volatile Type genericParameterType;
 

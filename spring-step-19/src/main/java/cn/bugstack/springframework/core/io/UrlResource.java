@@ -10,6 +10,7 @@ import java.net.URLConnection;
 
 /**
  *
+ * @author naixixu
  * @description URL 资源
  * @date 2022/3/9
  *

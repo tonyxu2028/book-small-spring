@@ -6,6 +6,7 @@ import java.lang.reflect.Method;
 
 /**
  *
+ * @author naixixu
  * @description A common key class for a method against a specific target class,
  * including {@link #toString()} representation and {@link Comparable}
  * support (as suggested for custom {@code HashMap} keys as of Java 8).

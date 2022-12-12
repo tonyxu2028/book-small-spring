@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 /**
  *
+ * @author naixixu
  * @description Rule determining whether or not a given exception (and any subclasses)
  * should cause a rollback.
  * @date 2022/3/16

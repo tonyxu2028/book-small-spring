@@ -14,12 +14,14 @@ import java.lang.reflect.Method;
 
 /**
  *
+ * @author naixixu
  * @description Base class for transactional aspects, such as the {@link TransactionInterceptor}
  * or an AspectJ aspect.
  * @date 2022/3/16
  *  /CodeDesignTutorials
  *
  */
+@SuppressWarnings("all")
 public abstract class TransactionAspectSupport implements BeanFactoryAware, InitializingBean {
 
     private static final ThreadLocal<TransactionInfo> transactionInfoHolder =
@@ -40,7 +42,7 @@ public abstract class TransactionAspectSupport implements BeanFactoryAware, Init
         String joinPointIdentification = methodIdentification(method, targetClass);
         TransactionInfo txInfo = createTransactionIfNecessary(manager, txAttr, joinPointIdentification);
 
-        Object retVal = null;
+        Object retVal;
         try {
             retVal = invocation.proceedWithInvocation();
         } catch (Throwable e) {
@@ -144,11 +146,11 @@ public abstract class TransactionAspectSupport implements BeanFactoryAware, Init
     }
 
     @Override
-    public void afterPropertiesSet() throws Exception {
+    public void afterPropertiesSet() {
 
     }
 
-    protected final class TransactionInfo {
+    protected static final class TransactionInfo {
 
         private final PlatformTransactionManager transactionManager;
         private final TransactionAttribute transactionAttribute;

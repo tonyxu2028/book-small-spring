@@ -6,6 +6,7 @@ import cn.bugstack.springframework.beans.factory.support.DefaultListableBeanFact
 
 /**
  *
+ * @author naixixu
  * @description 抽象基类刷新应用上下文 Base class for {@link cn.bugstack.springframework.context.ApplicationContext}
  * implementations which are supposed to support multiple calls to {@link #refresh()},
  * creating a new internal bean factory instance every time.
@@ -30,6 +31,10 @@ public abstract class AbstractRefreshableApplicationContext extends AbstractAppl
         return new DefaultListableBeanFactory();
     }
 
+    /**
+     * Load bean definitions into the given bean factory, typically through delegating to one or more bean definition readers.
+     * @param beanFactory               the bean factory used by the application context
+     */
     protected abstract void loadBeanDefinitions(DefaultListableBeanFactory beanFactory);
 
     @Override

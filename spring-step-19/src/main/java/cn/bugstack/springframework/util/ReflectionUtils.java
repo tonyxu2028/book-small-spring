@@ -19,6 +19,7 @@ import java.util.concurrent.ConcurrentHashMap;
  *  /CodeDesignTutorials
  *
  */
+@SuppressWarnings("all")
 public class ReflectionUtils {
 
     private static final Map<Class<?>, Method[]> declaredMethodsCache = new ConcurrentHashMap<>(256);

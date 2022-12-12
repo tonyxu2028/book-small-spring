@@ -5,6 +5,7 @@ import java.util.List;
 
 /**
  *
+ * @author naixixu
  * @description 属性值集合
  * @date 2022/3/9
  *  /CodeDesignTutorials

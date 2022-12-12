@@ -6,11 +6,13 @@ import java.sql.Connection;
 
 /**
  *
+ * @author naixixu
  * @description Resource holder wrapping a JDBC {@link Connection}.
  * @date 2022/3/16
  *  /CodeDesignTutorials
  *
  */
+@SuppressWarnings("unused")
 public class ConnectionHolder {
 
     private ConnectionHandle connectionHandle;

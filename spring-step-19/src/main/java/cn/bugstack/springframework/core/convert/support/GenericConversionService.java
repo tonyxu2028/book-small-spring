@@ -19,6 +19,7 @@ import java.util.*;
  *
  *
  */
+@SuppressWarnings("all")
 public class GenericConversionService implements ConversionService, ConverterRegistry {
 
     private Map<GenericConverter.ConvertiblePair, GenericConverter> converters = new HashMap<>();

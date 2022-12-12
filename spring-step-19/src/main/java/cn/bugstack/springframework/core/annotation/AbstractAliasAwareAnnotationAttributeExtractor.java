@@ -97,13 +97,17 @@ abstract class AbstractAliasAwareAnnotationAttributeExtractor<S> implements Anno
      * Get the raw, unmodified attribute value from the underlying
      * {@linkplain #getSource source} that corresponds to the supplied
      * attribute method.
+     * @param attributeMethod the attribute method for which to retrieve the value
+     * @return the raw attribute value
      */
     protected abstract Object getRawAttributeValue(Method attributeMethod);
 
     /**
      * Get the raw, unmodified attribute value from the underlying
-     * {@linkplain #getSource source} that corresponds to the supplied
-     * attribute name.
+     * {@linkplain #getSource source} that corresponds to the attribute
+     * with the supplied name.
+     * @param attributeName the name of the attribute to retrieve
+     * @return the raw attribute value, or {@code null} if not found
      */
     protected abstract Object getRawAttributeValue(String attributeName);
 

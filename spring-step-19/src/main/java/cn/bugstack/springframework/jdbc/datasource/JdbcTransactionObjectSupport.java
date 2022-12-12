@@ -2,11 +2,13 @@ package cn.bugstack.springframework.jdbc.datasource;
 
 /**
  *
+ * @author naixixu
  * @description Convenient base class for JDBC-aware transaction objects.
  * @date 2022/3/16
  *  /CodeDesignTutorials
  *
  */
+@SuppressWarnings("all")
 public abstract class JdbcTransactionObjectSupport {
 
     private ConnectionHolder connectionHolder;

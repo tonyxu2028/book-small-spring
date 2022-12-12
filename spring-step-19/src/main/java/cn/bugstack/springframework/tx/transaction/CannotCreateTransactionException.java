@@ -2,6 +2,7 @@ package cn.bugstack.springframework.tx.transaction;
 
 /**
  *
+ * @author naixixu
  * @description Exception thrown when a transaction can't be created using an
  * underlying transaction API such as JTA.
  * @date 2022/3/16

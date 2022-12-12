@@ -21,6 +21,7 @@ import java.util.List;
 
 /**
  *
+ * @author naixixu
  * @description Bean definition reader for XML bean definitions.| 本章节修改为 dom4j 处理 xml
  * @date 2022/3/9
  *
@@ -28,6 +29,7 @@ import java.util.List;
  */
 public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
 
+    @SuppressWarnings("unused")
     public XmlBeanDefinitionReader(BeanDefinitionRegistry registry) {
         super(registry);
     }

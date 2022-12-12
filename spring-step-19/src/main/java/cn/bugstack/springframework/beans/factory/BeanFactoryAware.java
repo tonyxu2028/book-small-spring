@@ -4,6 +4,7 @@ import cn.bugstack.springframework.beans.BeansException;
 
 /**
  *
+ * @author naixixu
  * @description 实现此接口，既能感知到所属的 BeanFactory
  * @date 2022/3/11
  *  /CodeDesignTutorials
@@ -11,6 +12,11 @@ import cn.bugstack.springframework.beans.BeansException;
  */
 public interface BeanFactoryAware extends Aware {
 
+    /**
+     * Set the BeanFactory that created this object.
+     * @param beanFactory               the owning BeanFactory (never {@code null}).
+     * @throws BeansException           if the bean cannot be initialized
+     */
     void setBeanFactory(BeanFactory beanFactory) throws BeansException;
 
 }

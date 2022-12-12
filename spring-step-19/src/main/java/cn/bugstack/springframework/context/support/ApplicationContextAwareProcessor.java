@@ -7,6 +7,7 @@ import cn.bugstack.springframework.context.ApplicationContextAware;
 
 /**
  *
+ * @author naixixu
  * @description 通过 BeanPostProcessor 实现类感知应用上下文对象
  * @date 2022/3/11
  *  /CodeDesignTutorials

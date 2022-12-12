@@ -9,6 +9,10 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.*;
 
+/**
+ * @author naixixu
+ */
+@SuppressWarnings("all")
 public class ClassUtils {
 
     private static final Set<Class<?>> javaLanguageInterfaces;
@@ -142,16 +146,11 @@ public class ClassUtils {
         }
         if (lhsType.isPrimitive()) {
             Class<?> resolvedPrimitive = primitiveWrapperTypeMap.get(rhsType);
-            if (lhsType == resolvedPrimitive) {
-                return true;
-            }
+            return lhsType == resolvedPrimitive;
         } else {
             Class<?> resolvedWrapper = primitiveTypeToWrapperMap.get(rhsType);
-            if (resolvedWrapper != null && lhsType.isAssignableFrom(resolvedWrapper)) {
-                return true;
-            }
+            return resolvedWrapper != null && lhsType.isAssignableFrom(resolvedWrapper);
         }
-        return false;
     }
 
 }

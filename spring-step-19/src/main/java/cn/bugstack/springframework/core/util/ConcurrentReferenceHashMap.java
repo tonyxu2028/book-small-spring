@@ -19,6 +19,7 @@ import java.util.concurrent.locks.ReentrantLock;
  *  /CodeDesignTutorials
  *
  */
+@SuppressWarnings("all")
 public class ConcurrentReferenceHashMap<K, V> extends AbstractMap<K, V> implements ConcurrentMap<K, V> {
 
     private static final int DEFAULT_INITIAL_CAPACITY = 16;
@@ -290,7 +291,7 @@ public class ConcurrentReferenceHashMap<K, V> extends AbstractMap<K, V> implemen
                 return false;
             }
         });
-        return (result == Boolean.TRUE);
+        return (result.equals(Boolean.TRUE));
     }
 
     @Override
@@ -305,7 +306,7 @@ public class ConcurrentReferenceHashMap<K, V> extends AbstractMap<K, V> implemen
                 return false;
             }
         });
-        return (result == Boolean.TRUE);
+        return (result.equals(Boolean.TRUE));
     }
 
     @Override
@@ -782,7 +783,6 @@ public class ConcurrentReferenceHashMap<K, V> extends AbstractMap<K, V> implemen
      * Various options supported by a {@code Task}.
      */
     private enum TaskOption {
-
         RESTRUCTURE_BEFORE, RESTRUCTURE_AFTER, SKIP_IF_EMPTY, RESIZE
     }
 

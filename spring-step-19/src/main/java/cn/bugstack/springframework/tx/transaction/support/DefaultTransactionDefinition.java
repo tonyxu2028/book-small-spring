@@ -6,6 +6,7 @@ import java.io.Serializable;
 
 /**
  *
+ * @author naixixu
  * @description Default implementation of the {@link TransactionDefinition} interface,
  * offering bean-style configuration and sensible default values
  * (PROPAGATION_REQUIRED, ISOLATION_DEFAULT, TIMEOUT_DEFAULT, readOnly=false).
@@ -13,6 +14,7 @@ import java.io.Serializable;
  *  /CodeDesignTutorials
  *
  */
+@SuppressWarnings("unused")
 public class DefaultTransactionDefinition implements TransactionDefinition, Serializable {
 
     private int propagationBehavior = PROPAGATION_REQUIRED;

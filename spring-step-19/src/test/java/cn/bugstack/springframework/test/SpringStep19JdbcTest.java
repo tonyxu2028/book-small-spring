@@ -4,7 +4,8 @@ import com.alibaba.druid.pool.DruidDataSource;
 import org.junit.Before;
 
 import com.mysql.cj.jdbc.Driver;
-import org.junit.Test;;
+import org.junit.Test;
+
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -16,7 +17,8 @@ import java.sql.Statement;
  *  /CodeDesignTutorials
  *
  */
-public class JdbcTest {
+@SuppressWarnings("all")
+public class SpringStep19JdbcTest {
 
     private DruidDataSource dataSource;
     private Connection connection;

@@ -8,12 +8,14 @@ import java.util.Map;
 
 /**
  *
+ * @author naixixu
  * @description Central delegate that manages resources and transaction synchronizations per
  * subscriber context.
  * @date 2022/3/16
  *  /CodeDesignTutorials
  *
  */
+@SuppressWarnings("all")
 public abstract class TransactionSynchronizationManager {
 
     /**
@@ -57,7 +59,7 @@ public abstract class TransactionSynchronizationManager {
         Assert.notNull(value, "Value must not be null");
         Map<Object, Object> map = resources.get();
         if (null == map) {
-            map = new HashMap<>();
+            map = new HashMap<>(100);
             resources.set(map);
         }
         map.put(key, value);

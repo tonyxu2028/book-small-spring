@@ -10,6 +10,7 @@ import java.util.Set;
 
 /**
  *
+ * @author naixixu
  * @description A bean definition scanner that detects bean candidates on the classpath,
  * registering corresponding bean definitions with a given registry ({@code BeanFactory}
  * or {@code ApplicationContext}).

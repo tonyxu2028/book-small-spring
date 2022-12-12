@@ -7,6 +7,7 @@ import java.net.URL;
 
 /**
  *
+ * @author naixixu
  * @description 默认实现的资源处理器
  * @date 2022/3/9
  *

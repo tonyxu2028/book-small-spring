@@ -1,19 +1,24 @@
 package cn.bugstack.springframework.jdbc.support;
 
-import cn.bugstack.springframework.util.NumberUtils;
 import cn.hutool.core.util.StrUtil;
 
-import java.math.BigDecimal;
-import java.sql.*;
+import java.sql.Blob;
+import java.sql.Clob;
+import java.sql.Date;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
 
 /**
  *
+ * @author naixixu
  * @description Generic utility methods for working with JDBC. Mainly for internal use
  * within the framework, but also useful for custom JDBC access code.
  * @date 2022/3/16
  *  /CodeDesignTutorials
  *
  */
+@SuppressWarnings("all")
 public class JdbcUtils {
 
     /**

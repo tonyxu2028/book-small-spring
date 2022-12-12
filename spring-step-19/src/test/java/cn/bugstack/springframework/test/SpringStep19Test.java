@@ -4,7 +4,6 @@ import cn.bugstack.springframework.aop.AdvisedSupport;
 import cn.bugstack.springframework.aop.TargetSource;
 import cn.bugstack.springframework.aop.aspectj.AspectJExpressionPointcut;
 import cn.bugstack.springframework.aop.framework.Cglib2AopProxy;
-import cn.bugstack.springframework.aop.framework.JdkDynamicAopProxy;
 import cn.bugstack.springframework.context.support.ClassPathXmlApplicationContext;
 import cn.bugstack.springframework.jdbc.core.JdbcTemplate;
 import cn.bugstack.springframework.jdbc.datasource.DataSourceTransactionManager;
@@ -16,9 +15,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import javax.sql.DataSource;
-import java.sql.SQLException;
-import java.util.List;
-import java.util.Map;
 
 /**
  *
@@ -27,7 +23,7 @@ import java.util.Map;
  *  /CodeDesignTutorials
  *
  */
-public class ApiTest {
+public class SpringStep19Test {
 
     private JdbcTemplate jdbcTemplate;
     private JdbcService jdbcService;
@@ -42,7 +38,7 @@ public class ApiTest {
     }
 
     @Test
-    public void test_Transaction() throws SQLException {
+    public void test_Transaction() {
         AnnotationTransactionAttributeSource transactionAttributeSource = new AnnotationTransactionAttributeSource();
         transactionAttributeSource.findTransactionAttribute(jdbcService.getClass());
 

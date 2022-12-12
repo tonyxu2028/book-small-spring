@@ -17,6 +17,7 @@ import java.util.concurrent.ConcurrentHashMap;
  *  /CodeDesignTutorials
  *
  */
+@SuppressWarnings("all")
 public final class SerializableTypeWrapper {
 
     private static final Class<?>[] SUPPORTED_SERIALIZABLE_TYPES = {

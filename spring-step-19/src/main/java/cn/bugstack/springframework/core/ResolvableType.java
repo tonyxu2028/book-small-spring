@@ -24,6 +24,7 @@ import java.util.Map;
  *  /CodeDesignTutorials
  *
  */
+@SuppressWarnings("all")
 public class ResolvableType implements Serializable {
     /**
      * {@code ResolvableType} returned when no value is available. {@code NONE} is used

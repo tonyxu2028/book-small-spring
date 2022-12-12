@@ -2,6 +2,7 @@ package cn.bugstack.springframework.core.convert.converter;
 
 /**
  *
+ * @author naixixu
  * @description 类型转换处理接口
  * @date 2022/3/16
  *
@@ -9,7 +10,11 @@ package cn.bugstack.springframework.core.convert.converter;
  */
 public interface Converter<S, T>  {
 
-    /** Convert the source object of type {@code S} to target type {@code T}. */
+    /**
+     * 转换方法
+     * @param source        源对象
+     * @return              目标对象
+     */
     T convert(S source);
 
 }

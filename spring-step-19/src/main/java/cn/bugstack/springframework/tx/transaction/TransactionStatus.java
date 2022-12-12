@@ -5,6 +5,7 @@ import java.io.IOException;
 
 /**
  *
+ * @author naixixu
  * @description Default implementation of the TransactionStatus
  * interface, used by AbstractPlatformTransactionManager Based on the concept
  * of an underlying "transaction object".
@@ -14,8 +15,17 @@ import java.io.IOException;
  */
 public interface TransactionStatus extends TransactionExecution, SavepointManager, Flushable {
 
+    /**
+     * Return whether this transaction is new, that is, whether it has been
+     * @return                      true if the transaction is new
+     */
+    @SuppressWarnings("unused")
     boolean hasSavepoint();
 
+    /**
+     * Return whether this transaction is new, that is, whether the
+     * @throws IOException          if thrown by a Flushable operation
+     */
     @Override
     void flush() throws IOException;
 

@@ -9,6 +9,7 @@ import java.sql.SQLException;
  *  /CodeDesignTutorials
  *
  */
+@SuppressWarnings("all")
 public class CannotGetJdbcConnectionException extends RuntimeException {
 
     public CannotGetJdbcConnectionException(String message) {

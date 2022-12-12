@@ -2,6 +2,7 @@ package cn.bugstack.springframework.tx.transaction.support;
 
 /**
  *
+ * @author naixixu
  * @description Default implementation of the TransactionStatus
  * interface, used by {@link AbstractPlatformTransactionManager}. Based on the concept of an underlying "transaction object".
  * @date 2022/3/16

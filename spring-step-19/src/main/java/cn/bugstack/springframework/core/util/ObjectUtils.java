@@ -2,6 +2,9 @@ package cn.bugstack.springframework.core.util;
 
 import java.util.Arrays;
 
+/**
+ * @author naixixu
+ */
 public class ObjectUtils {
 
     private static final String EMPTY_STRING = "";
@@ -20,31 +23,31 @@ public class ObjectUtils {
             return (String) obj;
         }
         if (obj instanceof Object[]) {
-            return nullSafeToString((Object[]) obj);
+            return nullSafeToString(obj);
         }
         if (obj instanceof boolean[]) {
-            return nullSafeToString((boolean[]) obj);
+            return nullSafeToString(obj);
         }
         if (obj instanceof byte[]) {
-            return nullSafeToString((byte[]) obj);
+            return nullSafeToString(obj);
         }
         if (obj instanceof char[]) {
-            return nullSafeToString((char[]) obj);
+            return nullSafeToString(obj);
         }
         if (obj instanceof double[]) {
-            return nullSafeToString((double[]) obj);
+            return nullSafeToString(obj);
         }
         if (obj instanceof float[]) {
-            return nullSafeToString((float[]) obj);
+            return nullSafeToString(obj);
         }
         if (obj instanceof int[]) {
-            return nullSafeToString((int[]) obj);
+            return nullSafeToString(obj);
         }
         if (obj instanceof long[]) {
-            return nullSafeToString((long[]) obj);
+            return nullSafeToString(obj);
         }
         if (obj instanceof short[]) {
-            return nullSafeToString((short[]) obj);
+            return nullSafeToString(obj);
         }
         String str = obj.toString();
         return (str != null ? str : EMPTY_STRING);
@@ -103,31 +106,31 @@ public class ObjectUtils {
         }
         if (obj.getClass().isArray()) {
             if (obj instanceof Object[]) {
-                return nullSafeHashCode((Object[]) obj);
+                return nullSafeHashCode(obj);
             }
             if (obj instanceof boolean[]) {
-                return nullSafeHashCode((boolean[]) obj);
+                return nullSafeHashCode(obj);
             }
             if (obj instanceof byte[]) {
-                return nullSafeHashCode((byte[]) obj);
+                return nullSafeHashCode(obj);
             }
             if (obj instanceof char[]) {
-                return nullSafeHashCode((char[]) obj);
+                return nullSafeHashCode(obj);
             }
             if (obj instanceof double[]) {
-                return nullSafeHashCode((double[]) obj);
+                return nullSafeHashCode(obj);
             }
             if (obj instanceof float[]) {
-                return nullSafeHashCode((float[]) obj);
+                return nullSafeHashCode(obj);
             }
             if (obj instanceof int[]) {
-                return nullSafeHashCode((int[]) obj);
+                return nullSafeHashCode(obj);
             }
             if (obj instanceof long[]) {
-                return nullSafeHashCode((long[]) obj);
+                return nullSafeHashCode(obj);
             }
             if (obj instanceof short[]) {
-                return nullSafeHashCode((short[]) obj);
+                return nullSafeHashCode(obj);
             }
         }
         return obj.hashCode();

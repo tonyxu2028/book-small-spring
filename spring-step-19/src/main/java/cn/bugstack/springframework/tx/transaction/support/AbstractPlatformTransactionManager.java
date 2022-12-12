@@ -9,11 +9,13 @@ import java.io.Serializable;
 
 /**
  *
+ * @author naixixu
  * @description 抽象事务管理器平台
  * @date 2022/3/16
  *  /CodeDesignTutorials
  *
  */
+@SuppressWarnings("all")
 public abstract class AbstractPlatformTransactionManager implements PlatformTransactionManager, Serializable {
 
     @Override
@@ -26,14 +28,14 @@ public abstract class AbstractPlatformTransactionManager implements PlatformTran
             throw new TransactionException("Invalid transaction timeout " + definition.getTimeout());
         }
         // 暂定事务传播为默认的行为
-        DefaultTransactionStatus status = newTransactionStatus(definition, transaction, true);
+        DefaultTransactionStatus status = newTransactionStatus(transaction);
         // 开始事务
         doBegin(transaction, definition);
         return status;
     }
 
-    protected DefaultTransactionStatus newTransactionStatus(TransactionDefinition definition, Object transaction, boolean newTransaction) {
-        return new DefaultTransactionStatus(transaction, newTransaction);
+    protected DefaultTransactionStatus newTransactionStatus(Object transaction) {
+        return new DefaultTransactionStatus(transaction, true);
     }
 
     @Override
@@ -57,10 +59,10 @@ public abstract class AbstractPlatformTransactionManager implements PlatformTran
                     "Transaction is already completed - do not call commit or rollback more than once per transaction");
         }
         DefaultTransactionStatus defStatus = (DefaultTransactionStatus) status;
-        processRollback(defStatus, false);
+        processRollback(defStatus);
     }
 
-    private void processRollback(DefaultTransactionStatus status, boolean unexpected) {
+    private void processRollback(DefaultTransactionStatus status) {
         doRollback(status);
     }
 

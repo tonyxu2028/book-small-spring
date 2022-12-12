@@ -5,6 +5,7 @@ import java.lang.reflect.Method;
 
 /**
  *
+ * @author naixixu
  * @description
  * @date 2022/3/16
  *  /CodeDesignTutorials
@@ -13,8 +14,8 @@ import java.lang.reflect.Method;
 public interface AnnotationAttributeExtractor<S> {
 
     /**
-     * Get the type of annotation that this extractor extracts attribute
-     * values for.
+     * Extract the value of the given annotation attribute.
+     * @return          the extracted value, or {@code null} if not found
      */
     Class<? extends Annotation> getAnnotationType();
 
@@ -26,7 +27,8 @@ public interface AnnotationAttributeExtractor<S> {
     Object getAnnotatedElement();
 
     /**
-     * Get the underlying source of annotation attributes.
+     * Extract the value of the given annotation attribute.
+     * @return          the extracted value, or {@code null} if not found
      */
     S getSource();
 
