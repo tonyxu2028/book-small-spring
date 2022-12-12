@@ -22,6 +22,7 @@ import java.util.Set;
  * Create by 小傅哥(fustack)
  * @author naixixu
  */
+@SuppressWarnings("all")
 public class AspectJExpressionPointcut implements Pointcut, ClassFilter, MethodMatcher {
 
     private static final Set<PointcutPrimitive> SUPPORTED_PRIMITIVES = new HashSet<>();
