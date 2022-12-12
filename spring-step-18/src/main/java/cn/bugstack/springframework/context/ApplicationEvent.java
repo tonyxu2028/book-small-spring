@@ -10,6 +10,7 @@ import java.util.EventObject;
  *  /CodeDesignTutorials
  *
  */
+@SuppressWarnings("all")
 public abstract class ApplicationEvent extends EventObject {
 
     /**

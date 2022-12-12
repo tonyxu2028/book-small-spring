@@ -2,6 +2,7 @@ package cn.bugstack.springframework.beans;
 
 /**
  *
+ * @author naixixu
  * @description 定义 Bean 异常
  * @date 2022/3/7
  *

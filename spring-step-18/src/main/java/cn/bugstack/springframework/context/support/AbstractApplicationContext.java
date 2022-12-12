@@ -19,6 +19,7 @@ import java.util.Map;
 
 /**
  *
+ * @author naixixu
  * @description 抽象应用上下文 Abstract implementation of the {@link cn.bugstack.springframework.context.ApplicationContext}
  * interface. Doesn't mandate the type of storage used for configuration; simply
  * implements common context functionality. Uses the Template Method design pattern,
@@ -30,6 +31,8 @@ import java.util.Map;
 public abstract class AbstractApplicationContext extends DefaultResourceLoader implements ConfigurableApplicationContext {
 
     public static final String APPLICATION_EVENT_MULTICASTER_BEAN_NAME = "applicationEventMulticaster";
+
+    private static final String CONVERSION_SERVICE = "conversionService";
 
     private ApplicationEventMulticaster applicationEventMulticaster;
 
@@ -63,10 +66,13 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader i
         finishRefresh();
     }
 
-    // 设置类型转换器、提前实例化单例Bean对象
+    /**
+     * 设置类型转换器、提前实例化单例Bean对象
+     * @param beanFactory           the bean factory used by the application context
+     */
     protected void finishBeanFactoryInitialization(ConfigurableListableBeanFactory beanFactory) {
         // 设置类型转换器
-        if (beanFactory.containsBean("conversionService")) {
+        if (beanFactory.containsBean(CONVERSION_SERVICE)) {
             Object conversionService = beanFactory.getBean("conversionService");
             if (conversionService instanceof ConversionService) {
                 beanFactory.setConversionService((ConversionService) conversionService);
@@ -77,8 +83,16 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader i
         beanFactory.preInstantiateSingletons();
     }
 
+    /**
+     * 创建 BeanFactory，并加载 BeanDefinition
+     * @throws BeansException           Bean异常
+     */
     protected abstract void refreshBeanFactory() throws BeansException;
 
+    /**
+     * 获取 BeanFactory
+     * @return          the bean factory used by the application context
+     */
     protected abstract ConfigurableListableBeanFactory getBeanFactory();
 
     private void invokeBeanFactoryPostProcessors(ConfigurableListableBeanFactory beanFactory) {
@@ -101,6 +115,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader i
         beanFactory.registerSingleton(APPLICATION_EVENT_MULTICASTER_BEAN_NAME, applicationEventMulticaster);
     }
 
+    @SuppressWarnings("all")
     private void registerListeners() {
         Collection<ApplicationListener> applicationListeners = getBeansOfType(ApplicationListener.class).values();
         for (ApplicationListener listener : applicationListeners) {

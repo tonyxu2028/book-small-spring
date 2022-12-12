@@ -2,6 +2,7 @@ package cn.bugstack.springframework.beans;
 
 /**
  *
+ * @author naixixu
  * @description Bean 属性信息
  * @date 2022/3/9
  *  /CodeDesignTutorials

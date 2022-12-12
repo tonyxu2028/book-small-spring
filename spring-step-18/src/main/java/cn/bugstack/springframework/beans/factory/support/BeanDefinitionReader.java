@@ -11,6 +11,7 @@ import cn.bugstack.springframework.core.io.ResourceLoader;
  *
  *
  */
+@SuppressWarnings("all")
 public interface BeanDefinitionReader {
 
     BeanDefinitionRegistry getRegistry();

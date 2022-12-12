@@ -7,6 +7,7 @@ import javax.sql.DataSource;
 
 /**
  *
+ * @author naixixu
  * @description Base class for {@link cn.bugstack.springframework.jdbc.core.JdbcTemplate} and
  * other JDBC-accessing DAO helpers, defining common properties such as
  * DataSource and exception translator.
@@ -14,6 +15,7 @@ import javax.sql.DataSource;
  *  /CodeDesignTutorials
  *
  */
+@SuppressWarnings("all")
 public abstract class JdbcAccessor implements InitializingBean {
 
     private DataSource dataSource;

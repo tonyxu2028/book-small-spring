@@ -9,15 +9,17 @@ import java.lang.reflect.Constructor;
 
 /**
  *
+ * @author naixixu
  * @description Cglib 实例化策略
  * @date 2022/03/08
  *
  *
  */
+@SuppressWarnings("all")
 public class CglibSubclassingInstantiationStrategy implements InstantiationStrategy{
 
     @Override
-    public Object instantiate(BeanDefinition beanDefinition, String beanName, Constructor ctor, Object[] args) throws BeansException {
+    public Object instantiate(BeanDefinition beanDefinition, String beanName, Constructor<?> ctor, Object[] args) throws BeansException {
         Enhancer enhancer = new Enhancer();
         enhancer.setSuperclass(beanDefinition.getBeanClass());
         enhancer.setCallback(new NoOp() {
@@ -26,7 +28,9 @@ public class CglibSubclassingInstantiationStrategy implements InstantiationStrat
                 return super.hashCode();
             }
         });
-        if (null == ctor) return enhancer.create();
+        if (null == ctor) {
+            return enhancer.create();
+        }
         return enhancer.create(ctor.getParameterTypes(), args);
     }
 

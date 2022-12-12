@@ -11,6 +11,7 @@ import java.sql.SQLException;
  *  /CodeDesignTutorials
  *
  */
+@SuppressWarnings("all")
 public abstract class DataSourceUtils {
 
     /**

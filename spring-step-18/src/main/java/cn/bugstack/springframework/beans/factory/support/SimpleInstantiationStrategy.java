@@ -8,6 +8,7 @@ import java.lang.reflect.InvocationTargetException;
 
 /**
  *
+ * @author naixixu
  * @description JDK实例化策略
  * @date 2022/03/08
  *
@@ -16,8 +17,8 @@ import java.lang.reflect.InvocationTargetException;
 public class SimpleInstantiationStrategy implements InstantiationStrategy {
 
     @Override
-    public Object instantiate(BeanDefinition beanDefinition, String beanName, Constructor ctor, Object[] args) throws BeansException {
-        Class clazz = beanDefinition.getBeanClass();
+    public Object instantiate(BeanDefinition beanDefinition, String beanName, Constructor<?> ctor, Object[] args) throws BeansException {
+        Class<?> clazz = beanDefinition.getBeanClass();
         try {
             if (null != ctor) {
                 return clazz.getDeclaredConstructor(ctor.getParameterTypes()).newInstance(args);

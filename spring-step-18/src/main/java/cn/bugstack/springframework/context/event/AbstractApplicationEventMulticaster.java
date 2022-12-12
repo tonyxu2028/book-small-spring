@@ -16,6 +16,7 @@ import java.util.Set;
 
 /**
  *
+ * @author naixixu
  * @description Abstract implementation of the {@link ApplicationEventMulticaster} interface,
  * providing the basic listener registration facility.
  * @date 2022/3/13
@@ -26,6 +27,7 @@ public abstract class AbstractApplicationEventMulticaster implements Application
 
     public final Set<ApplicationListener<ApplicationEvent>> applicationListeners = new LinkedHashSet<>();
 
+    @SuppressWarnings("unused")
     private BeanFactory beanFactory;
 
     @Override
@@ -54,7 +56,9 @@ public abstract class AbstractApplicationEventMulticaster implements Application
     protected Collection<ApplicationListener> getApplicationListeners(ApplicationEvent event) {
         LinkedList<ApplicationListener> allListeners = new LinkedList<ApplicationListener>();
         for (ApplicationListener<ApplicationEvent> listener : applicationListeners) {
-            if (supportsEvent(listener, event)) allListeners.add(listener);
+            if (supportsEvent(listener, event)) {
+                allListeners.add(listener);
+            }
         }
         return allListeners;
     }

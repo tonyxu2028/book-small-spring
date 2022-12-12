@@ -6,6 +6,7 @@ import cn.bugstack.springframework.core.io.ResourceLoader;
 
 /**
  *
+ * @author naixixu
  * @description 应用上下文接口 Central interface to provide configuration for an application.
  * This is read-only while the application is running, but may be
  * reloaded if the implementation supports this.

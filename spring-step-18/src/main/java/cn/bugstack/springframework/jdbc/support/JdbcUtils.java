@@ -6,12 +6,14 @@ import java.sql.*;
 
 /**
  *
+ * @author naixixu
  * @description Generic utility methods for working with JDBC. Mainly for internal use
  * within the framework, but also useful for custom JDBC access code.
  * @date 2022/3/16
  *  /CodeDesignTutorials
  *
  */
+@SuppressWarnings("all")
 public class JdbcUtils {
 
     /**

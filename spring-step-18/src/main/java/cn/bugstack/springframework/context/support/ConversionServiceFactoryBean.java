@@ -15,6 +15,7 @@ import java.util.Set;
 
 /**
  *
+ * @author naixixu
  * @description 提供创建 ConversionService 工厂
  * @date 2022/3/16
  *
@@ -29,7 +30,7 @@ public class ConversionServiceFactoryBean implements FactoryBean<ConversionServi
     private GenericConversionService conversionService;
 
     @Override
-    public ConversionService getObject() throws Exception {
+    public ConversionService getObject() {
         return conversionService;
     }
 
@@ -44,7 +45,7 @@ public class ConversionServiceFactoryBean implements FactoryBean<ConversionServi
     }
 
     @Override
-    public void afterPropertiesSet() throws Exception {
+    public void afterPropertiesSet() {
         this.conversionService = new DefaultConversionService();
         registerConverters(converters, conversionService);
     }
@@ -66,6 +67,7 @@ public class ConversionServiceFactoryBean implements FactoryBean<ConversionServi
         }
     }
 
+    @SuppressWarnings("unused")
     public void setConverters(Set<?> converters) {
         this.converters = converters;
     }
