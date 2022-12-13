@@ -6,11 +6,13 @@ import cn.bugstack.springframework.core.io.ResourceLoader;
 
 /**
  *
+ * @author naixixu
  * @description Simple interface for bean definition readers.
  * @date 2022/3/9
  *
  *
  */
+@SuppressWarnings("all")
 public interface BeanDefinitionReader {
 
     BeanDefinitionRegistry getRegistry();
@@ -19,6 +21,12 @@ public interface BeanDefinitionReader {
 
     void loadBeanDefinitions(Resource resource) throws BeansException;
 
+    /**
+     * Load bean definitions from the specified resources.
+     * @param resources                 资源
+     * @throws BeansException           Bean 异常
+     */
+    @SuppressWarnings("unused")
     void loadBeanDefinitions(Resource... resources) throws BeansException;
 
     void loadBeanDefinitions(String location) throws BeansException;

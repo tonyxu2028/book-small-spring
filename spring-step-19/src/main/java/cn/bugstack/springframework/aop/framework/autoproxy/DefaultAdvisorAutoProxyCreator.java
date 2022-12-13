@@ -19,6 +19,7 @@ import java.util.Set;
 
 /**
  *
+ * @author naixixu
  * @description BeanPostProcessor implementation that creates AOP proxies based on all candidate
  * Advisors in the current BeanFactory. This class is completely generic; it contains
  * no special code to handle any particular aspects, such as pooling aspects.
@@ -59,21 +60,25 @@ public class DefaultAdvisorAutoProxyCreator implements InstantiationAwareBeanPos
     @Override
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
         if (!earlyProxyReferences.contains(beanName)) {
-            return wrapIfNecessary(bean, beanName);
+            return wrapIfNecessary(bean);
         }
 
         return bean;
     }
 
-    protected Object wrapIfNecessary(Object bean, String beanName) {
-        if (isInfrastructureClass(bean.getClass())) return bean;
+    protected Object wrapIfNecessary(Object bean) {
+        if (isInfrastructureClass(bean.getClass())) {
+            return bean;
+        }
 
         Collection<AspectJExpressionPointcutAdvisor> advisors = beanFactory.getBeansOfType(AspectJExpressionPointcutAdvisor.class).values();
 
         for (AspectJExpressionPointcutAdvisor advisor : advisors) {
             ClassFilter classFilter = advisor.getPointcut().getClassFilter();
             // 过滤匹配类
-            if (!classFilter.matches(bean.getClass())) continue;
+            if (!classFilter.matches(bean.getClass())) {
+                continue;
+            }
 
             AdvisedSupport advisedSupport = new AdvisedSupport();
 
@@ -93,7 +98,7 @@ public class DefaultAdvisorAutoProxyCreator implements InstantiationAwareBeanPos
     @Override
     public Object getEarlyBeanReference(Object bean, String beanName) {
         earlyProxyReferences.add(beanName);
-        return wrapIfNecessary(bean, beanName);
+        return wrapIfNecessary(bean);
     }
 
     @Override

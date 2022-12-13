@@ -6,18 +6,26 @@ import org.aopalliance.aop.Advice;
 
 /**
  *
+ * @author naixixu
  * @description Spring AOP Advisor that can be used for any AspectJ pointcut expression.
  * @date 2022/3/14
  *  /CodeDesignTutorials
  *
  */
+@SuppressWarnings("all")
 public class AspectJExpressionPointcutAdvisor implements PointcutAdvisor {
 
-    // 切面
+    /**
+     * 切面
+     */
     private AspectJExpressionPointcut pointcut;
-    // 具体的拦截方法
+    /**
+     * 具体的拦截方法
+     */
     private Advice advice;
-    // 表达式
+    /**
+     * 表达式
+     */
     private String expression;
 
     public void setExpression(String expression){
