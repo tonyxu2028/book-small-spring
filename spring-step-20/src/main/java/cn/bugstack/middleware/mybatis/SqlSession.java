@@ -4,11 +4,13 @@ import java.util.List;
 
 /**
  *
+ * @author naixixu
  * @description SqlSession 接口
  * @date 2022/3/16
  *
  *
  */
+@SuppressWarnings("all")
 public interface SqlSession {
 
     <T> T selectOne(String statement);

@@ -8,6 +8,7 @@ import java.util.*;
 
 /**
  *
+ * @author naixixu
  * @description DefaultSqlSession
  * @date 2022/3/16
  *  /CodeDesignTutorials
@@ -15,8 +16,8 @@ import java.util.*;
  */
 public class DefaultSqlSession implements SqlSession {
 
-    private Connection connection;
-    private Map<String, XNode> mapperElement;
+    private final Connection connection;
+    private final Map<String, XNode> mapperElement;
 
     public DefaultSqlSession(Connection connection, Map<String, XNode> mapperElement) {
         this.connection = connection;
@@ -106,7 +107,7 @@ public class DefaultSqlSession implements SqlSession {
             return;
         }
 
-        Map<String, Object> fieldMap = new HashMap<>();
+        Map<String, Object> fieldMap = new HashMap<>(100);
         // 对象参数
         Field[] declaredFields = parameter.getClass().getDeclaredFields();
         for (Field field : declaredFields) {
@@ -149,6 +150,7 @@ public class DefaultSqlSession implements SqlSession {
 
     }
 
+    @SuppressWarnings("unchecked")
     private <T> List<T> resultSet2Obj(ResultSet resultSet, Class<?> clazz) {
         List<T> list = new ArrayList<>();
         try {
@@ -179,7 +181,9 @@ public class DefaultSqlSession implements SqlSession {
 
     @Override
     public void close() {
-        if (null == connection) return;
+        if (null == connection) {
+            return;
+        }
         try {
             connection.close();
         } catch (SQLException e) {

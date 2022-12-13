@@ -11,7 +11,7 @@ import org.junit.Test;
 import java.io.Reader;
 import java.util.List;
 
-public class ApiTest {
+public class SpringStep20Test {
 
     @Test
     public void test_queryUserInfoById() {

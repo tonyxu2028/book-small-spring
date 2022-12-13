@@ -3,11 +3,9 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>cn.bugstack.springframework</groupId>
     <artifactId>spring-step-20</artifactId>
     <version>1.0-SNAPSHOT</version>
-
     <name>spring-step-20</name>
 
     <properties>
@@ -33,12 +31,12 @@
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
-            <version>1.9.7</version>
+            <version>1.9.9.1</version>
         </dependency>
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
-            <version>5.5.0</version>
+            <version>5.8.10</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.dom4j/dom4j -->
         <dependency>
@@ -49,25 +47,25 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.11</version>
+            <version>8.0.30</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.7</version>
+            <version>4.13.2</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
-            <version>1.2.8</version>
+            <version>1.2.15</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-            <version>1.2.75</version>
+            <version>2.0.20</version>
         </dependency>
     </dependencies>
 
@@ -84,5 +82,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

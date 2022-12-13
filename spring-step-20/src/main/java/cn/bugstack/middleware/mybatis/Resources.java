@@ -7,6 +7,7 @@ import java.io.Reader;
 
 /**
  *
+ * @author naixixu
  * @description 资源处理类
  * @date 2022/3/16
  *  /CodeDesignTutorials

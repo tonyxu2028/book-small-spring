@@ -4,11 +4,13 @@ import java.util.Map;
 
 /**
  *
+ * @author naixixu
  * @description XNode
  * @date 2022/3/18
  *
  *
  */
+@SuppressWarnings("all")
 public class XNode {
 
     private String namespace;

@@ -19,12 +19,15 @@ import java.util.regex.Pattern;
 
 /**
  *
+ * @author naixixu
  * @description SqlSessionFactoryBuilder
  * @date 2022/3/16
  *
  *
  */
 public class SqlSessionFactoryBuilder {
+
+    private static final Pattern PATTERN = Pattern.compile("(#\\{(.*?)})");
 
     public DefaultSqlSessionFactory build(Reader reader) {
         SAXReader saxReader = new SAXReader();
@@ -58,7 +61,11 @@ public class SqlSessionFactoryBuilder {
         return configuration;
     }
 
-    // 获取数据源配置信息
+    /**
+     * 获取数据源配置信息
+     * @param element       数据源配置信息
+     * @return              数据源
+     */
     private Map<String, String> dataSource(Element element) {
         Map<String, String> dataSource = new HashMap<>(4);
         List<Element> propertyList = element.elements("property");
@@ -80,9 +87,13 @@ public class SqlSessionFactoryBuilder {
         return null;
     }
 
-    // 获取SQL语句信息
+    /**
+     * 获取SQL语句信息
+     * @param mappers       SQL语句信息
+     * @return              SQL语句信息
+     */
     private Map<String, XNode> mapperElement(Element mappers) {
-        Map<String, XNode> map = new HashMap<>();
+        Map<String, XNode> map = new HashMap<>(100);
 
         List<Element> mapperList = mappers.elements("mapper");
         for (Element e : mapperList) {
@@ -105,9 +116,9 @@ public class SqlSessionFactoryBuilder {
                     String sql = node.getText();
 
                     // ? 匹配
-                    Map<Integer, String> parameter = new HashMap<>();
-                    Pattern pattern = Pattern.compile("(#\\{(.*?)})");
-                    Matcher matcher = pattern.matcher(sql);
+                    Map<Integer, String> parameter = new HashMap<>(100);
+
+                    Matcher matcher = PATTERN.matcher(sql);
                     for (int i = 1; matcher.find(); i++) {
                         String g1 = matcher.group(1);
                         String g2 = matcher.group(2);
