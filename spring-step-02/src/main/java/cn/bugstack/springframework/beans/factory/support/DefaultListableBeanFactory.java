@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
+ * @description
  * @author naixixu
  * {@code @description} 默认的Bean工厂实现类,同时也是BeanDefinition注册接口的实现类。
  * @date 2022/03/07
