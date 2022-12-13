@@ -15,6 +15,7 @@ import java.util.Map;
  *  /CodeDesignTutorials
  *
  */
+@SuppressWarnings("all")
 abstract class AbstractAliasAwareAnnotationAttributeExtractor<S> implements AnnotationAttributeExtractor<S> {
 
     private final Class<? extends Annotation> annotationType;

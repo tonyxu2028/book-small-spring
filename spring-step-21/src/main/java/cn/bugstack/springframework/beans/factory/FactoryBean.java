@@ -2,6 +2,7 @@ package cn.bugstack.springframework.beans.factory;
 
 /**
  *
+ * @author naixixu
  * @description Interface to be implemented by objects used within a {@link BeanFactory}
  * which are themselves factories. If a bean implements this interface,
  * it is used as a factory for an object to expose, not directly as a bean
@@ -10,6 +11,7 @@ package cn.bugstack.springframework.beans.factory;
  *  /CodeDesignTutorials
  *
  */
+@SuppressWarnings("all")
 public interface FactoryBean<T> {
 
     T getObject() throws Exception;

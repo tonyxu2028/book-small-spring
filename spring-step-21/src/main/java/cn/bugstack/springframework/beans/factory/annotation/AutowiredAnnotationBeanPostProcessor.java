@@ -13,6 +13,7 @@ import java.lang.reflect.Field;
 
 /**
  *
+ * @author naixixu
  * @description 处理 @Value、@Autowired，注解的 BeanPostProcessor {@link cn.bugstack.springframework.beans.factory.config.BeanPostProcessor} implementation
  * that autowires annotated fields, setter methods and arbitrary config methods.
  * Such members to be injected are detected through a Java 5 annotation: by default,
@@ -52,9 +53,9 @@ public class AutowiredAnnotationBeanPostProcessor implements InstantiationAwareB
             Autowired autowiredAnnotation = field.getAnnotation(Autowired.class);
             if (null != autowiredAnnotation) {
                 Class<?> fieldType = field.getType();
-                String dependentBeanName = null;
+                String dependentBeanName;
                 Qualifier qualifierAnnotation = field.getAnnotation(Qualifier.class);
-                Object dependentBean = null;
+                Object dependentBean;
                 if (null != qualifierAnnotation) {
                     dependentBeanName = qualifierAnnotation.value();
                     dependentBean = beanFactory.getBean(dependentBeanName, fieldType);

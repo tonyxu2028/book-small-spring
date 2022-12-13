@@ -8,6 +8,7 @@ import java.util.LinkedHashMap;
 
 /**
  *
+ * @author naixixu
  * @description {@link LinkedHashMap} subclass representing annotation attribute
  * <em>key-value</em> pairs as read by {@link AnnotationUtils},
  * {@link AnnotatedElementUtils}, and Spring's reflection- and ASM-based AnnotationMetadata implementations.
@@ -31,15 +32,16 @@ public class AnnotationAttributes extends LinkedHashMap<String, Object> {
 
 
     public Class<?>[] getClassArray(String attributeName) {
-        return getRequiredAttribute(attributeName, Class[].class);
+        return getRequiredAttribute(attributeName);
     }
 
-    private <T> T getRequiredAttribute(String attributeName, Class<T> expectedType) {
+    @SuppressWarnings("unchecked")
+    private <T> T getRequiredAttribute(String attributeName) {
         Object value = get(attributeName);
 
-        if (!expectedType.isInstance(value) && expectedType.isArray() &&
-                expectedType.getComponentType().isInstance(value)) {
-            Object array = Array.newInstance(expectedType.getComponentType(), 1);
+        if (!(value instanceof Class[]) && Class[].class.isArray() &&
+                Class[].class.getComponentType().isInstance(value)) {
+            Object array = Array.newInstance(Class[].class.getComponentType(), 1);
             Array.set(array,0,value);
             value=array;
         }

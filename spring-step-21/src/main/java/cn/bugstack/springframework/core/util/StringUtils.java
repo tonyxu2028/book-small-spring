@@ -1,5 +1,8 @@
 package cn.bugstack.springframework.core.util;
 
+/**
+ * @author naixixu
+ */
 public class StringUtils {
 
     public static String arrayToDelimitedString( Object[] arr, String delim) {

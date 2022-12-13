@@ -6,6 +6,7 @@ import cn.bugstack.springframework.context.ApplicationListener;
 
 /**
  *
+ * @author naixixu
  * @description Simple implementation of the {@link ApplicationEventMulticaster} interface.
  * @date 2022/3/13
  *  /CodeDesignTutorials
@@ -17,7 +18,7 @@ public class SimpleApplicationEventMulticaster extends AbstractApplicationEventM
         setBeanFactory(beanFactory);
     }
 
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings("all")
     @Override
     public void multicastEvent(final ApplicationEvent event) {
         for (final ApplicationListener listener : getApplicationListeners(event)) {

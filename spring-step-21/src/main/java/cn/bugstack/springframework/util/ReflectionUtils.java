@@ -14,6 +14,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  *
+ * @author naixixu
  * @description 反射操作工具
  * @date 2022/3/16
  *  /CodeDesignTutorials
@@ -21,9 +22,11 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class ReflectionUtils {
 
-    private static final Map<Class<?>, Method[]> declaredMethodsCache = new ConcurrentHashMap<>(256);
+    private static final Map<Class<?>, Method[]> DECLARED_METHODS_CACHE = new ConcurrentHashMap<>(256);
 
     private static final Method[] EMPTY_METHOD_ARRAY = new Method[0];
+
+    private static final String EQUALS_CODE = "equals";
 
     public static Method findMethod(Class<?> clazz, String name) {
         return findMethod(clazz, name, new Class<?>[0]);
@@ -91,7 +94,7 @@ public class ReflectionUtils {
 
     private static Method[] getDeclaredMethods(Class<?> clazz) {
         Assert.notNull(clazz, "Class must not be null");
-        Method[] result = declaredMethodsCache.get(clazz);
+        Method[] result = DECLARED_METHODS_CACHE.get(clazz);
         if (result == null) {
             try {
                 Method[] declaredMethods = clazz.getDeclaredMethods();
@@ -107,7 +110,7 @@ public class ReflectionUtils {
                 } else {
                     result = declaredMethods;
                 }
-                declaredMethodsCache.put(clazz, (result.length == 0 ? EMPTY_METHOD_ARRAY : result));
+                DECLARED_METHODS_CACHE.put(clazz, (result.length == 0 ? EMPTY_METHOD_ARRAY : result));
             } catch (Throwable ex) {
                 throw new IllegalStateException("Failed to introspect Class [" + clazz.getName() +
                         "] from ClassLoader [" + clazz.getClassLoader() + "]", ex);
@@ -166,8 +169,9 @@ public class ReflectionUtils {
     public interface MethodCallback {
         /**
          * Perform an operation using the given method.
-         *
-         * @param method the method to operate on
+         * @param method                        the method to operate on
+         * @throws IllegalArgumentException     if the callback encounters an illegal argument
+         * @throws IllegalAccessException       if the callback method is not accessible
          */
         void doWith(Method method) throws IllegalArgumentException, IllegalAccessException;
     }
@@ -176,7 +180,6 @@ public class ReflectionUtils {
 
         /**
          * Determine whether the given method matches.
-         *
          * @param method the method to check
          */
         boolean matches(Method method);
@@ -190,7 +193,7 @@ public class ReflectionUtils {
     }
 
     public static boolean isEqualsMethod(Method method) {
-        if (method == null || !method.getName().equals("equals")) {
+        if (method == null || !EQUALS_CODE.equals(method.getName())) {
             return false;
         }
         Class<?>[] paramTypes = method.getParameterTypes();
@@ -198,11 +201,11 @@ public class ReflectionUtils {
     }
 
     public static boolean isHashCodeMethod( Method method) {
-        return (method != null && method.getName().equals("hashCode") && method.getParameterCount() == 0);
+        return (method != null && "hashCode".equals(method.getName()) && method.getParameterCount() == 0);
     }
 
     public static boolean isToStringMethod( Method method) {
-        return (method != null && method.getName().equals("toString") && method.getParameterCount() == 0);
+        return (method != null && "toString".equals(method.getName()) && method.getParameterCount() == 0);
     }
 
 }

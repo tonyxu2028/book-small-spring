@@ -5,11 +5,13 @@ import java.util.Map;
 
 /**
  *
+ * @author naixixu
  * @description Interface specifying a basic set of JDBC operations.
  * @date 2022/3/16
  *  /CodeDesignTutorials
  *
  */
+@SuppressWarnings("all")
 public interface JdbcOperations {
 
     <T> T execute(StatementCallback<T> action);

@@ -7,6 +7,7 @@ package cn.bugstack.springframework.jdbc.datasource;
  *  /CodeDesignTutorials
  *
  */
+@SuppressWarnings("all")
 public abstract class JdbcTransactionObjectSupport {
 
     private ConnectionHolder connectionHolder;

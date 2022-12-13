@@ -9,6 +9,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  *
+ * @author naixixu
  * @description Abstract implementation of {@link TransactionAttributeSource} that caches
  * attributes for methods and implements a fallback policy: 1. specific target
  * method; 2. target class; 3. declaring method; 4. declaring class/interface.
@@ -41,7 +42,7 @@ public abstract class AbstractFallbackTransactionAttributeSource implements Tran
                 return cached;
             }
         } else {
-            TransactionAttribute txAttr = computeTransactionAttribute(method, targetClass);
+            TransactionAttribute txAttr = computeTransactionAttribute(method);
             if (null == txAttr) {
                 this.attributeCache.put(cacheKey, NULL_TRANSACTION_ATTRIBUTE);
             } else {
@@ -55,7 +56,7 @@ public abstract class AbstractFallbackTransactionAttributeSource implements Tran
         return new MethodClassKey(method, targetClass);
     }
 
-    protected TransactionAttribute computeTransactionAttribute(Method method, Class<?> targetClass) {
+    protected TransactionAttribute computeTransactionAttribute(Method method) {
         if (!Modifier.isPublic(method.getModifiers())) {
             return null;
         }
@@ -67,10 +68,17 @@ public abstract class AbstractFallbackTransactionAttributeSource implements Tran
     }
 
     /**
-     * 在方法上查找事务的相关属性
+     * Find a transaction attribute on the given method, explicitly or
+     * @param method            the method to introspect
+     * @return                  TransactionAttribute for this method, or {@code null} if the method is non-transactional
      */
     protected abstract TransactionAttribute findTransactionAttribute(Method method);
 
+    /**
+     * Find a transaction attribute on the given class, explicitly or
+     * @param clazz             the class to introspect
+     * @return                  TransactionAttribute for this class, or {@code null} if the class is non-transactional
+     */
     protected abstract TransactionAttribute findTransactionAttribute(Class<?> clazz);
 
 }

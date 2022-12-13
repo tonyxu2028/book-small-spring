@@ -14,6 +14,7 @@ import javax.sql.DataSource;
  *  /CodeDesignTutorials
  *
  */
+@SuppressWarnings("all")
 public abstract class JdbcAccessor implements InitializingBean {
 
     private DataSource dataSource;

@@ -11,12 +11,14 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  *
+ * @author naixixu
  * @description Internal utility class that can be used to obtain wrapped {@link Serializable}
  * variants of {@link java.lang.reflect.Type java.lang.reflect.Types}.
  * @date 2022/3/16
  *  /CodeDesignTutorials
  *
  */
+@SuppressWarnings("all")
 public final class SerializableTypeWrapper {
 
     private static final Class<?>[] SUPPORTED_SERIALIZABLE_TYPES = {

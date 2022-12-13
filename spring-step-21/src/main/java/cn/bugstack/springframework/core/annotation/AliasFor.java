@@ -2,6 +2,9 @@ package cn.bugstack.springframework.core.annotation;
 
 import java.lang.annotation.*;
 
+/**
+ * @author naixixu
+ */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
 public @interface AliasFor {

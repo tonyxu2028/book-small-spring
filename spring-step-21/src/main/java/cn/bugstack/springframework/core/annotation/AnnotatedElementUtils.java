@@ -16,32 +16,32 @@ import java.util.*;
  *  /CodeDesignTutorials
  *
  */
+@SuppressWarnings({"all"})
 public class AnnotatedElementUtils {
 
     private static final Annotation[] EMPTY_ANNOTATION_ARRAY = new Annotation[0];
 
     public static AnnotationAttributes findMergedAnnotationAttributes(AnnotatedElement element,
                                                                       Class<? extends Annotation> annotationType, boolean classValuesAsString, boolean nestedAnnotationsAsMap) {
-        return searchWithFindSemantics(element, annotationType, null, new MergedAnnotationAttributesProcessor(classValuesAsString, nestedAnnotationsAsMap));
+        return searchWithFindSemantics(element, annotationType, new MergedAnnotationAttributesProcessor(classValuesAsString, nestedAnnotationsAsMap));
     }
 
     private static <T> T searchWithFindSemantics(AnnotatedElement element,
                                                  Class<? extends Annotation> annotationType,
-                                                 String annotationName, Processor<T> processor) {
+                                                 Processor<T> processor) {
         return searchWithFindSemantics(element, (null != annotationType ? Collections.singleton(annotationType) : Collections.emptySet()),
-                annotationName, null, processor);
+                null, processor);
     }
 
     private static <T> T searchWithFindSemantics(AnnotatedElement element,
                                                  Set<Class<? extends Annotation>> annotationType,
                                                  String annotationName,
-                                                 Class<? extends Annotation> containerType,
                                                  Processor<T> processor) {
-        if (containerType != null && !processor.aggregates()) {
+        if (null != null && !processor.aggregates()) {
             throw new IllegalArgumentException("Search for repeatable annotations must supply an aggregating Processor");
         }
 
-        return searchWithFindSemantics(element, annotationType, annotationName, containerType, processor, new HashSet<>(), 0);
+        return searchWithFindSemantics(element, annotationType, annotationName, null, processor, new HashSet<>(), 0);
 
     }
 

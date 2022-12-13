@@ -9,12 +9,14 @@ import java.sql.SQLException;
 
 /**
  *
+ * @author naixixu
  * @description Helper class that provides static methods for obtaining JDBC Connections from
  *  a {@link javax.sql.DataSource}.
  * @date 2022/3/16
  *  /CodeDesignTutorials
  *
  */
+@SuppressWarnings("all")
 public abstract class DataSourceUtils {
 
     public static Connection getConnection(DataSource dataSource) {

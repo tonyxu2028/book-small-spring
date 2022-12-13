@@ -1,7 +1,6 @@
 package cn.bugstack.springframework.beans.factory.support;
 
 import cn.bugstack.springframework.beans.BeansException;
-import cn.bugstack.springframework.beans.factory.BeanFactory;
 import cn.bugstack.springframework.beans.factory.FactoryBean;
 import cn.bugstack.springframework.beans.factory.config.BeanDefinition;
 import cn.bugstack.springframework.beans.factory.config.BeanPostProcessor;
@@ -15,18 +14,20 @@ import java.util.List;
 
 /**
  *
+ * @author naixixu
  * @description 抽象的 Bean 工厂基类，定义模板方法
  * @date 2022/03/07
  *
  *
  */
+@SuppressWarnings({"unchecked","all"})
 public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport implements ConfigurableBeanFactory {
 
     /** ClassLoader to resolve bean class names with, if necessary */
-    private ClassLoader beanClassLoader = ClassUtils.getDefaultClassLoader();
+    private final ClassLoader beanClassLoader = ClassUtils.getDefaultClassLoader();
 
     /** BeanPostProcessors to apply in createBean */
-    private final List<BeanPostProcessor> beanPostProcessors = new ArrayList<BeanPostProcessor>();
+    private final List<BeanPostProcessor> beanPostProcessors = new ArrayList<>();
 
     /**
      * String resolvers to apply e.g. to annotation attribute values

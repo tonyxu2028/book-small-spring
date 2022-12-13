@@ -5,6 +5,7 @@ import cn.bugstack.springframework.tx.transaction.support.DefaultTransactionDefi
 
 /**
  *
+ * @author naixixu
  * @description Spring's common transaction attribute implementation.
  * Rolls back on runtime, but not checked, exceptions by default.
  * @date 2022/3/16

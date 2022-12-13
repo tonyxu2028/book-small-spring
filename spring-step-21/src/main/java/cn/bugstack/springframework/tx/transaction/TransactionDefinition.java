@@ -4,6 +4,7 @@ import java.sql.Connection;
 
 /**
  *
+ * @author naixixu
  * @description {@link TransactionDefinition} implementation that delegates all calls to a given target
  * {@link TransactionDefinition} instance. Abstract because it is meant to be subclassed,
  * with subclasses overriding specific methods that are not supposed to simply delegate
@@ -12,6 +13,7 @@ import java.sql.Connection;
  *  /CodeDesignTutorials
  *
  */
+@SuppressWarnings("unused")
 public interface TransactionDefinition {
 
     /**
@@ -86,21 +88,32 @@ public interface TransactionDefinition {
 
     /**
      * 获取传播行为
+     * @return  int     传播行为
      */
     int getPropagationBehavior();
 
     /**
      * 获取事务隔离级别
+     * @return  int     事务隔离级别
      */
     int getIsolationLevel();
 
     /**
      * 获取事务超时时间
+     * @return  int     事务超时时间
      */
     int getTimeout();
 
+    /**
+     * 是否只读
+     * @return  boolean 是否只读
+     */
     boolean isReadOnly();
 
+    /**
+     * 获取事务名称
+     * @return  String  事务名称
+     */
     String getName();
 
 }

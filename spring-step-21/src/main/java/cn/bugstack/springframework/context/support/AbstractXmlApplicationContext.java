@@ -5,6 +5,7 @@ import cn.bugstack.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 
 /**
  *
+ * @author naixixu
  * @description 抽象基类 XML 上下文 Convenient base class for {@link cn.bugstack.springframework.context.ApplicationContext}
  * implementations, drawing configuration from XML documents containing bean definitions
  * understood by an {@link cn.bugstack.springframework.beans.factory.xml.XmlBeanDefinitionReader}.
@@ -23,6 +24,10 @@ public abstract class AbstractXmlApplicationContext extends AbstractRefreshableA
         }
     }
 
+    /**
+     * Return an array of resource locations, referring to the XML bean definition files that this context should be built with.
+     * @return          the config locations
+     */
     protected abstract String[] getConfigLocations();
 
 }

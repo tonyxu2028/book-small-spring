@@ -2,18 +2,19 @@ package cn.bugstack.springframework.tx.transaction;
 
 /**
  *
+ * @author naixixu
  * @description Common representation of the current state of a transaction.
  * Serves as base interface for {@link TransactionStatus} as well as
  * @date 2022/3/18
  *  /CodeDesignTutorials
  *
  */
+@SuppressWarnings("unused")
 public interface TransactionExecution {
 
     /**
-     * Return whether the present transaction is new; otherwise participating
-     * in an existing transaction, or potentially not running in an actual
-     * transaction in the first place.
+     * Return whether this transaction is new, that is, whether it has been
+     * @return      boolean
      */
     boolean isNewTransaction();
 
@@ -25,14 +26,14 @@ public interface TransactionExecution {
     void setRollbackOnly();
 
     /**
-     * Return whether the transaction has been marked as rollback-only
-     * (either by the application or by the transaction infrastructure).
+     * Return whether this transaction has been marked as rollback-only.
+     * @return      boolean
      */
     boolean isRollbackOnly();
 
     /**
-     * Return whether this transaction is completed, that is,
-     * whether it has already been committed or rolled back.
+     * Return whether this transaction is completed, that is, whether it has
+     * @return      boolean
      */
     boolean isCompleted();
 

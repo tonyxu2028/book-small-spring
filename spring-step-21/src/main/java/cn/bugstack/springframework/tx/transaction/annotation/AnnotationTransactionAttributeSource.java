@@ -11,12 +11,14 @@ import java.util.Set;
 
 /**
  *
+ * @author naixixu
  * @description Implementation of the TransactionAttributeSource}
  * interface for working with transaction metadata in JDK 1.5+ annotation format.
  * @date 2022/3/16
  *  /CodeDesignTutorials
  *
  */
+@SuppressWarnings("all")
 public class AnnotationTransactionAttributeSource extends AbstractFallbackTransactionAttributeSource implements Serializable {
 
     private final boolean publicMethodsOnly;

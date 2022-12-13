@@ -5,6 +5,7 @@ import java.util.List;
 
 /**
  *
+ * @author naixixu
  * @description TransactionAttribute implementation that works out whether a given exception
  * should cause transaction rollback by applying a number of rollback rules,
  * both positive and negative. If no custom rollback rules apply, this attribute
@@ -15,6 +16,7 @@ import java.util.List;
  */
 public class RuleBasedTransactionAttribute extends DefaultTransactionAttribute implements Serializable {
 
+    @SuppressWarnings("unused")
     private List<RollbackRuleAttribute> rollbackRules;
 
     public RuleBasedTransactionAttribute() {

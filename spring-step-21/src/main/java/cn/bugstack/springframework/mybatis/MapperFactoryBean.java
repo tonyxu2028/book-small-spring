@@ -8,11 +8,13 @@ import java.lang.reflect.Proxy;
 
 /**
  *
+ * @author naixixu
  * @description 数据库操作映射工厂对象，每一个 DAO 接口对应 Mapper 的代理对象。通过代理对象完成数据库的操作。
  * @date 2022/3/18
  *
  *
  */
+@SuppressWarnings("unused")
 public class MapperFactoryBean<T> implements FactoryBean<T> {
 
     private Class<T> mapperInterface;
@@ -27,7 +29,8 @@ public class MapperFactoryBean<T> implements FactoryBean<T> {
     }
 
     @Override
-    public T getObject() throws Exception {
+    @SuppressWarnings("unchecked")
+    public T getObject() {
         InvocationHandler handler = (proxy, method, args) -> {
             // 排除 Object 方法；toString、hashCode
             if (Object.class.equals(method.getDeclaringClass())) {

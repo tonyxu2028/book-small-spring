@@ -2,6 +2,7 @@ package cn.bugstack.springframework.test.po;
 
 import java.util.Date;
 
+@SuppressWarnings("unused")
 public class User {
 
     private Long id;

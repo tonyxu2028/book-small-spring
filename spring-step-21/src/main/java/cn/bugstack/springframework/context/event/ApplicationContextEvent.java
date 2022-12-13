@@ -5,6 +5,7 @@ import cn.bugstack.springframework.context.ApplicationEvent;
 
 /**
  *
+ * @author naixixu
  * @description Base class for events raised for an <code>ApplicationContext</code>.
  * @date 2022/3/13
  *  /CodeDesignTutorials
@@ -25,6 +26,7 @@ public class ApplicationContextEvent extends ApplicationEvent {
     /**
      * Get the <code>ApplicationContext</code> that the event was raised for.
      */
+    @SuppressWarnings("all")
     public final ApplicationContext getApplicationContext() {
         return (ApplicationContext) getSource();
     }

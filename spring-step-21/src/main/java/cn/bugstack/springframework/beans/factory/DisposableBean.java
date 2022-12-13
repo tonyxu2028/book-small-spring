@@ -2,6 +2,7 @@ package cn.bugstack.springframework.beans.factory;
 
 /**
  *
+ * @author naixixu
  * @description Interface to be implemented by beans that want to release resources
  * on destruction. A BeanFactory is supposed to invoke the destroy
  * method if it disposes a cached singleton. An application context
@@ -12,6 +13,10 @@ package cn.bugstack.springframework.beans.factory;
  */
 public interface DisposableBean {
 
+    /**
+     * Bean 对象销毁前的处理
+     * @throws Exception
+     */
     void destroy() throws Exception;
 
 }

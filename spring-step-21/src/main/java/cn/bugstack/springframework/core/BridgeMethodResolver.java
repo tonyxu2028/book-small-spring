@@ -11,6 +11,7 @@ import java.util.List;
 
 /**
  *
+ * @author naixixu
  * @description Helper for resolving synthetic {@link Method#isBridge bridge Methods} to the
  * {@link Method} being bridged.
  * @date 2022/3/16
@@ -175,10 +176,11 @@ public class BridgeMethodResolver {
     /**
      * Compare the signatures of the bridge method and the method which it bridges. If
      * the parameter and return types are the same, it is a 'visibility' bridge method
-     * introduced in Java 6 to fix https://bugs.java.com/view_bug.do?bug_id=6342411.
-     * See also https://stas-blogspot.blogspot.com/2010/03/java-bridge-methods-explained.html
+     * introduced in Java 6 to fix <a href="https://bugs.java.com/view_bug.do?bug_id=6342411">...</a>.
+     * See also <a href="https://stas-blogspot.blogspot.com/2010/03/java-bridge-methods-explained.html">...</a>
      * @return whether signatures match as described
      */
+    @SuppressWarnings("unused")
     public static boolean isVisibilityBridgeMethodPair(Method bridgeMethod, Method bridgedMethod) {
         if (bridgeMethod == bridgedMethod) {
             return true;

@@ -6,6 +6,7 @@ import cn.bugstack.springframework.util.NumberUtils;
 
 /**
  *
+ * @author naixixu
  * @description Converts from a String any JDK-standard Number implementation.
  * @date 2022/3/16
  *

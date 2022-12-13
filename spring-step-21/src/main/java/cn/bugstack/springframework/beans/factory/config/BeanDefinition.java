@@ -2,6 +2,8 @@ package cn.bugstack.springframework.beans.factory.config;
 
 import cn.bugstack.springframework.beans.PropertyValues;
 
+import java.util.Objects;
+
 /**
  *
  * @description 定义 Bean 实例信息
@@ -84,4 +86,16 @@ public class BeanDefinition {
         this.destroyMethodName = destroyMethodName;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        BeanDefinition that = (BeanDefinition) o;
+        return singleton == that.singleton && prototype == that.prototype && Objects.equals(SCOPE_SINGLETON, that.SCOPE_SINGLETON) && Objects.equals(SCOPE_PROTOTYPE, that.SCOPE_PROTOTYPE) && Objects.equals(beanClass, that.beanClass) && Objects.equals(propertyValues, that.propertyValues) && Objects.equals(initMethodName, that.initMethodName) && Objects.equals(destroyMethodName, that.destroyMethodName) && Objects.equals(scope, that.scope);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(SCOPE_SINGLETON, SCOPE_PROTOTYPE, beanClass, propertyValues, initMethodName, destroyMethodName, scope, singleton, prototype);
+    }
 }

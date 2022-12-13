@@ -2,6 +2,10 @@ package cn.bugstack.springframework.core.util;
 
 import java.util.Arrays;
 
+/**
+ * @author naixixu
+ */
+@SuppressWarnings("all")
 public class ObjectUtils {
 
     private static final String EMPTY_STRING = "";

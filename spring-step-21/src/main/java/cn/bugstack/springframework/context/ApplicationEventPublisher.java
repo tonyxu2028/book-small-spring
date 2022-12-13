@@ -2,6 +2,7 @@ package cn.bugstack.springframework.context;
 
 /**
  *
+ * @author naixixu
  * @description 事件发布者接口
  * @date 2022/3/13
  *  /CodeDesignTutorials

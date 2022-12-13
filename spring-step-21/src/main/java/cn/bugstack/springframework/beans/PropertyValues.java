@@ -5,6 +5,7 @@ import java.util.List;
 
 /**
  *
+ * @author naixixu
  * @description 属性值集合
  * @date 2022/3/9
  *  /CodeDesignTutorials
@@ -22,6 +23,7 @@ public class PropertyValues {
         return this.propertyValueList.toArray(new PropertyValue[0]);
     }
 
+    @SuppressWarnings("unused")
     public PropertyValue getPropertyValue(String propertyName) {
         for (PropertyValue pv : this.propertyValueList) {
             if (pv.getName().equals(propertyName)) {

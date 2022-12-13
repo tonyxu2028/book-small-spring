@@ -21,6 +21,7 @@ import java.util.Map;
 
 /**
  *
+ * @author naixixu
  * @description 抽象应用上下文 Abstract implementation of the {@link cn.bugstack.springframework.context.ApplicationContext}
  * interface. Doesn't mandate the type of storage used for configuration; simply
  * implements common context functionality. Uses the Template Method design pattern,
@@ -29,6 +30,7 @@ import java.util.Map;
  *
  *
  */
+@SuppressWarnings("all")
 public abstract class AbstractApplicationContext extends DefaultResourceLoader implements ConfigurableApplicationContext {
 
     public static final String APPLICATION_EVENT_MULTICASTER_BEAN_NAME = "applicationEventMulticaster";

@@ -2,6 +2,7 @@ package cn.bugstack.springframework.core.annotation;
 
 /**
  *
+ * @author naixixu
  * @description Thrown by {@link AnnotationUtils} and <em>synthesized annotations</em>
  * if an annotation is improperly configured.
  * @date 2022/3/16

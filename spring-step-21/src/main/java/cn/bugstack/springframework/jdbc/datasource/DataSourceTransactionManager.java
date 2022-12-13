@@ -16,11 +16,13 @@ import java.sql.Statement;
 
 /**
  *
+ * @author naixixu
  * @description 数据源事务管理器
  * @date 2022/3/16
  *  /CodeDesignTutorials
  *
  */
+@SuppressWarnings("all")
 public class DataSourceTransactionManager extends AbstractPlatformTransactionManager implements InitializingBean {
 
     private DataSource dataSource;

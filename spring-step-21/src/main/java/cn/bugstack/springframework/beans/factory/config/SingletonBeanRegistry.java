@@ -2,6 +2,7 @@ package cn.bugstack.springframework.beans.factory.config;
 
 /**
  *
+ * @author naixixu
  * @description 单例 Bean 注册表
  * @date 2022/03/07
  *

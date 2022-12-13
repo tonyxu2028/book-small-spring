@@ -6,6 +6,7 @@ import cn.bugstack.springframework.util.StringValueResolver;
 
 /**
  *
+ * @author naixixu
  * @description Configuration interface to be implemented by most bean factories. Provides
  * facilities to configure a bean factory, in addition to the bean factory
  * client methods in the {@link cn.bugstack.springframework.beans.factory.BeanFactory}
@@ -20,6 +21,10 @@ public interface ConfigurableBeanFactory extends HierarchicalBeanFactory, Single
 
     String SCOPE_PROTOTYPE = "prototype";
 
+    /**
+     * Set the parent of this bean factory.
+     * @param beanPostProcessor     the parent bean factory
+     */
     void addBeanPostProcessor(BeanPostProcessor beanPostProcessor);
 
     /**
@@ -43,16 +48,16 @@ public interface ConfigurableBeanFactory extends HierarchicalBeanFactory, Single
     String resolveEmbeddedValue(String value);
 
     /**
-     * Specify a Spring 3.0 ConversionService to use for converting
-     * property values, as an alternative to JavaBeans PropertyEditors.
-     * @since 3.0
+     * Set the ConversionService to use for converting property values.
+     * @param conversionService     the new ConversionService
      */
     void setConversionService(ConversionService conversionService);
 
     /**
      * Return the associated ConversionService, if any.
-     * @since 3.0
+     * @return                      the associated ConversionService, or {@code null} if none
      */
+    @SuppressWarnings("unused")
     ConversionService getConversionService();
 
 }

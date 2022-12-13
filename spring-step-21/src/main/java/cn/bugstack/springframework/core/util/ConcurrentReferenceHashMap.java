@@ -13,12 +13,14 @@ import java.util.concurrent.locks.ReentrantLock;
 
 /**
  *
+ * @author naixixu
  * @description A {@link ConcurrentHashMap} that uses {@link ReferenceType#SOFT soft} or
  * {@linkplain ReferenceType#WEAK weak} references for both {@code keys} and {@code values}.
  * @date 2022/3/16
  *  /CodeDesignTutorials
  *
  */
+@SuppressWarnings("all")
 public class ConcurrentReferenceHashMap<K, V> extends AbstractMap<K, V> implements ConcurrentMap<K, V> {
 
     private static final int DEFAULT_INITIAL_CAPACITY = 16;
@@ -252,6 +254,7 @@ public class ConcurrentReferenceHashMap<K, V> extends AbstractMap<K, V> implemen
                     return oldValue;
                 }
                 Assert.state(entries != null, "No entries segment");
+                assert entries != null;
                 entries.add(value);
                 return null;
             }
@@ -290,7 +293,7 @@ public class ConcurrentReferenceHashMap<K, V> extends AbstractMap<K, V> implemen
                 return false;
             }
         });
-        return (result == Boolean.TRUE);
+        return (result.equals(Boolean.TRUE));
     }
 
     @Override
@@ -305,7 +308,7 @@ public class ConcurrentReferenceHashMap<K, V> extends AbstractMap<K, V> implemen
                 return false;
             }
         });
-        return (result == Boolean.TRUE);
+        return (result.equals(Boolean.TRUE));
     }
 
     @Override
@@ -418,7 +421,6 @@ public class ConcurrentReferenceHashMap<K, V> extends AbstractMap<K, V> implemen
     /**
      * A single segment used to divide the map to allow better concurrent performance.
      */
-    @SuppressWarnings("serial")
     protected final class Segment extends ReentrantLock {
 
         private final ReferenceManager referenceManager;
@@ -532,7 +534,7 @@ public class ConcurrentReferenceHashMap<K, V> extends AbstractMap<K, V> implemen
          * references that have been garbage collected.
          * @param allowResize if resizing is permitted
          */
-        protected final void restructureIfNecessary(boolean allowResize) {
+        protected void restructureIfNecessary(boolean allowResize) {
             int currCount = this.count;
             boolean needsResize = (currCount > 0 && currCount >= this.resizeThreshold);
             Reference<K, V> ref = this.referenceManager.pollForPurge();
@@ -614,7 +616,7 @@ public class ConcurrentReferenceHashMap<K, V> extends AbstractMap<K, V> implemen
             return null;
         }
 
-        @SuppressWarnings({"rawtypes", "unchecked"})
+        @SuppressWarnings({"unchecked"})
         private Reference<K, V>[] createReferenceArray(int size) {
             return new Reference[size];
         }
@@ -626,14 +628,14 @@ public class ConcurrentReferenceHashMap<K, V> extends AbstractMap<K, V> implemen
         /**
          * Return the size of the current references array.
          */
-        public final int getSize() {
+        public int getSize() {
             return this.references.length;
         }
 
         /**
          * Return the total number of references in this segment.
          */
-        public final int getCount() {
+        public int getCount() {
             return this.count;
         }
     }
@@ -717,7 +719,7 @@ public class ConcurrentReferenceHashMap<K, V> extends AbstractMap<K, V> implemen
 
         @Override
         @SuppressWarnings("rawtypes")
-        public final boolean equals(Object other) {
+        public boolean equals(Object other) {
             if (this == other) {
                 return true;
             }
@@ -730,7 +732,7 @@ public class ConcurrentReferenceHashMap<K, V> extends AbstractMap<K, V> implemen
         }
 
         @Override
-        public final int hashCode() {
+        public int hashCode() {
             return (ObjectUtils.nullSafeHashCode(this.key) ^ ObjectUtils.nullSafeHashCode(this.value));
         }
     }

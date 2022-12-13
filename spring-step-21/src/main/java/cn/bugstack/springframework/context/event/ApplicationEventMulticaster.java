@@ -5,6 +5,7 @@ import cn.bugstack.springframework.context.ApplicationListener;
 
 /**
  *
+ * @author naixixu
  * @description 事件广播器
  * @date 2022/3/13
  *  /CodeDesignTutorials
@@ -22,6 +23,7 @@ public interface ApplicationEventMulticaster {
      * Remove a listener from the notification list.
      * @param listener the listener to remove
      */
+    @SuppressWarnings("unused")
     void removeApplicationListener(ApplicationListener<?> listener);
 
     /**

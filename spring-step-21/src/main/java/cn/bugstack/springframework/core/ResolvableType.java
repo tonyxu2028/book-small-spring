@@ -16,6 +16,7 @@ import java.util.Map;
 
 /**
  *
+ * @author naixixu
  * @description Encapsulates a Java {@link java.lang.reflect.Type}, providing access to
  * {@link #getSuperType() supertypes}, {@link #getInterfaces() interfaces}, and
  * {@link #getGeneric(int...) generic parameters} along with the ability to ultimately
@@ -24,6 +25,7 @@ import java.util.Map;
  *  /CodeDesignTutorials
  *
  */
+@SuppressWarnings("all")
 public class ResolvableType implements Serializable {
     /**
      * {@code ResolvableType} returned when no value is available. {@code NONE} is used

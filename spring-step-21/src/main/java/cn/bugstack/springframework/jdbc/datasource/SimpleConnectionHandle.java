@@ -6,6 +6,7 @@ import java.sql.Connection;
 
 /**
  *
+ * @author naixixu
  * @description Simple implementation of the {@link ConnectionHandle} interface,
  * containing a given JDBC Connection.
  * @date 2022/3/16

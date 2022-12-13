@@ -4,6 +4,7 @@ import cn.bugstack.springframework.util.ClassUtils;
 
 /**
  *
+ * @author naixixu
  * @description 被代理的目标对象  A <code>TargetSource</code> is used to obtain the current "target" of
  * an AOP invocation, which will be invoked via reflection if no around
  * advice chooses to end the interceptor chain itself.
@@ -36,7 +37,6 @@ public class TargetSource {
      * Return a target instance. Invoked immediately before the
      * AOP framework calls the "target" of an AOP method invocation.
      * @return the target object, which contains the joinpoint
-     * @throws Exception if the target object can't be resolved
      */
     public Object getTarget(){
         return this.target;

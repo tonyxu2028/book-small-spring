@@ -7,11 +7,13 @@ import java.io.InputStream;
 
 /**
  *
+ * @author naixixu
  * @description 文件资源
  * @date 2022/3/9
  *
  *
  */
+@SuppressWarnings("all")
 public class FileSystemResource implements Resource {
 
     private final File file;

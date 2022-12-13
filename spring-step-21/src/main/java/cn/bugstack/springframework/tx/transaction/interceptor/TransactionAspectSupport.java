@@ -14,12 +14,14 @@ import java.lang.reflect.Method;
 
 /**
  *
+ * @author naixixu
  * @description Base class for transactional aspects, such as the {@link TransactionInterceptor}
  * or an AspectJ aspect.
  * @date 2022/3/16
  *  /CodeDesignTutorials
  *
  */
+@SuppressWarnings("all")
 public abstract class TransactionAspectSupport implements BeanFactoryAware, InitializingBean {
 
     private static final ThreadLocal<TransactionInfo> transactionInfoHolder =

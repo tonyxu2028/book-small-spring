@@ -2,6 +2,7 @@ package cn.bugstack.springframework.context.event;
 
 /**
  *
+ * @author naixixu
  * @description Event raised when an <code>ApplicationContext</code> gets closed.
  * @date 2022/3/13
  *  /CodeDesignTutorials

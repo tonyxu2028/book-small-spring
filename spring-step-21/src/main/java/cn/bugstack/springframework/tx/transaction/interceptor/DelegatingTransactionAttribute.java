@@ -7,6 +7,7 @@ import java.io.Serializable;
 
 /**
  *
+ * @author naixixu
  * @description {@link TransactionAttribute} implementation that delegates all calls to a given target
  * {@link TransactionAttribute} instance. Abstract because it is meant to be subclassed,
  * with subclasses overriding specific methods that are not supposed to simply delegate
@@ -15,6 +16,7 @@ import java.io.Serializable;
  *  /CodeDesignTutorials
  *
  */
+@SuppressWarnings("all")
 public abstract class DelegatingTransactionAttribute extends DelegatingTransactionDefinition implements TransactionAttribute, Serializable {
 
     private final TransactionAttribute targetAttribute;

@@ -15,6 +15,7 @@ import java.lang.reflect.Method;
  *  /CodeDesignTutorials
  *
  */
+@SuppressWarnings("all")
 public class DisposableBeanAdapter implements DisposableBean {
 
     private final Object bean;

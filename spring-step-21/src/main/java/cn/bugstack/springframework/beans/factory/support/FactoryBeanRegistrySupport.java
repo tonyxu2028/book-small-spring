@@ -15,6 +15,7 @@ import java.util.concurrent.ConcurrentHashMap;
  *  /CodeDesignTutorials
  *
  */
+@SuppressWarnings("all")
 public abstract class FactoryBeanRegistrySupport extends DefaultSingletonBeanRegistry{
 
     /**

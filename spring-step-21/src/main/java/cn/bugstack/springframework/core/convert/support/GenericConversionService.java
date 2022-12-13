@@ -12,6 +12,7 @@ import java.util.*;
 
 /**
  *
+ * @author naixixu
  * @description Base ConversionService implementation suitable for use in most environments.
  * Indirectly implements ConverterRegistry as registration API through the
  * ConfigurableConversionService interface.
@@ -19,9 +20,10 @@ import java.util.*;
  *
  *
  */
+@SuppressWarnings({"unchecked", "all"})
 public class GenericConversionService implements ConversionService, ConverterRegistry {
 
-    private Map<GenericConverter.ConvertiblePair, GenericConverter> converters = new HashMap<>();
+    private final Map<GenericConverter.ConvertiblePair, GenericConverter> converters = new HashMap<>();
 
     @Override
     public boolean canConvert(Class<?> sourceType, Class<?> targetType) {
@@ -30,6 +32,7 @@ public class GenericConversionService implements ConversionService, ConverterReg
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public <T> T convert(Object source, Class<T> targetType) {
         Class<?> sourceType = source.getClass();
         GenericConverter converter = getConverter(sourceType, targetType);
@@ -65,8 +68,8 @@ public class GenericConversionService implements ConversionService, ConverterReg
         Type[] types = object.getClass().getGenericInterfaces();
         ParameterizedType parameterized = (ParameterizedType) types[0];
         Type[] actualTypeArguments = parameterized.getActualTypeArguments();
-        Class sourceType = (Class) actualTypeArguments[0];
-        Class targetType = (Class) actualTypeArguments[1];
+        Class<?> sourceType = (Class<?>) actualTypeArguments[0];
+        Class<?> targetType = (Class<?>) actualTypeArguments[1];
         return new GenericConverter.ConvertiblePair(sourceType, targetType);
     }
 
@@ -94,7 +97,7 @@ public class GenericConversionService implements ConversionService, ConverterReg
         return hierarchy;
     }
 
-    private final class ConverterAdapter implements GenericConverter {
+    private static final class ConverterAdapter implements GenericConverter {
 
         private final ConvertiblePair typeInfo;
 
@@ -111,12 +114,12 @@ public class GenericConversionService implements ConversionService, ConverterReg
         }
 
         @Override
-        public Object convert(Object source, Class sourceType, Class targetType) {
+        public Object convert(Object source, Class<?> sourceType, Class<?> targetType) {
             return converter.convert(source);
         }
     }
 
-    private final class ConverterFactoryAdapter implements GenericConverter {
+    private static final class ConverterFactoryAdapter implements GenericConverter {
 
         private final ConvertiblePair typeInfo;
 
@@ -133,7 +136,7 @@ public class GenericConversionService implements ConversionService, ConverterReg
         }
 
         @Override
-        public Object convert(Object source, Class sourceType, Class targetType) {
+        public Object convert(Object source, Class<?> sourceType, Class<?> targetType) {
             return converterFactory.getConverter(targetType).convert(source);
         }
     }

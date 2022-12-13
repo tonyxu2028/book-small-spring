@@ -22,6 +22,7 @@ import java.util.*;
  *  /CodeDesignTutorials
  *
  */
+@SuppressWarnings("all")
 public class AnnotationUtils {
 
     /**

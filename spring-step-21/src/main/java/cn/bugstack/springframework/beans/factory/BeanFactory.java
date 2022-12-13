@@ -4,6 +4,7 @@ import cn.bugstack.springframework.beans.BeansException;
 
 /**
  *
+ * @author naixixu
  * @description 定义 Bean 工厂接口
  * @date 2022/03/07
  *

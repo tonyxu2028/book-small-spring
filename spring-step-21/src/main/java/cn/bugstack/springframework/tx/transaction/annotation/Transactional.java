@@ -4,6 +4,7 @@ import java.lang.annotation.*;
 
 /**
  * 事务注解
+ * @author naixixu
  */
 @Target({ElementType.METHOD, ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
