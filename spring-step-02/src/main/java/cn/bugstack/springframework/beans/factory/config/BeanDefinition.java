@@ -11,7 +11,7 @@ package cn.bugstack.springframework.beans.factory.config;
  *
  *
  */
-public class BeanDefinition {
+public class  BeanDefinition {
 
     private final Class<?> beanClass;
 

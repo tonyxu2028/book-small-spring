@@ -1,15 +1,9 @@
 package cn.bugstack.springframework.beans.factory;
 
 /**
- *
- *
- *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
+ * @description 容器单列对象注册器-接口
  * @author naixixu
- * @description 单例 Bean 注册表
  * @date 2022/03/07
- *
- *
  */
 public interface SingletonBeanRegistry {
 
