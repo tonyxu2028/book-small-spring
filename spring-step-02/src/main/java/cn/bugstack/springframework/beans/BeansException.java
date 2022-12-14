@@ -1,15 +1,9 @@
 package cn.bugstack.springframework.beans;
 
 /**
- *
- *
- *
- * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
+ * @Description: BeansException
  * @author naixixu
- * {@code @description} 定义 Bean 异常
  * @date 2022/3/7
- *
- *
  */
 public class BeansException extends RuntimeException{
 

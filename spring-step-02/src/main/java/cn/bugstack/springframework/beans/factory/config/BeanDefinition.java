@@ -1,15 +1,9 @@
 package cn.bugstack.springframework.beans.factory.config;
 
 /**
- *
- *
- *
- * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
+ * @Description: 定义Bean实例信息类
  * @author naixixu
- * {@code @description} 定义 Bean 实例信息
  * @date 2022/03/07
- *
- *
  */
 public class  BeanDefinition {
 
