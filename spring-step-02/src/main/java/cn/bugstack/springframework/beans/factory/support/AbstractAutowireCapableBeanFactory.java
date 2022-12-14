@@ -4,15 +4,11 @@ import cn.bugstack.springframework.beans.BeansException;
 import cn.bugstack.springframework.beans.factory.config.BeanDefinition;
 
 /**
- *
- *
- *
- * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
+ * @description AbstractAutowireCapableBeanFactory
+ * 1）抽象的容器实例工厂获取器-接口BeanFactory基类AbstractBeanFactory的抽象实现类。
+ * 2）主要实现AbstractBeanFactory尚未实现的createBean方法。
  * @author naixixu
- * {@code @description} 实现默认bean创建的抽象bean工厂超类
  * @date 2022/03/07
- *
- *
  */
 public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFactory{
 

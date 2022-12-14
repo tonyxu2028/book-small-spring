@@ -15,9 +15,9 @@ public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry i
 
     /**
      * 定义Bean工厂接口的实现
-     * @param   name                        需要实例化的实例Bean名称
-     * @return  object                      实例化的 Bean 对象
-     * @throws BeansException               如果bean实例化失败,抛出异常
+     * @param   name                         需要实例化的实例Bean名称
+     * @return  object                       实例化的 Bean 对象
+     * @throws  BeansException               如果bean实例化失败,抛出异常
      *
      * 一个值得注意的点，作者在getBeanDefinition方法中，直接抛出了自定义异常BeansException。
      */
@@ -35,16 +35,16 @@ public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry i
 
     /**
      * 获取 BeanDefinition
-     * @param   beanName                     bean的名称
-     * @return  BeanDefinition               bean的定义
+     * @param   beanName                      bean的名称
+     * @return  BeanDefinition                bean的定义
      */
     protected abstract BeanDefinition getBeanDefinition(String beanName);
 
     /**
      * 创建 Bean
-     * @param   beanName                      bean名称
-     * @param   beanDefinition                bean定义
-     * @return  Object                        实例化的Bean对象
+     * @param   beanName                       bean名称
+     * @param   beanDefinition                 bean定义
+     * @return  Object                         实例化的Bean对象
      */
     protected abstract Object createBean(String beanName,BeanDefinition beanDefinition);
 

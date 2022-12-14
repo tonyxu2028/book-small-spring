@@ -8,9 +8,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @description
+ * @description DefaultListableBeanFactory
+ * 1）实现了BeanDefinitionRegistry实例定义注册器-接口。
+ * 2）实现了继承的AbstractAutowireCapableBeanFactory尚未实现的getBeanDefinition方法。
  * @author naixixu
- * {@code @description} 默认的Bean工厂实现类,同时也是BeanDefinition注册接口的实现类。
  * @date 2022/03/07
  */
 public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFactory implements BeanDefinitionRegistry {
@@ -41,7 +42,6 @@ public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFacto
 
     /**
      * 向BeanDefinition容器中注册 BeanDefinition
-     *
      * @param beanName       Bean 名称
      * @param beanDefinition Bean 定义
      */
