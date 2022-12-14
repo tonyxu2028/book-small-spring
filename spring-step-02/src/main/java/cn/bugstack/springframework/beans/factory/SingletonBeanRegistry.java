@@ -2,6 +2,7 @@ package cn.bugstack.springframework.beans.factory;
 
 /**
  * @description 容器单列对象注册器-接口
+ * 主要用于定义一个注册和获取单列对象的接口
  * @author naixixu
  * @date 2022/03/07
  */
