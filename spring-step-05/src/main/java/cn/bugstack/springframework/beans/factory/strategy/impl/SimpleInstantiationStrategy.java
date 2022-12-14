@@ -1,8 +1,8 @@
-package cn.bugstack.springframework.beans.factory.strategy;
+package cn.bugstack.springframework.beans.factory.strategy.impl;
 
-import cn.bugstack.springframework.beans.BeansException;
-import cn.bugstack.springframework.beans.factory.InstantiationStrategy;
+import cn.bugstack.springframework.beans.exception.BeansException;
 import cn.bugstack.springframework.beans.factory.config.BeanDefinition;
+import cn.bugstack.springframework.beans.factory.strategy.InstantiationStrategy;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;

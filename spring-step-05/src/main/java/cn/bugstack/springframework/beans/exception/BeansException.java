@@ -1,4 +1,4 @@
-package cn.bugstack.springframework.beans;
+package cn.bugstack.springframework.beans.exception;
 
 /**
  * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>

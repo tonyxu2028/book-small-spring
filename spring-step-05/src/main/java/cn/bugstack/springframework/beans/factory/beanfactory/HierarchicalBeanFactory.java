@@ -1,4 +1,6 @@
-package cn.bugstack.springframework.beans.factory;
+package cn.bugstack.springframework.beans.factory.beanfactory;
+
+import cn.bugstack.springframework.beans.factory.beanfactory.BeanFactory;
 
 /**
  * 等级Bean工厂接口

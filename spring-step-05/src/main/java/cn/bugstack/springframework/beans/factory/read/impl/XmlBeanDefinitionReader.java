@@ -1,11 +1,11 @@
-package cn.bugstack.springframework.beans.factory.xml;
+package cn.bugstack.springframework.beans.factory.read.impl;
 
-import cn.bugstack.springframework.beans.BeansException;
+import cn.bugstack.springframework.beans.exception.BeansException;
 import cn.bugstack.springframework.beans.factory.config.PropertyValue;
 import cn.bugstack.springframework.beans.factory.config.BeanDefinition;
 import cn.bugstack.springframework.beans.factory.config.BeanReference;
-import cn.bugstack.springframework.beans.factory.support.AbstractBeanDefinitionReader;
-import cn.bugstack.springframework.beans.factory.BeanDefinitionRegistry;
+import cn.bugstack.springframework.beans.factory.read.AbstractBeanDefinitionReader;
+import cn.bugstack.springframework.beans.factory.beanfactory.BeanDefinitionRegistry;
 import cn.bugstack.springframework.core.io.Resource;
 import cn.bugstack.springframework.core.io.ResourceLoader;
 import cn.hutool.core.util.StrUtil;

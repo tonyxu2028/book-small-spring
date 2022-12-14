@@ -1,12 +1,12 @@
-package cn.bugstack.springframework.beans.factory.support;
+package cn.bugstack.springframework.beans.factory.beanfactory.impl;
 
-import cn.bugstack.springframework.beans.BeansException;
-import cn.bugstack.springframework.beans.factory.InstantiationStrategy;
+import cn.bugstack.springframework.beans.exception.BeansException;
+import cn.bugstack.springframework.beans.factory.strategy.InstantiationStrategy;
 import cn.bugstack.springframework.beans.factory.config.PropertyValue;
 import cn.bugstack.springframework.beans.factory.config.PropertyValues;
 import cn.bugstack.springframework.beans.factory.config.BeanDefinition;
 import cn.bugstack.springframework.beans.factory.config.BeanReference;
-import cn.bugstack.springframework.beans.factory.strategy.CglibSubclassingInstantiationStrategy;
+import cn.bugstack.springframework.beans.factory.strategy.impl.CglibSubclassingInstantiationStrategy;
 import cn.hutool.core.bean.BeanUtil;
 
 import java.lang.reflect.Constructor;
