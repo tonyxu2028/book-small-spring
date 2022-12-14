@@ -9,9 +9,9 @@ import net.sf.cglib.proxy.NoOp;
 import java.lang.reflect.Constructor;
 
 /**
+ * @description  Cglib 子类实例化策略接口
  * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
  * @author naixixu
- * {@code @description} Cglib 实例化策略
  * @date 2022/03/08
  *
  *
@@ -19,8 +19,8 @@ import java.lang.reflect.Constructor;
 public class CglibSubclassingInstantiationStrategy implements InstantiationStrategy {
 
     @Override
-    @SuppressWarnings("all")
-    public Object instantiate(BeanDefinition beanDefinition, String beanName, Constructor<?> ctor, Object[] args) throws BeansException {
+    public Object instantiate(BeanDefinition beanDefinition, String beanName, Constructor<?> ctor, Object[] args)
+            throws BeansException {
         // 1. 创建 Enhancer 对象
         Enhancer enhancer = new Enhancer();
 
@@ -29,9 +29,14 @@ public class CglibSubclassingInstantiationStrategy implements InstantiationStrat
 
         // 3. 设置回调
         enhancer.setCallback(new NoOp() {
+            // 注意这里hashCode和equals必须成对出现，否则会报错
             @Override
             public int hashCode() {
                 return super.hashCode();
+            }
+            @Override
+            public boolean equals(Object obj) {
+                return super.equals(obj);
             }
         });
 

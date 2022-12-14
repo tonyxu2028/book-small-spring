@@ -19,16 +19,11 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 
     private InstantiationStrategy instantiationStrategy = new CglibSubclassingInstantiationStrategy();
 
-    @SuppressWarnings("unused")
-    public void setInstantiationStrategy(InstantiationStrategy instantiationStrategy) {
-        this.instantiationStrategy = instantiationStrategy;
-    }
-
     @Override
     protected Object createBean(String beanName, BeanDefinition beanDefinition, Object[] args) throws BeansException {
         Object bean;
         try {
-            bean = createBeanInstance(beanDefinition, beanName, args);
+            bean = createBeanInstance(beanName,beanDefinition,args);
         } catch (Exception e) {
             throw new BeansException("Instantiation of bean failed", e);
         }
@@ -37,11 +32,11 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
         return bean;
     }
 
-    protected Object createBeanInstance(BeanDefinition beanDefinition, String beanName, Object[] args) {
-        Constructor<?> constructorToUse = null;
+    protected Object createBeanInstance(String beanName,BeanDefinition beanDefinition,  Object[] args) {
+        Constructor<?> constructorToUse = null; // 默认为无参构造函数null
         Class<?> beanClass = beanDefinition.getBeanClass();
         Constructor<?>[] declaredConstructors = beanClass.getDeclaredConstructors();
-        if(null!=args) {    //有参构造场景，选择对应的有参构造函数，否则为null，表示无参构造
+        if(null!=args) {                        //有参构造场景，选择对应的有参构造函数，否则为null，表示无参构造
             for (Constructor<?> constructor : declaredConstructors) {
                 if (constructor.getParameterTypes().length == args.length) {
                     constructorToUse = constructor;
@@ -54,6 +49,11 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 
     public InstantiationStrategy getInstantiationStrategy() {
         return instantiationStrategy;
+    }
+
+    @SuppressWarnings("unused")
+    public void setInstantiationStrategy(InstantiationStrategy instantiationStrategy) {
+        this.instantiationStrategy = instantiationStrategy;
     }
 
 }
