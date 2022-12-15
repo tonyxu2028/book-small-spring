@@ -1,12 +1,9 @@
 package cn.bugstack.springframework.beans.factory.beanfactory;
 
 /**
+ * @Description: ConfigurableBeanFactory是一个可以获取BeanPostProcessor,BeanClassLoader等方法的配置化接口。
  * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
  * @author naixixu
- * {@code @description} Configuration interface to be implemented by most bean factories. Provides
- * facilities to configure a bean factory, in addition to the bean factory
- * client methods in the {@link BeanFactory}
- * interface.
  * @date 2022/3/9
  *
  *

@@ -1,17 +1,10 @@
 package cn.bugstack.springframework.beans.factory.beanfactory;
 
-import cn.bugstack.springframework.beans.factory.beanfactory.BeanFactory;
-
 /**
- * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
+ * @description AutowireCapableBeanFactory是一个自动化处理bean工厂的配置接口，
+ * 目前在实例中还没有相应的实现，后续会逐步完善。
  * @author naixixu
- * {@code @description} Extension of the {@link BeanFactory}
- * interface to be implemented by bean factories that are capable of
- * autowiring, provided that they want to expose this functionality for
- * existing bean instances.
  * @date 2022/3/9
- *  /CodeDesignTutorials
- *
  */
 public interface AutowireCapableBeanFactory extends BeanFactory {
 

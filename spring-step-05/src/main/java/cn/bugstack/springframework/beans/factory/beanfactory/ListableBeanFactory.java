@@ -5,19 +5,12 @@ import cn.bugstack.springframework.beans.exception.BeansException;
 import java.util.Map;
 
 /**
- *
- *
- *
+ * @description ListableBeanFactory接口继承了BeanFactory接口，它是一个扩展接口，它新增了部分方法。
+ * 1）一个方法getBeansOfType，用于获取指定类型的所有bean实例
+ * 2）一个方法getBeanDefinitionNames，用于获取所有bean定义的名称
  * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
  * @author naixixu
- * {@code @description} Extension of the {@link BeanFactory} interface to be implemented by bean factories
- * that can enumerate all their bean instances, rather than attempting bean lookup
- * by name one by one as requested by clients. BeanFactory implementations that
- * preload all their bean definitions (such as XML-based factories) may implement
- * this interface.
  * @date 2022/3/9
- *  /CodeDesignTutorials
- *
  */
 @SuppressWarnings("unused")
 public interface ListableBeanFactory extends BeanFactory{

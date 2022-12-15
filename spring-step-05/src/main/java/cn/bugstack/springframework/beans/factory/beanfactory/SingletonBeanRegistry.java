@@ -1,9 +1,9 @@
 package cn.bugstack.springframework.beans.factory.beanfactory;
 
 /**
+ * @description 单例注册接口
  * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
  * @author naixixu
- * {@code @description} 单例 Bean 注册表
  * @date 2022/03/07
  *
  *

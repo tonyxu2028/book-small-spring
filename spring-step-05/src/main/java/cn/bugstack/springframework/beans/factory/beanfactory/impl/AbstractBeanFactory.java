@@ -15,7 +15,6 @@ import cn.bugstack.springframework.beans.factory.config.BeanDefinition;
  *
  *
  */
-@SuppressWarnings("unchecked")
 public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry implements BeanFactory {
 
     @Override
@@ -30,15 +29,15 @@ public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry i
 
     @Override
     public <T> T getBean(String name, Class<T> requiredType) throws BeansException {
-        return (T) getBean(name);
+        return doGetBean(name,null);
     }
 
+    @SuppressWarnings("unchecked")
     protected <T> T doGetBean(final String name, final Object[] args) {
         Object bean = getSingleton(name);
         if (bean != null) {
             return (T) bean;
         }
-
         BeanDefinition beanDefinition = getBeanDefinition(name);
         return (T) createBean(name, beanDefinition, args);
     }
