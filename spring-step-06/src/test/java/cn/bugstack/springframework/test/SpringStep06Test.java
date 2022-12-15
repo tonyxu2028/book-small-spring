@@ -9,11 +9,10 @@ import cn.bugstack.springframework.test.common.MyBeanPostProcessor;
 import org.junit.Test;
 
 /**
+ * 测试类
  * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
  * {@code @description} 单元测试
  * @date 2022/03/10
- *
- *
  */
 public class SpringStep06Test {
 
