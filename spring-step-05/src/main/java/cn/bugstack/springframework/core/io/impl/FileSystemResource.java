@@ -8,9 +8,9 @@ import java.io.InputStream;
 import java.nio.file.Files;
 
 /**
+ * {@code @description:} 解决文件类型资源
  * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
  * @author naixixu
- * {@code @description} 文件资源
  * @date 2022/3/9
  */
 @SuppressWarnings("unused")

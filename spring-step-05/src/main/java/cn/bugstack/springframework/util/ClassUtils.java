@@ -1,10 +1,15 @@
 package cn.bugstack.springframework.util;
 
 /**
+ * @description 类工具类
  * @author naixixu
  */
 public class ClassUtils {
 
+    /**
+     * 获取默认的类加载器
+     * @return                  类加载器
+     */
     public static ClassLoader getDefaultClassLoader() {
         ClassLoader cl = null;
         try {

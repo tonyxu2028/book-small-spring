@@ -9,12 +9,10 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
+ * {@code @description:} 类路径类型资源
  * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
  * @author naixixu
- * {@code @description} 类路径资源
  * @date 2022/3/9
- *
- *
  */
 public class ClassPathResource implements Resource {
 
@@ -41,4 +39,5 @@ public class ClassPathResource implements Resource {
         }
         return is;
     }
+
 }

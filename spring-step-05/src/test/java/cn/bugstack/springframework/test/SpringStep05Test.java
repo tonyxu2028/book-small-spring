@@ -75,7 +75,7 @@ public class SpringStep05Test {
     @Test
     public void test_url() throws IOException {
         Resource resource = resourceLoader.getResource(
-                "https://github.com/tonyxu2028/book-small-spring/tree/master/spring-step-05/src/test/resources/important.properties");
+                "https://github.com/tonyxu2028/book-small-spring/blob/master/spring-step-05/src/test/resources/important.properties");
         InputStream inputStream = resource.getInputStream();
         String content = IoUtil.readUtf8(inputStream);
         System.out.println(content);

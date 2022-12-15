@@ -5,6 +5,8 @@ import cn.bugstack.springframework.core.io.impl.DefaultResourceLoader;
 import cn.bugstack.springframework.core.io.ResourceLoader;
 
 /**
+ * @Description: AbstractBeanDefinitionReader是BeanDefinitionReader的抽象实现类（基类实现）
+ * 这个抽象类目前只负责获取BeanDefinition注册表和资源加载器
  * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
  * @author naixixu
  * {@code @description} Abstract base class for bean definition readers which implement

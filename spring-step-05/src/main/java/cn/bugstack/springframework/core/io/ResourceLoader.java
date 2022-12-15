@@ -1,12 +1,10 @@
 package cn.bugstack.springframework.core.io;
 
 /**
+ * @description 资源加载器接口
  * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
  * @author naixixu
- * {@code @description} 资源加载器
  * @date 2022/3/9
- *
- *
  */
 public interface ResourceLoader {
 

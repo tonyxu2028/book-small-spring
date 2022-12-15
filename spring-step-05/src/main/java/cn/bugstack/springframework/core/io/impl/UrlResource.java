@@ -10,14 +10,10 @@ import java.net.URL;
 import java.net.URLConnection;
 
 /**
- *
- *
- *
+ * {@code @description:} URL 资源
  * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
- * {@code @description} URL 资源
+ * @author naixixu
  * @date 2022/3/9
- *
- *
  */
 public class UrlResource implements Resource {
 
