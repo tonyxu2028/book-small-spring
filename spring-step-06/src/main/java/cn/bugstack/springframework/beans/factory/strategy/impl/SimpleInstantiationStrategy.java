@@ -1,7 +1,7 @@
-package cn.bugstack.springframework.beans.factory.support;
+package cn.bugstack.springframework.beans.factory.strategy.impl;
 
-import cn.bugstack.springframework.beans.BeansException;
-import cn.bugstack.springframework.beans.factory.InstantiationStrategy;
+import cn.bugstack.springframework.beans.exception.BeansException;
+import cn.bugstack.springframework.beans.factory.strategy.InstantiationStrategy;
 import cn.bugstack.springframework.beans.factory.config.BeanDefinition;
 
 import java.lang.reflect.Constructor;

@@ -1,8 +1,8 @@
-package cn.bugstack.springframework.beans.factory.support;
+package cn.bugstack.springframework.beans.factory.strategy.impl;
 
-import cn.bugstack.springframework.beans.BeansException;
-import cn.bugstack.springframework.beans.factory.InstantiationStrategy;
+import cn.bugstack.springframework.beans.exception.BeansException;
 import cn.bugstack.springframework.beans.factory.config.BeanDefinition;
+import cn.bugstack.springframework.beans.factory.strategy.InstantiationStrategy;
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.NoOp;
 
@@ -12,7 +12,7 @@ import java.lang.reflect.Constructor;
  *
  *
  *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
  * @author naixixu
  * @description Cglib 实例化策略
  * @date 2022/03/08
@@ -30,6 +30,11 @@ public class CglibSubclassingInstantiationStrategy implements InstantiationStrat
             public int hashCode() {
                 return super.hashCode();
             }
+            @Override
+            public boolean equals(Object obj) {
+                return super.equals(obj);
+            }
+
         });
         if (null == ctor) {
             return enhancer.create();

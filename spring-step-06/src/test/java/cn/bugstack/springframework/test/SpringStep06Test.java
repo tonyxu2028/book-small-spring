@@ -1,7 +1,7 @@
 package cn.bugstack.springframework.test;
 
-import cn.bugstack.springframework.beans.factory.support.DefaultListableBeanFactory;
-import cn.bugstack.springframework.beans.factory.xml.XmlBeanDefinitionReader;
+import cn.bugstack.springframework.beans.factory.beanfactory.impl.DefaultListableBeanFactory;
+import cn.bugstack.springframework.beans.factory.read.impl.XmlBeanDefinitionReader;
 import cn.bugstack.springframework.context.support.ClassPathXmlApplicationContext;
 import cn.bugstack.springframework.test.bean.UserService;
 import cn.bugstack.springframework.test.common.MyBeanFactoryPostProcessor;

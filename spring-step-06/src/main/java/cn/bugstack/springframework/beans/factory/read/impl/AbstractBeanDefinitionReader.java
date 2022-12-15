@@ -1,7 +1,7 @@
-package cn.bugstack.springframework.beans.factory.support;
+package cn.bugstack.springframework.beans.factory.read.impl;
 
-import cn.bugstack.springframework.beans.factory.BeanDefinitionReader;
-import cn.bugstack.springframework.beans.factory.BeanDefinitionRegistry;
+import cn.bugstack.springframework.beans.factory.beanfactory.BeanDefinitionRegistry;
+import cn.bugstack.springframework.beans.factory.read.BeanDefinitionReader;
 import cn.bugstack.springframework.core.io.impl.DefaultResourceLoader;
 import cn.bugstack.springframework.core.io.ResourceLoader;
 

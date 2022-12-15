@@ -1,10 +1,10 @@
-package cn.bugstack.springframework.beans.factory;
+package cn.bugstack.springframework.beans.factory.beanfactory;
 
-import cn.bugstack.springframework.beans.BeansException;
+import cn.bugstack.springframework.beans.exception.BeansException;
 import cn.bugstack.springframework.beans.factory.config.BeanDefinition;
 
 /**
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
  * @author naixixu
  * @description Configuration interface to be implemented by most listable bean factories.
  * In addition to {@link ConfigurableBeanFactory}, it provides facilities to

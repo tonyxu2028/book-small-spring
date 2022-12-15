@@ -1,6 +1,6 @@
-package cn.bugstack.springframework.beans.factory;
+package cn.bugstack.springframework.beans.factory.beanfactory;
 
-import cn.bugstack.springframework.beans.BeansException;
+import cn.bugstack.springframework.beans.exception.BeansException;
 
 /**
  * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>

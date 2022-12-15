@@ -1,6 +1,6 @@
 package cn.bugstack.springframework.context;
 
-import cn.bugstack.springframework.beans.factory.ListableBeanFactory;
+import cn.bugstack.springframework.beans.factory.beanfactory.ListableBeanFactory;
 
 /**
  * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>

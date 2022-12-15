@@ -1,11 +1,11 @@
 package cn.bugstack.springframework.test.common;
 
-import cn.bugstack.springframework.beans.BeansException;
+import cn.bugstack.springframework.beans.exception.BeansException;
 import cn.bugstack.springframework.beans.factory.config.PropertyValue;
 import cn.bugstack.springframework.beans.factory.config.PropertyValues;
-import cn.bugstack.springframework.beans.factory.ConfigurableListableBeanFactory;
+import cn.bugstack.springframework.beans.factory.beanfactory.ConfigurableListableBeanFactory;
 import cn.bugstack.springframework.beans.factory.config.BeanDefinition;
-import cn.bugstack.springframework.beans.factory.BeanFactoryPostProcessor;
+import cn.bugstack.springframework.beans.factory.beanfactory.BeanFactoryPostProcessor;
 
 /**
  *

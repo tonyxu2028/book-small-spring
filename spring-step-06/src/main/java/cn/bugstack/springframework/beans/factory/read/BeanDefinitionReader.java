@@ -1,6 +1,7 @@
-package cn.bugstack.springframework.beans.factory;
+package cn.bugstack.springframework.beans.factory.read;
 
-import cn.bugstack.springframework.beans.BeansException;
+import cn.bugstack.springframework.beans.exception.BeansException;
+import cn.bugstack.springframework.beans.factory.beanfactory.BeanDefinitionRegistry;
 import cn.bugstack.springframework.core.io.Resource;
 import cn.bugstack.springframework.core.io.ResourceLoader;
 

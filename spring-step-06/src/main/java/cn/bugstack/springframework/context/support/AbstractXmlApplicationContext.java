@@ -1,7 +1,7 @@
 package cn.bugstack.springframework.context.support;
 
-import cn.bugstack.springframework.beans.factory.support.DefaultListableBeanFactory;
-import cn.bugstack.springframework.beans.factory.xml.XmlBeanDefinitionReader;
+import cn.bugstack.springframework.beans.factory.beanfactory.impl.DefaultListableBeanFactory;
+import cn.bugstack.springframework.beans.factory.read.impl.XmlBeanDefinitionReader;
 
 /**
  *

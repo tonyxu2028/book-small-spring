@@ -1,6 +1,6 @@
 package cn.bugstack.springframework.context.support;
 
-import cn.bugstack.springframework.beans.BeansException;
+import cn.bugstack.springframework.beans.exception.BeansException;
 
 /**
  *
