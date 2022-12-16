@@ -3,7 +3,8 @@ package cn.bugstack.springframework.beans.factory.beanfactory;
 import cn.bugstack.springframework.beans.exception.BeansException;
 
 /**
- * {@code @description} 允许自定义修改 BeanDefinition 属性信息
+ * {@code @description} BeanFactoryPostProcessor - Spring提供的扩展机制
+ * 允许在Bean对象注册后，实例化Bean对象之前，修改BeanDefinition属性
  * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
  * @author naixixu
  * @date 2022/3/10
