@@ -5,8 +5,6 @@ package cn.bugstack.springframework.beans.exception;
  * @author naixixu
  * {@code @description} 定义 Bean 异常
  * @date 2022/3/7
- *
- *
  */
 public class BeansException extends RuntimeException{
 

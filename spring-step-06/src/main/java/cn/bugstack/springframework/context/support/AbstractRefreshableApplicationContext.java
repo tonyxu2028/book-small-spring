@@ -5,16 +5,10 @@ import cn.bugstack.springframework.beans.factory.beanfactory.ConfigurableListabl
 import cn.bugstack.springframework.beans.factory.beanfactory.impl.DefaultListableBeanFactory;
 
 /**
- *
- *
- *
+ * {@code @description} 抽象基类刷新应用上下文 Base class for
+ * {@link cn.bugstack.springframework.context.ApplicationContext}
  * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
  * @author naixixu
- * {@code @description} 抽象基类刷新应用上下文 Base class for {@link cn.bugstack.springframework.context.ApplicationContext}
- * implementations which are supposed to support multiple calls to {@link #refresh()},
- * creating a new internal bean factory instance every time.
- * (but not necessarily), such a context will be driven by
- * a set of config locations to load bean definitions from.
  * @date 2022/3/10
  *
  *
