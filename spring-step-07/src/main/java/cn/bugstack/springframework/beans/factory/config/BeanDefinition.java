@@ -7,10 +7,7 @@ import cn.bugstack.springframework.beans.PropertyValues;
  * @author naixixu
  * {@code @description} 定义 Bean 实例信息
  * @date 2022/03/07
- *
- *
  */
-@SuppressWarnings("unused")
 public class BeanDefinition {
 
     private Class<?> beanClass;
@@ -35,6 +32,7 @@ public class BeanDefinition {
         return beanClass;
     }
 
+    @SuppressWarnings("unused")
     public void setBeanClass(Class<?> beanClass) {
         this.beanClass = beanClass;
     }
@@ -43,6 +41,7 @@ public class BeanDefinition {
         return propertyValues;
     }
 
+    @SuppressWarnings("unused")
     public void setPropertyValues(PropertyValues propertyValues) {
         this.propertyValues = propertyValues;
     }

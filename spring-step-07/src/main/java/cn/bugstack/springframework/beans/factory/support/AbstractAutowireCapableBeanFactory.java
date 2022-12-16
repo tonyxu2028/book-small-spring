@@ -16,14 +16,11 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 
 /**
+ * {@code @description} 实现默认bean创建的抽象bean工厂超类
  * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
  * @author naixixu
- * {@code @description} 实现默认bean创建的抽象bean工厂超类
  * @date 2022/03/07
- *
- *
  */
-@SuppressWarnings("unused")
 public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFactory implements AutowireCapableBeanFactory {
 
     private InstantiationStrategy instantiationStrategy = new CglibSubclassingInstantiationStrategy();
@@ -70,6 +67,7 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
         return wrappedBean;
     }
 
+    @SuppressWarnings("unused")
     private void invokeInitMethods(String beanName, Object bean, BeanDefinition beanDefinition) throws Exception {
         // 1. 实现接口 InitializingBean
         if (bean instanceof InitializingBean) {
@@ -80,7 +78,7 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
         String initMethodName = beanDefinition.getInitMethodName();
         if (StrUtil.isNotEmpty(initMethodName) && !(bean instanceof InitializingBean)) {
             Method initMethod = beanDefinition.getBeanClass().getMethod(initMethodName);
-            initMethod.invoke(bean);
+            initMethod.invoke(bean);    // 执行初始化方法,反射的方式调用
         }
     }
 
@@ -122,6 +120,10 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
         return instantiationStrategy;
     }
 
+    /**
+     * 执行 BeanPostProcessor 的前置处理
+     */
+    @SuppressWarnings("unused")
     public void setInstantiationStrategy(InstantiationStrategy instantiationStrategy) {
         this.instantiationStrategy = instantiationStrategy;
     }
@@ -151,6 +153,5 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
         }
         return result;
     }
-
 
 }
