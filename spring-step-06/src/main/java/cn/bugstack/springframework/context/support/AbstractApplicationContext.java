@@ -10,9 +10,10 @@ import cn.bugstack.springframework.core.io.impl.DefaultResourceLoader;
 import java.util.Map;
 
 /**
+ * {@code @description} 抽象应用上下文 Abstract implementation of the
+ * {@link cn.bugstack.springframework.context.ApplicationContext}
  * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
  * @author naixixu
- * {@code @description} 抽象应用上下文 Abstract implementation of the {@link cn.bugstack.springframework.context.ApplicationContext}
  * interface. Doesn't mandate the type of storage used for configuration; simply
  * implements common context functionality. Uses the Template Method design pattern,
  * requiring concrete subclasses to implement abstract methods.

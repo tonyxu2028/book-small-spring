@@ -9,12 +9,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * {@code @description} 默认的Bean工厂实现类
  * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
  * @author naixixu
- * {@code @description} 默认的Bean工厂实现类
  * @date 2022/03/07
- *
- *
  */
 public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFactory implements BeanDefinitionRegistry, ConfigurableListableBeanFactory {
 

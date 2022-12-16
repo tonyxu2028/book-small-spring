@@ -3,15 +3,10 @@ package cn.bugstack.springframework.beans.factory.beanfactory;
 import cn.bugstack.springframework.beans.exception.BeansException;
 
 /**
- *
- *
- *
+ * {@code @description} 用于修改新实例化 Bean 对象的扩展点
  * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
  * @author naixixu
- * {@code @description} 用于修改新实例化 Bean 对象的扩展点
  * @date 2022/3/10
- *  /CodeDesignTutorials
- *
  */
 public interface BeanPostProcessor {
 

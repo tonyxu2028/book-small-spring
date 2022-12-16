@@ -4,8 +4,8 @@ import cn.bugstack.springframework.beans.factory.beanfactory.impl.DefaultListabl
 import cn.bugstack.springframework.beans.factory.read.impl.XmlBeanDefinitionReader;
 import cn.bugstack.springframework.context.support.ClassPathXmlApplicationContext;
 import cn.bugstack.springframework.test.bean.UserService;
-import cn.bugstack.springframework.test.common.MyBeanFactoryPostProcessor;
-import cn.bugstack.springframework.test.common.MyBeanPostProcessor;
+import cn.bugstack.springframework.test.processor.MyBeanFactoryPostProcessor;
+import cn.bugstack.springframework.test.processor.MyBeanPostProcessor;
 import org.junit.Test;
 
 /**
@@ -42,7 +42,8 @@ public class SpringStep06Test {
     @Test
     public void test_xml() {
         // 1.初始化 BeanFactory
-        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:springPostProcessor.xml");
+        ClassPathXmlApplicationContext applicationContext =
+                new ClassPathXmlApplicationContext("classpath:springPostProcessor.xml");
 
         // 2. 获取Bean对象调用方法
         UserService userService = applicationContext.getBean("userService", UserService.class);

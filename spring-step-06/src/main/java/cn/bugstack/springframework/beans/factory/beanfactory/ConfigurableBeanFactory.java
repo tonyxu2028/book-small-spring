@@ -11,11 +11,12 @@ package cn.bugstack.springframework.beans.factory.beanfactory;
  *
  *
  */
-@SuppressWarnings("unused")
 public interface ConfigurableBeanFactory extends HierarchicalBeanFactory, SingletonBeanRegistry {
 
+    @SuppressWarnings("unused")
     String SCOPE_SINGLETON = "singleton";
 
+    @SuppressWarnings("unused")
     String SCOPE_PROTOTYPE = "prototype";
 
     /**

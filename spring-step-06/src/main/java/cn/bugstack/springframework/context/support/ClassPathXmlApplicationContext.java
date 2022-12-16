@@ -3,26 +3,14 @@ package cn.bugstack.springframework.context.support;
 import cn.bugstack.springframework.beans.exception.BeansException;
 
 /**
- *
- *
- *
+ * {@code @description} XML 文件应用上下文 Standalone XML application context, taking the context definition files
  * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
  * @author naixixu
- * {@code @description} XML 文件应用上下文 Standalone XML application context, taking the context definition files
- * from the class path, interpreting plain paths as class path resource names
- * that include the package path (e.g. "mypackage/myresource.txt"). Useful for
- * test harnesses as well as for application contexts embedded within JARs.
  * @date 2022/3/10
- *
- *
  */
 public class ClassPathXmlApplicationContext extends AbstractXmlApplicationContext {
 
-    private String[] configLocations;
-
-    @SuppressWarnings("unused")
-    public ClassPathXmlApplicationContext() {
-    }
+    private final String[] configLocations;
 
     /**
      * 从 XML 中加载 BeanDefinition，并刷新上下文
