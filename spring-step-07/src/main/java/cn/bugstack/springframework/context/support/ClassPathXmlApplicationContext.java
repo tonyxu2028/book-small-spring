@@ -18,10 +18,11 @@ import cn.bugstack.springframework.beans.BeansException;
  */
 public class ClassPathXmlApplicationContext extends AbstractXmlApplicationContext {
 
-    private String[] configLocations;
+    private final String[] configLocations;
 
-    @SuppressWarnings("unused")
-    public ClassPathXmlApplicationContext() {
+    @Override
+    protected String[] getConfigLocations() {
+        return configLocations;
     }
 
     /**
@@ -42,11 +43,6 @@ public class ClassPathXmlApplicationContext extends AbstractXmlApplicationContex
     public ClassPathXmlApplicationContext(String[] configLocations) throws BeansException {
         this.configLocations = configLocations;
         refresh();
-    }
-
-    @Override
-    protected String[] getConfigLocations() {
-        return configLocations;
     }
 
 }

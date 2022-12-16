@@ -8,7 +8,7 @@ import org.junit.Test;
  *
  *
  *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
  * @description 单元测试
  * @date 2022/03/10
  *
@@ -20,6 +20,7 @@ public class SpringStep07Test {
     public void test_xml() {
         // 1.初始化 BeanFactory
         ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:spring.xml");
+
         applicationContext.registerShutdownHook();
 
         // 2. 获取Bean对象调用方法
