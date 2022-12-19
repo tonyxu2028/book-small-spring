@@ -11,17 +11,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
- *
- *
+ * @description 抽象的 Bean 工厂基类，定义模板方法
  * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
  * @author naixixu
- * @description 抽象的 Bean 工厂基类，定义模板方法
  * @date 2022/03/07
- *
- *
  */
-@SuppressWarnings("unchecked")
 public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport implements ConfigurableBeanFactory {
 
     /** ClassLoader to resolve bean class names with, if necessary */
@@ -40,11 +34,14 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
         return doGetBean(name, args);
     }
 
+
     @Override
+    @SuppressWarnings("unchecked")
     public <T> T getBean(String name, Class<T> requiredType) throws BeansException {
         return (T) getBean(name);
     }
 
+    @SuppressWarnings("unchecked")
     protected <T> T doGetBean(final String name, final Object[] args) {
         Object sharedInstance = getSingleton(name);
         if (null != sharedInstance) {

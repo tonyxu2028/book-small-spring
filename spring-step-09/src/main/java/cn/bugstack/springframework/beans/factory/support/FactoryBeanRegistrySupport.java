@@ -7,18 +7,14 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- *
- *
- *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
- * @author naixixu
  * @description Support base class for singleton registries which need to handle
- * {@link cn.bugstack.springframework.beans.factory.FactoryBean} instances,
- * integrated with {@link DefaultSingletonBeanRegistry}'s singleton management.
+ * {@link FactoryBean} instances. This class is intended for internal use
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
+ * @author naixixu
+ * {@link DefaultSingletonBeanRegistry}
  * @date 2022/3/11
- *  /CodeDesignTutorials
- *
  */
+@SuppressWarnings("all")
 public abstract class FactoryBeanRegistrySupport extends DefaultSingletonBeanRegistry{
 
     /**
@@ -31,12 +27,13 @@ public abstract class FactoryBeanRegistrySupport extends DefaultSingletonBeanReg
         return (object != NULL_OBJECT ? object : null);
     }
 
-    protected Object getObjectFromFactoryBean(FactoryBean factory, String beanName) {
+    protected Object getObjectFromFactoryBean(FactoryBean<?> factory, String beanName) {
         if (factory.isSingleton()) {
             Object object = this.factoryBeanObjectCache.get(beanName);
             if (object == null) {
                 object = doGetObjectFromFactoryBean(factory, beanName);
-                this.factoryBeanObjectCache.put(beanName, (object != null ? object : NULL_OBJECT));
+                this.factoryBeanObjectCache.put(beanName,
+                        (object != null ? object : NULL_OBJECT));
             }
             return (object != NULL_OBJECT ? object : null);
         } else {
@@ -44,7 +41,7 @@ public abstract class FactoryBeanRegistrySupport extends DefaultSingletonBeanReg
         }
     }
 
-    private Object doGetObjectFromFactoryBean(final FactoryBean factory, final String beanName){
+    private Object doGetObjectFromFactoryBean(final FactoryBean<?> factory, final String beanName){
         try {
             return factory.getObject();
         } catch (Exception e) {

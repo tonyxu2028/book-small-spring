@@ -9,15 +9,10 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- *
- *
- *
+ * @description 通用的注册表实现
  * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
  * @author naixixu
- * @description 通用的注册表实现
  * @date 2022/03/07
- *
- *
  */
 public class DefaultSingletonBeanRegistry implements SingletonBeanRegistry {
 
@@ -56,7 +51,8 @@ public class DefaultSingletonBeanRegistry implements SingletonBeanRegistry {
             try {
                 disposableBean.destroy();
             } catch (Exception e) {
-                throw new BeansException("Destroy method on bean with name '" + beanName + "' threw an exception", e);
+                throw new BeansException("Destroy method on bean with name '"
+                        + beanName + "' threw an exception", e);
             }
         }
     }

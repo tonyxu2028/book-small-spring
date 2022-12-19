@@ -23,7 +23,8 @@ public class ProxyBeanFactory implements FactoryBean<IUserDao> {
             
             return "你被代理了 " + method.getName() + "：" + hashMap.get(args[0].toString());
         };
-        return (IUserDao) Proxy.newProxyInstance(Thread.currentThread().getContextClassLoader(), new Class[]{IUserDao.class}, handler);
+        return (IUserDao) Proxy.newProxyInstance(Thread.currentThread().getContextClassLoader(),
+                new Class[]{IUserDao.class}, handler);
     }
 
     @Override
