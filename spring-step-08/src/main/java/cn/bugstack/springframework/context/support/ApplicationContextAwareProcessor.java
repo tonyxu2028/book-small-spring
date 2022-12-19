@@ -6,15 +6,10 @@ import cn.bugstack.springframework.context.ApplicationContext;
 import cn.bugstack.springframework.context.ApplicationContextAware;
 
 /**
- *
- *
- *
+ * {@code @description} 通过 BeanPostProcessor 实现类感知应用上下文对象
  * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
  * @author naixixu
- * {@code @description} 通过 BeanPostProcessor 实现类感知应用上下文对象
  * @date 2022/3/11
- *  /CodeDesignTutorials
- *
  */
 public class ApplicationContextAwareProcessor implements BeanPostProcessor {
 
@@ -25,7 +20,8 @@ public class ApplicationContextAwareProcessor implements BeanPostProcessor {
     }
 
     @Override
-    public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
+    public Object postProcessBeforeInitialization(Object bean, String beanName)
+            throws BeansException {
         if (bean instanceof ApplicationContextAware){
             ((ApplicationContextAware) bean).setApplicationContext(applicationContext);
         }
@@ -33,7 +29,8 @@ public class ApplicationContextAwareProcessor implements BeanPostProcessor {
     }
 
     @Override
-    public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
+    public Object postProcessAfterInitialization(Object bean, String beanName)
+            throws BeansException {
         return bean;
     }
 
