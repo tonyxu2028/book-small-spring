@@ -6,13 +6,10 @@ import org.junit.Test;
 import org.openjdk.jol.info.ClassLayout;
 
 /**
- *
- *
- *
+ * {@code @description} 单元测试
  * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
- * @description 单元测试
- * @date 2022/03/10
- *
+ * {@code @date} 2022/03/10
+ * <p>
  *
  */
 public class SpringStep09Test {
@@ -41,7 +38,8 @@ public class SpringStep09Test {
     @Test
     public void test_factory_bean() {
         // 1.初始化 BeanFactory
-        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:spring.xml");
+        ClassPathXmlApplicationContext applicationContext =
+                new ClassPathXmlApplicationContext("classpath:spring.xml");
         applicationContext.registerShutdownHook();
         // 2. 调用代理方法
         UserService userService = applicationContext.getBean("userService", UserService.class);
