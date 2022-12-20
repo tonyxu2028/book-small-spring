@@ -5,7 +5,6 @@ package cn.bugstack.springframework.test.bean;
  * 公众号：bugstack虫洞栈
  * Create by 小傅哥(fustack)
  */
-@SuppressWarnings("unused")
 public class UserService {
 
     private String uId;
@@ -16,35 +15,35 @@ public class UserService {
     public String queryUserInfo() {
         return userDao.queryUserName(uId) + "," + company + "," + location;
     }
-
+    @SuppressWarnings("unused")
     public String getuId() {
         return uId;
     }
-
+    @SuppressWarnings("unused")
     public void setuId(String uId) {
         this.uId = uId;
     }
-
+    @SuppressWarnings("unused")
     public String getCompany() {
         return company;
     }
-
+    @SuppressWarnings("unused")
     public void setCompany(String company) {
         this.company = company;
     }
-
+    @SuppressWarnings("unused")
     public String getLocation() {
         return location;
     }
-
+    @SuppressWarnings("unused")
     public void setLocation(String location) {
         this.location = location;
     }
-
+    @SuppressWarnings("unused")
     public IUserDao getUserDao() {
         return userDao;
     }
-
+    @SuppressWarnings("unused")
     public void setUserDao(IUserDao userDao) {
         this.userDao = userDao;
     }

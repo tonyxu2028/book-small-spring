@@ -44,7 +44,6 @@ public class DefaultSingletonBeanRegistry implements SingletonBeanRegistry {
     public void destroySingletons() {
         Set<String> keySet = this.disposableBeans.keySet();
         Object[] disposableBeanNames = keySet.toArray();
-
         for (int i = disposableBeanNames.length - 1; i >= 0; i--) {
             Object beanName = disposableBeanNames[i];
             DisposableBean disposableBean = disposableBeans.remove(beanName);

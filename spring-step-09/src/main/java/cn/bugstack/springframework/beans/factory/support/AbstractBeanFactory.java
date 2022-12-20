@@ -59,6 +59,7 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
             return beanInstance;
         }
 
+        // 为了快速返回
         Object object = getCachedObjectForFactoryBean(beanName);
 
         if (object == null) {

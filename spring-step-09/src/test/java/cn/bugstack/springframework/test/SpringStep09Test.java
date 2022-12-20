@@ -20,7 +20,8 @@ public class SpringStep09Test {
     @Test
     public void test_prototype() {
         // 1.初始化 BeanFactory
-        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:spring.xml");
+        ClassPathXmlApplicationContext applicationContext =
+                new ClassPathXmlApplicationContext("classpath:spring.xml");
         applicationContext.registerShutdownHook();
 
         // 2. 获取Bean对象调用方法
@@ -32,7 +33,8 @@ public class SpringStep09Test {
         System.out.println(userService02);
 
         // 4. 打印十六进制哈希
-        System.out.println(userService01 + " 十六进制哈希：" + Integer.toHexString(userService01.hashCode()));
+        System.out.println(userService01 + " 十六进制哈希：" +
+                Integer.toHexString(userService01.hashCode()));
         System.out.println(ClassLayout.parseInstance(userService01).toPrintable());
     }
 
