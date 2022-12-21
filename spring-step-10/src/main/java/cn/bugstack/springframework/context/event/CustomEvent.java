@@ -1,8 +1,8 @@
-package cn.bugstack.springframework.test.event;
+package cn.bugstack.springframework.context.event;
 
 import cn.bugstack.springframework.context.event.ApplicationContextEvent;
 
-@SuppressWarnings("unused")
+
 public class CustomEvent extends ApplicationContextEvent {
 
     private Long id;
@@ -24,6 +24,7 @@ public class CustomEvent extends ApplicationContextEvent {
         return id;
     }
 
+    @SuppressWarnings("unused")
     public void setId(Long id) {
         this.id = id;
     }
@@ -32,7 +33,9 @@ public class CustomEvent extends ApplicationContextEvent {
         return message;
     }
 
+    @SuppressWarnings("unused")
     public void setMessage(String message) {
         this.message = message;
     }
+
 }

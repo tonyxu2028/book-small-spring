@@ -1,6 +1,7 @@
 package cn.bugstack.springframework.test.event;
 
 import cn.bugstack.springframework.context.ApplicationListener;
+import cn.bugstack.springframework.context.event.CustomEvent;
 
 import java.util.Date;
 
