@@ -6,7 +6,7 @@ import java.util.EventObject;
  *
  *
  *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>0
  * @author naixixu
  * @description Class to be extended by all application events. Abstract as it
  * doesn't make sense for generic events to be published directly.
@@ -18,7 +18,6 @@ public abstract class AbstractApplicationEvent extends EventObject {
 
     /**
      * Constructs a prototypical Event.
-     *
      * @param source The object on which the Event initially occurred.
      * @throws IllegalArgumentException if source is null.
      */

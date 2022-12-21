@@ -153,4 +153,5 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader i
         // 执行销毁单例bean的销毁方法
         getBeanFactory().destroySingletons();
     }
+
 }

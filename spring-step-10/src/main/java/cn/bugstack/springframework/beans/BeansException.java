@@ -4,7 +4,7 @@ package cn.bugstack.springframework.beans;
  *
  *
  *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
  * @author naixixu
  * @description 定义 Bean 异常
  * @date 2022/3/7

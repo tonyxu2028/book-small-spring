@@ -21,7 +21,6 @@ public class SimpleApplicationEventMulticaster extends AbstractApplicationEventM
         setBeanFactory(beanFactory);
     }
 
-    @SuppressWarnings("all")
     @Override
     public void multicastEvent(final AbstractApplicationEvent event) {
         for (final ApplicationListener listener : getApplicationListeners(event)) {

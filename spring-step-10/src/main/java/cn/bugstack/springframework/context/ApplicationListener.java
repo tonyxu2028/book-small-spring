@@ -3,16 +3,10 @@ package cn.bugstack.springframework.context;
 import java.util.EventListener;
 
 /**
- *
- *
- *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
- * @description Interface to be implemented by application event listeners.
- * Based on the standard <code>java.util.EventListener</code> interface
- * for the Observer design pattern.
+ * @description 定义和实现事件
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
+ * @author naixixu
  * @date 2022/3/13
- *  /CodeDesignTutorials
- *
  */
 public interface ApplicationListener<E extends AbstractApplicationEvent> extends EventListener {
 
