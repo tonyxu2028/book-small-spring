@@ -1,15 +1,10 @@
 package cn.bugstack.springframework.beans.factory;
 
 /**
- *
- *
- *
- * 作者：DerekYRC https://github.com/DerekYRC/mini-spring
+ * @description Interface to be implemented by objects used within a
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
  * @author naixixu
- * @description Interface to be implemented by objects used within a {@link BeanFactory}
- * which are themselves factories. If a bean implements this interface,
- * it is used as a factory for an object to expose, not directly as a bean
- * instance that will be exposed itself.
+ * {@link BeanFactory}
  * @date 2022/3/11
  *  /CodeDesignTutorials
  *
