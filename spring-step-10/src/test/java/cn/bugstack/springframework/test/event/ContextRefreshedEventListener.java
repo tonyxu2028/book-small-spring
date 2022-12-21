@@ -7,7 +7,8 @@ public class ContextRefreshedEventListener implements ApplicationListener<Contex
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
-        System.out.println("刷新事件：" + this.getClass().getName());
+        System.out.println(" *****************刷新事件***************** ");
+        System.out.println(this.getClass().getName());
     }
 
 }

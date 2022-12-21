@@ -8,8 +8,9 @@ import cn.bugstack.springframework.context.ApplicationListener;
  * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
  * @author naixixu
  * @date 2022/3/13
+ *
  */
-public interface ApplicationEventMulticaster {
+public interface ApplicationEventMulticaster<E extends AbstractApplicationEvent> {
 
     // #######################Listener注册相关方法#######################
 
@@ -17,14 +18,14 @@ public interface ApplicationEventMulticaster {
      * Add a listener to be notified of all events.
      * @param listener the listener to add
      */
-    void addApplicationListener(ApplicationListener<?> listener);
+    void addApplicationListener(ApplicationListener<E> listener);
 
     /**
      * Remove a listener from the notification list.
      * @param listener the listener to remove
      */
     @SuppressWarnings("unused")
-    void removeApplicationListener(ApplicationListener<?> listener);
+    void removeApplicationListener(ApplicationListener<E> listener);
 
 
 
@@ -34,6 +35,6 @@ public interface ApplicationEventMulticaster {
      * Multicast the given application event to appropriate listeners.
      * @param event the event to multicast
      */
-    void multicastEvent(AbstractApplicationEvent event);
+    void multicastEvent(E event);
 
 }

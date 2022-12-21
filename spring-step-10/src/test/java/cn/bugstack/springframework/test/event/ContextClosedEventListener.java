@@ -7,7 +7,8 @@ public class ContextClosedEventListener implements ApplicationListener<ContextCl
 
     @Override
     public void onApplicationEvent(ContextClosedEvent event) {
-        System.out.println("关闭事件：" + this.getClass().getName());
+        System.out.println(" *****************关闭事件***************** ");
+        System.out.println(this.getClass().getName());
     }
 
 }

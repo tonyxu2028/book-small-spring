@@ -34,7 +34,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader i
 
     public static final String APPLICATION_EVENT_MULTICASTER_BEAN_NAME = "applicationEventMulticaster";
 
-    private ApplicationEventMulticaster applicationEventMulticaster;
+    private ApplicationEventMulticaster<AbstractApplicationEvent> applicationEventMulticaster;
 
     @Override
     public void refresh() throws BeansException {
@@ -147,7 +147,8 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader i
 
     @Override
     public void close() {
-        // 发布容器关闭事件
+
+        // 发布容器关闭事件,并且有监听处理
         publishEvent(new ContextClosedEvent(this));
 
         // 执行销毁单例bean的销毁方法
