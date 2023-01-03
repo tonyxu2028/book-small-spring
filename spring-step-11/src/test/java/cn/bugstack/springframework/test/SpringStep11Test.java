@@ -73,9 +73,12 @@ public class SpringStep11Test {
         Object targetObj = new UserService();
 
         // AOP 代理
-        IUserService proxy = (IUserService) Proxy.newProxyInstance(Thread.currentThread().getContextClassLoader(), targetObj.getClass().getInterfaces(), new InvocationHandler() {
+        IUserService proxy = (IUserService) Proxy.newProxyInstance(
+                Thread.currentThread().getContextClassLoader(),
+                targetObj.getClass().getInterfaces(), new InvocationHandler() {
             // 方法匹配器
-            final MethodMatcher methodMatcher = new AspectJExpressionPointcut("execution(* cn.bugstack.springframework.test.bean.IUserService.*(..))");
+            final MethodMatcher methodMatcher =
+                    new AspectJExpressionPointcut("execution(* cn.bugstack.springframework.test.bean.IUserService.*(..))");
 
             @Override
             public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
