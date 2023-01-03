@@ -1,6 +1,8 @@
 package cn.bugstack.springframework.aop;
 
 /**
+ * @Description:
+ * ClassFilter接口定义匹配类,用于帮助切点找到给定的接口和目标类。
  * Filter that restricts matching of a pointcut or introduction to
  * a given set of target classes.
  * <p>

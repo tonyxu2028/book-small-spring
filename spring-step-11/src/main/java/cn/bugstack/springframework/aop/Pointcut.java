@@ -1,8 +1,10 @@
 package cn.bugstack.springframework.aop;
 
 /**
+ * @Description:
+ * Pointcut 切入点接口Pointcut用于获取ClassFilter和MethodMatcher两个类,
+ * 它们都是切点表达式提供的内容。
  * Core Spring pointcut abstraction.
- *
  * <p>A pointcut is composed of a {@link ClassFilter} and a {@link MethodMatcher}.
  * Both these basic terms and a Pointcut itself can be combined to build up combinations
  * <p>

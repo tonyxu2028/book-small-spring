@@ -3,6 +3,9 @@ package cn.bugstack.springframework.aop;
 import java.lang.reflect.Method;
 
 /**
+ * @Description:
+ * 方法匹配用于找到表达式范围内匹配的目标类和方法,
+ * 在上面的实例中体现为MethodMatcher.matches(Method method,targetObj.getClass())方法。
  * Part of a {@link Pointcut}: Checks whether the target method is eligible for advice.
  * <p>
  * 博客：<a href="https://bugstack.cn">...</a> - 沉淀、分享、成长，让自己和他人都能有所收获！
