@@ -12,6 +12,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
+ * 实现切点表达式类
  * Spring {@link Pointcut} implementation
  * that uses the AspectJ weaver to evaluate a pointcut expression.
  * <p>
@@ -24,7 +25,6 @@ import java.util.Set;
  */
 @SuppressWarnings("all")
 public class AspectJExpressionPointcut implements Pointcut, ClassFilter, MethodMatcher {
-
     private static final Set<PointcutPrimitive> SUPPORTED_PRIMITIVES = new HashSet<>();
 
     static {

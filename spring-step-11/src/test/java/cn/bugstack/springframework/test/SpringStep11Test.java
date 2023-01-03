@@ -66,7 +66,7 @@ public class SpringStep11Test {
         System.out.println("测试结果：" + result);
     }
 
-    // ######################### test_aop #########################
+    // ######################### test_aop for AspectJExpressionPointcut #########################
 
     @Test
     public void test_aop() throws NoSuchMethodException {
@@ -77,11 +77,13 @@ public class SpringStep11Test {
         Class<UserService> clazz = UserService.class;
         Method method = clazz.getDeclaredMethod("queryUserInfo");
 
+        // clazz是否匹配pointcut
         System.out.println(pointcut.matches(clazz));
+        // method是否匹配pointcut
         System.out.println(pointcut.matches(method, clazz));
     }
 
-    // ######################### test_dynamic #########################
+    // ######################### test_dynamic AdvisedSupport Jdk&cglib #########################
 
     @Test
     public void test_dynamic() {

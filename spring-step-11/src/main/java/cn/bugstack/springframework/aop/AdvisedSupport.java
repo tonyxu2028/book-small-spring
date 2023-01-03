@@ -3,10 +3,9 @@ package cn.bugstack.springframework.aop;
 import org.aopalliance.intercept.MethodInterceptor;
 
 /**
- * Base class for AOP proxy configuration managers.
- * These are not themselves AOP proxies, but subclasses of this class are
- * normally factories from which AOP proxy instances are obtained directly.
- * <p>
+ * 包装切面通知信息 AdvisedSupport将代理，拦截，匹配的各项属性包装到一个类中,
+ * 方便在proxy实现类中使用。
+ * 这与在业务开发中包装入参是一个道理。
  * 博客：<a href="https://bugstack.cn">...</a> - 沉淀、分享、成长，让自己和他人都能有所收获！
  * 公众号：bugstack虫洞栈
  * Create by 小傅哥(fustack)
