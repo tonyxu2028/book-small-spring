@@ -11,7 +11,6 @@ package cn.bugstack.springframework.aop;
  * Create by 小傅哥(fustack)
  * @author naixixu
  */
-@SuppressWarnings("unused")
 public interface Pointcut {
 
     /**
@@ -19,6 +18,7 @@ public interface Pointcut {
      *
      * @return the ClassFilter (never <code>null</code>)
      */
+    @SuppressWarnings("unused")
     ClassFilter getClassFilter();
 
     /**
@@ -26,6 +26,7 @@ public interface Pointcut {
      *
      * @return the MethodMatcher (never <code>null</code>)
      */
+    @SuppressWarnings("unused")
     MethodMatcher getMethodMatcher();
 
 }
