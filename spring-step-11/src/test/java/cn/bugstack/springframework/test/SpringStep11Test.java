@@ -18,14 +18,9 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
 /**
- *
- *
- *
- * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
  * @description 单元测试
+ * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
  * @date 2022/03/10
- *
- *
  */
 public class SpringStep11Test {
 
