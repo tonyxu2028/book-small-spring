@@ -4,9 +4,6 @@ import cn.bugstack.springframework.beans.BeansException;
 import cn.bugstack.springframework.beans.factory.config.BeanDefinition;
 
 /**
- *
- *
- *
  * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
  * @author naixixu
  * @description Bean 定义注册接口
@@ -14,7 +11,6 @@ import cn.bugstack.springframework.beans.factory.config.BeanDefinition;
  *
  *
  */
-@SuppressWarnings("unused")
 public interface BeanDefinitionRegistry {
 
     /**
@@ -24,15 +20,6 @@ public interface BeanDefinitionRegistry {
      * @param beanDefinition Bean 定义
      */
     void registerBeanDefinition(String beanName, BeanDefinition beanDefinition);
-
-    /**
-     * 使用Bean名称查询BeanDefinition
-     *
-     * @param beanName                      Bean 名称
-     * @return                              Bean 定义
-     * @throws BeansException               Bean 异常
-     */
-    BeanDefinition getBeanDefinition(String beanName) throws BeansException;
 
     /**
      * 判断是否包含指定名称的BeanDefinition
@@ -46,6 +33,17 @@ public interface BeanDefinitionRegistry {
      *
      * @return 返回注册表中所有的Bean名称
      */
+    @SuppressWarnings("unused")
     String[] getBeanDefinitionNames();
+
+    /**
+     * 使用Bean名称查询BeanDefinition
+     *
+     * @param beanName                      Bean 名称
+     * @return                              Bean 定义
+     * @throws BeansException               Bean 异常
+     */
+    @SuppressWarnings("unused")
+    BeanDefinition getBeanDefinition(String beanName) throws BeansException;
 
 }

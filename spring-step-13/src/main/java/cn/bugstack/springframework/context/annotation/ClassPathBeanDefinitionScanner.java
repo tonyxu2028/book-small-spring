@@ -47,6 +47,11 @@ public class ClassPathBeanDefinitionScanner extends ClassPathScanningCandidateCo
         }
     }
 
+    /**
+     * 解析 Bean 的作用域 singleton、prototype
+     * @param   beanDefinition      Bean 定义
+     * @return                      Bean 作用域
+     */
     private String resolveBeanScope(BeanDefinition beanDefinition) {
         Class<?> beanClass = beanDefinition.getBeanClass();
         Scope scope = beanClass.getAnnotation(Scope.class);
@@ -56,6 +61,11 @@ public class ClassPathBeanDefinitionScanner extends ClassPathScanningCandidateCo
         return StrUtil.EMPTY;
     }
 
+    /**
+     * 查明Bean的名称
+     * @param   beanDefinition      BeanDefinition定义
+     * @return  beanName            Bean的名称
+     */
     private String determineBeanName(BeanDefinition beanDefinition) {
         Class<?> beanClass = beanDefinition.getBeanClass();
         Component component = beanClass.getAnnotation(Component.class);
