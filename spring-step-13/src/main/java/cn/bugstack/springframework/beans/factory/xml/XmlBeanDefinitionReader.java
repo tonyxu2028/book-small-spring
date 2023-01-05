@@ -20,15 +20,10 @@ import java.io.InputStream;
 import java.util.List;
 
 /**
- *
- *
- *
  * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
  * @author naixixu
  * @description Bean definition reader for XML bean definitions.| 本章节修改为 dom4j 处理 xml
  * @date 2022/3/9
- *
- *
  */
 public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
 
@@ -85,9 +80,19 @@ public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
             if (StrUtil.isEmpty(scanPath)) {
                 throw new BeansException("The value of base-package attribute can not be empty or null");
             }
-            scanPackage(scanPath);
+            scanPackageBeanDefinitions(scanPath);
+        } else {
+            xmlParseBeanDefinitions(root);
         }
+    }
 
+    private void scanPackageBeanDefinitions(String scanPath) {
+        String[] basePackages = StrUtil.splitToArray(scanPath, ',');
+        ClassPathBeanDefinitionScanner scanner = new ClassPathBeanDefinitionScanner(getRegistry());
+        scanner.doScan(basePackages);
+    }
+
+    private void xmlParseBeanDefinitions(Element root) throws ClassNotFoundException {
         List<Element> beanList = root.elements("bean");
         for (Element bean : beanList) {
 
@@ -134,12 +139,6 @@ public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
             // 注册 BeanDefinition
             getRegistry().registerBeanDefinition(beanName, beanDefinition);
         }
-    }
-
-    private void scanPackage(String scanPath) {
-        String[] basePackages = StrUtil.splitToArray(scanPath, ',');
-        ClassPathBeanDefinitionScanner scanner = new ClassPathBeanDefinitionScanner(getRegistry());
-        scanner.doScan(basePackages);
     }
 
 }

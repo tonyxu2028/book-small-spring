@@ -31,22 +31,26 @@ public class SpringStep13Test {
         ClassPathXmlApplicationContext applicationContext =
                 new ClassPathXmlApplicationContext("classpath:spring-property.xml");
         IUserService userService = applicationContext.getBean("userService", IUserService.class);
+        // 显示结果：UserService#token = { RejDlI78hu223Opo983Ds }
         System.out.println("测试结果：" + userService);
     }
 
     @Test
-    public void test_beanPost(){
+    public void test_beanPostProcessor(){
         BeanPostProcessor beanPostProcessor = new BeanPostProcessor() {
             @Override
             public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
+                System.out.println("postProcessBeforeInitialization beanName = " + beanName);
                 return null;
             }
 
             @Override
             public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
+                System.out.println("postProcessAfterInitialization beanName = " + beanName);
                 return null;
             }
         };
+
         List<BeanPostProcessor> beanPostProcessors = new ArrayList<>();
         beanPostProcessors.add(beanPostProcessor);
         beanPostProcessors.add(beanPostProcessor);
