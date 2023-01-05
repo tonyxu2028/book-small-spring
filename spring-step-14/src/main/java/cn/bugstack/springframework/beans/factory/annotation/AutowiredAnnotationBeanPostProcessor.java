@@ -57,6 +57,7 @@ public class AutowiredAnnotationBeanPostProcessor implements InstantiationAwareB
             if (null != autowiredAnnotation) {
                 Class<?> fieldType = field.getType();
                 String dependentBeanName;
+                // 3. 处理注解 @Qualifier
                 Qualifier qualifierAnnotation = field.getAnnotation(Qualifier.class);
                 Object dependentBean;
                 if (null != qualifierAnnotation) {
@@ -86,4 +87,5 @@ public class AutowiredAnnotationBeanPostProcessor implements InstantiationAwareB
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
         return null;
     }
+
 }
