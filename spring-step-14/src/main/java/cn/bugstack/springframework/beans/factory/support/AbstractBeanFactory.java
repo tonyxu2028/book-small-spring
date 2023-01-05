@@ -22,7 +22,6 @@ import java.util.List;
  *
  *
  */
-@SuppressWarnings("unchecked")
 public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport implements ConfigurableBeanFactory {
 
     /** ClassLoader to resolve bean class names with, if necessary */
@@ -32,6 +31,7 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
     private final List<BeanPostProcessor> beanPostProcessors = new ArrayList<>();
 
     /**
+     * 解决占位符问题
      * String resolvers to apply e.g. to annotation attribute values
      */
     private final List<StringValueResolver> embeddedValueResolvers = new ArrayList<>();
@@ -47,10 +47,12 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public <T> T getBean(String name, Class<T> requiredType) throws BeansException {
         return (T) getBean(name);
     }
 
+    @SuppressWarnings("unchecked")
     protected <T> T doGetBean(final String name, final Object[] args) {
         Object sharedInstance = getSingleton(name);
         if (null != sharedInstance) {

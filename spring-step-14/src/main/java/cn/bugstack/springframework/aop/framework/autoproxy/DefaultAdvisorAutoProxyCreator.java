@@ -65,9 +65,7 @@ public class DefaultAdvisorAutoProxyCreator implements InstantiationAwareBeanPos
             advisedSupport.setProxyTargetClass(false);
 
             return new ProxyFactory(advisedSupport).getProxy();
-
         }
-
         return null;
     }
 

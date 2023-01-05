@@ -7,7 +7,6 @@ import cn.bugstack.springframework.stereotype.Component;
 import java.util.Random;
 
 @Component("userService")
-@SuppressWarnings("unused")
 public class UserService implements IUserService {
 
     @Value("${token}")
@@ -34,24 +33,19 @@ public class UserService implements IUserService {
         return "注册用户：" + userName + " success！";
     }
 
+    @SuppressWarnings("unused")
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    @SuppressWarnings("unused")
+    public void setUserDao(UserDao userDao) {
+        this.userDao = userDao;
+    }
+
     @Override
     public String toString() {
         return "UserService#token = { " + token + " }";
     }
 
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
-
-    public UserDao getUserDao() {
-        return userDao;
-    }
-
-    public void setUserDao(UserDao userDao) {
-        this.userDao = userDao;
-    }
 }

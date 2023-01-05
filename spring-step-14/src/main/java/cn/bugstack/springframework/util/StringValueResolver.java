@@ -1,9 +1,6 @@
 package cn.bugstack.springframework.util;
 
 /**
- *
- *
- *
  * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
  * @author naixixu
  * @description Simple strategy interface for resolving a String value.
