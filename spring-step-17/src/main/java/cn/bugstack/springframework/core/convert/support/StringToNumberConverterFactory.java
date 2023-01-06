@@ -6,15 +6,10 @@ import cn.bugstack.springframework.util.NumberUtils;
 import com.sun.istack.internal.Nullable;
 
 /**
- *
- *
- *
+ * @description StringToNumber类型转换工厂实现类
  * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
  * @author naixixu
- * @description Converts from a String any JDK-standard Number implementation.
  * @date 2022/3/16
- *
- *
  */
 public class StringToNumberConverterFactory implements ConverterFactory<String, Number> {
 
@@ -24,7 +19,6 @@ public class StringToNumberConverterFactory implements ConverterFactory<String, 
     }
 
     private static final class StringToNumber<T extends Number> implements Converter<String, T> {
-
         private final Class<T> targetType;
 
         public StringToNumber(Class<T> targetType) {

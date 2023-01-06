@@ -3,15 +3,10 @@ package cn.bugstack.springframework.core.convert;
 import com.sun.istack.internal.Nullable;
 
 /**
- *
- *
- *
+ * @description 类型转换抽象接口
  * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
  * @author naixixu
- * @description 类型转换抽象接口
  * @date 2022/3/16
- *
- *
  */
 public interface ConversionService {
 

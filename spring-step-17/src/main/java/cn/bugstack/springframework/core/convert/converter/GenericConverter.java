@@ -5,17 +5,11 @@ import cn.hutool.core.lang.Assert;
 import java.util.Set;
 
 /**
- *
- *
- *
+ * @description 通用的转换接口
  * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
  * @author naixixu
- * @description 通用的转换接口
  * @date 2022/3/16
- *
- *
  */
-@SuppressWarnings("unused")
 public interface GenericConverter {
 
     /**
@@ -48,10 +42,12 @@ public interface GenericConverter {
             this.targetType = targetType;
         }
 
+        @SuppressWarnings("unused")
         public Class<?> getSourceType() {
             return this.sourceType;
         }
 
+        @SuppressWarnings("unused")
         public Class<?> getTargetType() {
             return this.targetType;
         }

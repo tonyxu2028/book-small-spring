@@ -1,15 +1,10 @@
 package cn.bugstack.springframework.core.convert.converter;
 
 /**
- *
- *
- *
+ * @description 类型转换工厂接口
  * 作者：DerekYRC <a href="https://github.com/DerekYRC/mini-spring">...</a>
  * @author naixixu
- * @description 类型转换工厂
  * @date 2022/3/16
- *
- *
  */
 public interface ConverterFactory<S, R>{
 
