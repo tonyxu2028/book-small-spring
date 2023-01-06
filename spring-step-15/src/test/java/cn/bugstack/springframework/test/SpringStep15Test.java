@@ -9,7 +9,7 @@ import org.junit.Test;
  * 公众号：bugstack虫洞栈
  * Create by 小傅哥(fustack)
  */
-public class ApiTest {
+public class SpringStep15Test {
 
     @Test
     public void test_autoProxy() {

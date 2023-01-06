@@ -21,9 +21,8 @@ public interface Pointcut {
     ClassFilter getClassFilter();
 
     /**
-     * Return the MethodMatcher for this pointcut.
-     *
-     * @return the MethodMatcher (never <code>null</code>)
+     * 获取方法过滤器
+     * @return  方法过滤器
      */
     MethodMatcher getMethodMatcher();
 

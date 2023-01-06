@@ -6,6 +6,8 @@
 
     <bean class="cn.bugstack.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"/>
 
+    <bean id="beforeAdvice" class="cn.bugstack.springframework.test.bean.UserServiceBeforeAdvice"/>
+
     <bean id="methodInterceptor" class="cn.bugstack.springframework.aop.framework.adapter.MethodBeforeAdviceInterceptor">
         <property name="advice" ref="beforeAdvice"/>
     </bean>
@@ -18,7 +20,4 @@
     <bean id="userService" class="cn.bugstack.springframework.test.bean.UserService">
         <property name="token" value="RejDlI78hu223Opo983Ds"/>
     </bean>
-
-    <bean id="beforeAdvice" class="cn.bugstack.springframework.test.bean.UserServiceBeforeAdvice"/>
-
 </beans>

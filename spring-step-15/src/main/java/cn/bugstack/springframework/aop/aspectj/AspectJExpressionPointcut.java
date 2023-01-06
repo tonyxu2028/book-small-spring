@@ -39,16 +39,6 @@ public class AspectJExpressionPointcut implements Pointcut, ClassFilter, MethodM
     }
 
     @Override
-    public boolean matches(Class<?> clazz) {
-        return pointcutExpression.couldMatchJoinPointsInType(clazz);
-    }
-
-    @Override
-    public boolean matches(Method method, Class<?> targetClass) {
-        return pointcutExpression.matchesMethodExecution(method).alwaysMatches();
-    }
-
-    @Override
     public ClassFilter getClassFilter() {
         return this;
     }
@@ -56,6 +46,16 @@ public class AspectJExpressionPointcut implements Pointcut, ClassFilter, MethodM
     @Override
     public MethodMatcher getMethodMatcher() {
         return this;
+    }
+
+    @Override
+    public boolean matches(Class<?> clazz) {
+        return pointcutExpression.couldMatchJoinPointsInType(clazz);
+    }
+
+    @Override
+    public boolean matches(Method method, Class<?> targetClass) {
+        return pointcutExpression.matchesMethodExecution(method).alwaysMatches();
     }
 
 }

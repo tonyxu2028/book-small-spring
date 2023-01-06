@@ -17,15 +17,18 @@ public class AdvisedSupport {
      * TargetSource holding the target object, used to create the proxy.
      */
     private boolean proxyTargetClass = false;
+
     /**
      * TargetSource holding the target object, used to create the proxy.
      * 被代理的目标对象
      */
     private TargetSource targetSource;
+
     /**
      * 方法拦截器
      */
     private MethodInterceptor methodInterceptor;
+
     /**
      * 方法匹配器(检查目标方法是否符合通知条件)
      */
@@ -62,4 +65,5 @@ public class AdvisedSupport {
     public void setMethodMatcher(MethodMatcher methodMatcher) {
         this.methodMatcher = methodMatcher;
     }
+
 }
