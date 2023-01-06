@@ -32,11 +32,11 @@ public class SpringStep17Test {
         StringToNumberConverterFactory converterFactory = new StringToNumberConverterFactory();
 
         Converter<String, Integer> stringToIntegerConverter = converterFactory.getConverter(Integer.class);
-        System.out.println(" test_StringToNumberConverterFactory 测试结果：" +
+        System.out.println(" stringToIntegerConverter 测试结果：" +
                 stringToIntegerConverter.convert("1234"));
 
         Converter<String, Long> stringToLongConverter = converterFactory.getConverter(Long.class);
-        System.out.println(" test_StringToNumberConverterFactory 测试结果：" +
+        System.out.println(" stringToLongConverter 测试结果：" +
                 stringToLongConverter.convert("1234"));
     }
 
