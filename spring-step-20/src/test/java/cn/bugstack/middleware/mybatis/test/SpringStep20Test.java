@@ -23,7 +23,7 @@ public class SpringStep20Test {
 
             SqlSession session = sqlMapper.openSession();
             try {
-                User user = session.selectOne("cn.bugstack.middleware.mybatis.test.dao.IUserDao.queryUserInfoById", 1L);
+                User user = session.selectOne("cn.bugstack.middleware.mybatis.test.dao.IUserDao.queryUserInfoById", 184172133);
                 System.out.println(JSON.toJSONString(user));
             } finally {
                 session.close();

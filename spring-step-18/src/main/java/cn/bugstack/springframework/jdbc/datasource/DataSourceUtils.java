@@ -7,7 +7,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 /**
- *
+ * @author naixixu
  * @description Helper class that provides static methods for obtaining JDBC Connections from a {@link javax.sql.DataSource}.
  * @date 2022/3/16
  *  /CodeDesignTutorials
@@ -28,7 +28,8 @@ public abstract class DataSourceUtils {
     }
 
     public static Connection doGetConnection(DataSource dataSource) throws SQLException {
-        ConnectionHolder conHolder = (ConnectionHolder) TransactionSynchronizationManager.getResource(dataSource);
+        ConnectionHolder conHolder = (ConnectionHolder)
+                TransactionSynchronizationManager.getResource(dataSource);
         if (null != conHolder && conHolder.hasConnection()) {
             return conHolder.getConnection();
         }
@@ -43,20 +44,21 @@ public abstract class DataSourceUtils {
         return conn;
     }
 
-    public static void releaseConnection(Connection con, DataSource dataSource) {
+    @SuppressWarnings("unused")
+    public static void releaseConnection(Connection con) {
         try {
-            doReleaseConnection(con, dataSource);
+            doReleaseConnection(con);
         } catch (Exception ignore) {}
     }
 
-    public static void doReleaseConnection(Connection con, DataSource dataSource) throws SQLException {
+    public static void doReleaseConnection(Connection con) throws SQLException {
         if (con == null) {
             return;
         }
-        doCloseConnection(con, dataSource);
+        doCloseConnection(con);
     }
 
-    public static void doCloseConnection(Connection con, DataSource dataSource) throws SQLException {
+    public static void doCloseConnection(Connection con) throws SQLException {
         con.close();
     }
 

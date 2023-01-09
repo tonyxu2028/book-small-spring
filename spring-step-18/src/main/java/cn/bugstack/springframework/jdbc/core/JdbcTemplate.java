@@ -2,6 +2,7 @@ package cn.bugstack.springframework.jdbc.core;
 
 import cn.bugstack.springframework.jdbc.datasource.DataSourceUtils;
 import cn.bugstack.springframework.jdbc.support.JdbcAccessor;
+import cn.bugstack.springframework.jdbc.support.JdbcUtils;
 import cn.hutool.core.lang.Assert;
 
 import javax.sql.DataSource;
@@ -50,44 +51,31 @@ public class JdbcTemplate extends JdbcAccessor implements JdbcOperations {
         afterPropertiesSet();
     }
 
-    public int getFetchSize() {
-        return fetchSize;
-    }
-
-    @SuppressWarnings("unused")
-    public void setFetchSize(int fetchSize) {
-        this.fetchSize = fetchSize;
-    }
-
-    public int getMaxRows() {
-        return maxRows;
-    }
-
-    @SuppressWarnings("unused")
-    public void setMaxRows(int maxRows) {
-        this.maxRows = maxRows;
-    }
-
-    @SuppressWarnings("unused")
-    public int getQueryTimeout() {
-        return queryTimeout;
-    }
-
-    @SuppressWarnings("unused")
-    public void setQueryTimeout(int queryTimeout) {
-        this.queryTimeout = queryTimeout;
-    }
-
     @Override
-    public <T> T execute(StatementCallback<T> action) {
+    public <T> T execute(StatementCallback<T> action,boolean closeResources) {
         Connection con = DataSourceUtils.getConnection(obtainDataSource());
+        Statement stmt = null;
         try {
-            Statement stmt = con.createStatement();
+            stmt = con.createStatement();
             applyStatementSettings(stmt);
             return action.doInStatement(stmt);
         } catch (SQLException ex) {
+            String sql = getSql(action);
+            System.out.println("JdbcTemplate execute SQLException: " + ex.getMessage() + ", SQL: " + sql);
+            assert stmt != null;
+            JdbcUtils.closeStatement(stmt);
+            stmt = null;
             throw new RuntimeException("StatementCallback", ex);
+        }finally {
+            if(closeResources){
+                assert stmt != null;
+                JdbcUtils.closeStatement(stmt);
+            }
         }
+    }
+
+    private <T> String getSql(StatementCallback<T> action) {
+        return action.toString();
     }
 
     @Override
@@ -103,7 +91,7 @@ public class JdbcTemplate extends JdbcAccessor implements JdbcOperations {
                 return sql;
             }
         }
-        execute(new ExecuteStatementCallback());
+        execute(new ExecuteStatementCallback(),true);
     }
 
     @Override
@@ -122,7 +110,7 @@ public class JdbcTemplate extends JdbcAccessor implements JdbcOperations {
             }
         }
 
-        return execute(new QueryStatementCallback());
+        return execute(new QueryStatementCallback(),true);
     }
 
     @Override
@@ -150,6 +138,34 @@ public class JdbcTemplate extends JdbcAccessor implements JdbcOperations {
         if (maxRows != -1) {
             stat.setMaxRows(maxRows);
         }
+    }
+
+    public int getFetchSize() {
+        return fetchSize;
+    }
+
+    @SuppressWarnings("unused")
+    public void setFetchSize(int fetchSize) {
+        this.fetchSize = fetchSize;
+    }
+
+    public int getMaxRows() {
+        return maxRows;
+    }
+
+    @SuppressWarnings("unused")
+    public void setMaxRows(int maxRows) {
+        this.maxRows = maxRows;
+    }
+
+    @SuppressWarnings("unused")
+    public int getQueryTimeout() {
+        return queryTimeout;
+    }
+
+    @SuppressWarnings("unused")
+    public void setQueryTimeout(int queryTimeout) {
+        this.queryTimeout = queryTimeout;
     }
 
 }

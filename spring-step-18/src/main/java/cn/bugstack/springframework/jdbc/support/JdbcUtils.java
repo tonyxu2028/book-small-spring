@@ -2,7 +2,13 @@ package cn.bugstack.springframework.jdbc.support;
 
 import cn.hutool.core.util.StrUtil;
 
-import java.sql.*;
+import java.sql.Blob;
+import java.sql.Clob;
+import java.sql.Date;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  *
@@ -50,8 +56,8 @@ public class JdbcUtils {
      * @param index is the column index
      * @return the value object
      * @throws SQLException if thrown by the JDBC API
-     * @see java.sql.Blob
-     * @see java.sql.Clob
+     * @see Blob
+     * @see Clob
      * @see java.sql.Timestamp
      */
     public static Object getResultSetValue(ResultSet rs, int index) throws SQLException {
@@ -85,4 +91,11 @@ public class JdbcUtils {
         return obj;
     }
 
+    public static void closeStatement(Statement stmt){
+        try {
+            stmt.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
