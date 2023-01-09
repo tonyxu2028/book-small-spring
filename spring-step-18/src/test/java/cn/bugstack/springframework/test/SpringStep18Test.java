@@ -15,7 +15,8 @@ public class SpringStep18Test {
 
     @Before
     public void init() {
-        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:spring.xml");
+        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext(
+                "classpath:spring.xml");
         jdbcTemplate = applicationContext.getBean(JdbcTemplate.class);
     }
 

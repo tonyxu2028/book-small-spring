@@ -20,7 +20,6 @@ import java.util.Map;
  *  /CodeDesignTutorials
  *
  */
-@SuppressWarnings("unused")
 public class JdbcTemplate extends JdbcAccessor implements JdbcOperations {
 
     /**
@@ -41,9 +40,11 @@ public class JdbcTemplate extends JdbcAccessor implements JdbcOperations {
      */
     private int queryTimeout = -1;
 
+    @SuppressWarnings("unused")
     public JdbcTemplate() {
     }
 
+    @SuppressWarnings("unused")
     public JdbcTemplate(DataSource dataSource) {
         setDataSource(dataSource);
         afterPropertiesSet();
@@ -53,6 +54,7 @@ public class JdbcTemplate extends JdbcAccessor implements JdbcOperations {
         return fetchSize;
     }
 
+    @SuppressWarnings("unused")
     public void setFetchSize(int fetchSize) {
         this.fetchSize = fetchSize;
     }
@@ -61,14 +63,17 @@ public class JdbcTemplate extends JdbcAccessor implements JdbcOperations {
         return maxRows;
     }
 
+    @SuppressWarnings("unused")
     public void setMaxRows(int maxRows) {
         this.maxRows = maxRows;
     }
 
+    @SuppressWarnings("unused")
     public int getQueryTimeout() {
         return queryTimeout;
     }
 
+    @SuppressWarnings("unused")
     public void setQueryTimeout(int queryTimeout) {
         this.queryTimeout = queryTimeout;
     }
