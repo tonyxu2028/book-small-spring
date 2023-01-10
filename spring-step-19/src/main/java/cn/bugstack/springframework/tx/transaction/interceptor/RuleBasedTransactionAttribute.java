@@ -16,6 +16,7 @@ import java.util.List;
  */
 public class RuleBasedTransactionAttribute extends DefaultTransactionAttribute implements Serializable {
 
+    @SuppressWarnings("unused")
     private List<RollbackRuleAttribute> rollbackRules;
 
     public RuleBasedTransactionAttribute() {

@@ -12,12 +12,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * @description 事务注解解析器 {@link Transactional}.
  * @author naixixu
- * @description Strategy implementation for parsing Spring's {@link Transactional} annotation.
  * @date 2022/3/16
- *  /CodeDesignTutorials
- *
  */
 public class SpringTransactionAnnotationParser implements TransactionAnnotationParser, Serializable {
 
@@ -41,12 +38,10 @@ public class SpringTransactionAnnotationParser implements TransactionAnnotationP
      */
     protected TransactionAttribute parseTransactionAnnotation(AnnotationAttributes attributes) {
         RuleBasedTransactionAttribute rbta = new RuleBasedTransactionAttribute();
-
         List<RollbackRuleAttribute> rollbackRules = new ArrayList<>();
         for (Class<?> rbRule : attributes.getClassArray(ROLL_BACK_FOR)) {
             rollbackRules.add(new RollbackRuleAttribute(rbRule));
         }
-
         rbta.setRollbackRules(rollbackRules);
         return rbta;
     }

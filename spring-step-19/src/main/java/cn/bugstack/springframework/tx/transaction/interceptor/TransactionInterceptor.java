@@ -17,7 +17,9 @@ import java.io.Serializable;
 public class TransactionInterceptor extends TransactionAspectSupport implements MethodInterceptor, Serializable {
 
     public TransactionInterceptor(PlatformTransactionManager ptm, TransactionAttributeSource transactionAttributeSource) {
+        // 设置事务管理器
         setTransactionManager(ptm);
+        // 设置事务属性源
         setTransactionAttributeSource(transactionAttributeSource);
     }
 

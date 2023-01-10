@@ -17,8 +17,6 @@ import java.lang.reflect.Method;
  * 以便提交和回归事务。
  * @author naixixu
  * @date 2022/3/16
- *  /CodeDesignTutorials
- *
  */
 public abstract class TransactionAspectSupport implements BeanFactoryAware, InitializingBean {
 
@@ -50,22 +48,6 @@ public abstract class TransactionAspectSupport implements BeanFactoryAware, Init
         commitTransactionAfterReturning(txInfo);
 
         return retVal;
-    }
-
-    public TransactionAttributeSource getTransactionAttributeSource() {
-        return transactionAttributeSource;
-    }
-
-    public void setTransactionAttributeSource(TransactionAttributeSource transactionAttributeSource) {
-        this.transactionAttributeSource = transactionAttributeSource;
-    }
-
-    public PlatformTransactionManager getTransactionManager() {
-        return transactionManager;
-    }
-
-    public void setTransactionManager(PlatformTransactionManager transactionManager) {
-        this.transactionManager = transactionManager;
     }
 
     /**
@@ -100,7 +82,6 @@ public abstract class TransactionAspectSupport implements BeanFactoryAware, Init
         }
         return prepareTransactionInfo(tm, txAttr, joinPointIdentification, status);
     }
-
     protected TransactionInfo prepareTransactionInfo(PlatformTransactionManager tm, TransactionAttribute txAttr, String joinPointIdentification, TransactionStatus status) {
         TransactionInfo txInfo = new TransactionInfo(tm, txAttr, joinPointIdentification);
         if (txAttr != null) {
@@ -108,6 +89,10 @@ public abstract class TransactionAspectSupport implements BeanFactoryAware, Init
         }
         txInfo.bindToThread();
         return txInfo;
+    }
+
+    protected interface InvocationCallback {
+        Object proceedWithInvocation() throws Throwable;
     }
 
     protected void completeTransactionAfterThrowing(TransactionInfo txInfo, Throwable ex) {
@@ -132,12 +117,25 @@ public abstract class TransactionAspectSupport implements BeanFactoryAware, Init
         }
     }
 
-    protected interface InvocationCallback {
-        Object proceedWithInvocation() throws Throwable;
-    }
-
     @Override
     public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
+
+    }
+
+    public TransactionAttributeSource getTransactionAttributeSource() {
+        return transactionAttributeSource;
+    }
+
+    public void setTransactionAttributeSource(TransactionAttributeSource transactionAttributeSource) {
+        this.transactionAttributeSource = transactionAttributeSource;
+    }
+
+    public PlatformTransactionManager getTransactionManager() {
+        return transactionManager;
+    }
+
+    public void setTransactionManager(PlatformTransactionManager transactionManager) {
+        this.transactionManager = transactionManager;
     }
 
     @Override
@@ -154,7 +152,8 @@ public abstract class TransactionAspectSupport implements BeanFactoryAware, Init
         private TransactionInfo oldTransactionInfo;
 
         public TransactionInfo(PlatformTransactionManager transactionManager,
-                               TransactionAttribute transactionAttribute, String joinpointIdentification) {
+                               TransactionAttribute transactionAttribute,
+                               String joinpointIdentification) {
             this.transactionManager = transactionManager;
             this.transactionAttribute = transactionAttribute;
             this.joinPointIdentification = joinpointIdentification;
@@ -165,27 +164,12 @@ public abstract class TransactionAspectSupport implements BeanFactoryAware, Init
             return transactionManager;
         }
 
-        @SuppressWarnings("unused")
-        public String getJoinPointIdentification() {
-            return joinPointIdentification;
-        }
-
-        @SuppressWarnings("unused")
-        public TransactionAttribute getTransactionAttribute() {
-            return transactionAttribute;
-        }
-
         public void newTransactionStatus(TransactionStatus status) {
             this.transactionStatus = status;
         }
 
         public TransactionStatus getTransactionStatus() {
             return transactionStatus;
-        }
-
-        @SuppressWarnings("unused")
-        public boolean hasTransaction() {
-            return null != this.transactionStatus;
         }
 
         private void bindToThread() {
@@ -197,6 +181,20 @@ public abstract class TransactionAspectSupport implements BeanFactoryAware, Init
             transactionInfoHolder.set(this.oldTransactionInfo);
         }
 
+        @SuppressWarnings("unused")
+        public boolean hasTransaction() {
+            return null != this.transactionStatus;
+        }
+
+        @SuppressWarnings("unused")
+        public String getJoinPointIdentification() {
+            return joinPointIdentification;
+        }
+
+        @SuppressWarnings("unused")
+        public TransactionAttribute getTransactionAttribute() {
+            return transactionAttribute;
+        }
     }
 
 }
