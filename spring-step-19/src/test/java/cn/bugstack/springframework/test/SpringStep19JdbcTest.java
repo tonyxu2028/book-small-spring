@@ -22,9 +22,9 @@ public class SpringStep19JdbcTest {
     private DruidDataSource dataSource;
 
     @Before
-    public void init() {
+    public void init() throws SQLException {
         dataSource = new DruidDataSource();
-        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
+        dataSource.setDriver(new Driver());
         dataSource.setUrl("jdbc:mysql://localhost:3307/spring?useSSL=false");
         dataSource.setUsername("root");
         dataSource.setPassword("123456");

@@ -9,8 +9,7 @@ import java.lang.reflect.Method;
 import java.util.Collections;
 import java.util.Set;
 
-/**
- *
+/**å
  * @author naixixu
  * @description Implementation of the TransactionAttributeSource}
  * interface for working with transaction metadata in JDK 1.5+ annotation format.
@@ -20,17 +19,14 @@ import java.util.Set;
  */
 public class AnnotationTransactionAttributeSource extends AbstractFallbackTransactionAttributeSource implements Serializable {
 
-    @SuppressWarnings("all")
-    private final boolean publicMethodsOnly;
-
     private final Set<TransactionAnnotationParser> annotationParsers;
 
     public AnnotationTransactionAttributeSource() {
         this(true);
     }
 
+    @SuppressWarnings("unused")
     public AnnotationTransactionAttributeSource(boolean publicMethodsOnly) {
-        this.publicMethodsOnly = publicMethodsOnly;
         this.annotationParsers = Collections.singleton(new SpringTransactionAnnotationParser());
     }
 

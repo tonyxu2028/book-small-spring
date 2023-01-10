@@ -12,7 +12,6 @@ import org.aopalliance.aop.Advice;
  *  /CodeDesignTutorials
  *
  */
-@SuppressWarnings("all")
 public class AspectJExpressionPointcutAdvisor implements PointcutAdvisor {
 
     /**
@@ -28,10 +27,6 @@ public class AspectJExpressionPointcutAdvisor implements PointcutAdvisor {
      */
     private String expression;
 
-    public void setExpression(String expression){
-        this.expression = expression;
-    }
-
     @Override
     public Pointcut getPointcut() {
         if (null == pointcut) {
@@ -45,8 +40,14 @@ public class AspectJExpressionPointcutAdvisor implements PointcutAdvisor {
         return advice;
     }
 
+    @SuppressWarnings("unused")
     public void setAdvice(Advice advice){
         this.advice = advice;
+    }
+
+    @SuppressWarnings("unused")
+    public void setExpression(String expression){
+        this.expression = expression;
     }
 
 }

@@ -23,6 +23,7 @@ public interface ApplicationEventMulticaster {
      * Remove a listener from the notification list.
      * @param listener the listener to remove
      */
+    @SuppressWarnings("unused")
     void removeApplicationListener(ApplicationListener<?> listener);
 
     /**

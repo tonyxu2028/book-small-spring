@@ -17,8 +17,8 @@ public interface ResourceLoader {
 
     /**
      * 获取资源
-     * @param       location
-     * @return      Resource
+     * @param   location    资源路径
+     * @return  Resource    资源
      */
     Resource getResource(String location);
 

@@ -36,7 +36,8 @@ public class SpringTransactionAnnotationParser implements TransactionAnnotationP
 
     /**
      * 参照源码，简化实现
-     * org.springframework.transaction.annotation.SpringTransactionAnnotationParser#parseTransactionAnnotation
+     * org.springframework.transaction.annotation.SpringTransactionAnnotationParser
+     * #parseTransactionAnnotation
      */
     protected TransactionAttribute parseTransactionAnnotation(AnnotationAttributes attributes) {
         RuleBasedTransactionAttribute rbta = new RuleBasedTransactionAttribute();

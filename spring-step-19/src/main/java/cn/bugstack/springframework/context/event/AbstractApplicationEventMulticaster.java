@@ -27,9 +27,8 @@ public abstract class AbstractApplicationEventMulticaster implements Application
 
     public final Set<ApplicationListener<ApplicationEvent>> applicationListeners = new LinkedHashSet<>();
 
-    private BeanFactory beanFactory;
-
     @Override
+    @SuppressWarnings("unchecked")
     public void addApplicationListener(ApplicationListener<?> listener) {
         applicationListeners.add((ApplicationListener<ApplicationEvent>) listener);
     }
@@ -41,7 +40,6 @@ public abstract class AbstractApplicationEventMulticaster implements Application
 
     @Override
     public final void setBeanFactory(BeanFactory beanFactory) {
-        this.beanFactory = beanFactory;
     }
 
     /**
@@ -52,6 +50,7 @@ public abstract class AbstractApplicationEventMulticaster implements Application
      * @return a Collection of ApplicationListeners
      * @see cn.bugstack.springframework.context.ApplicationListener
      */
+    @SuppressWarnings("all")
     protected Collection<ApplicationListener> getApplicationListeners(ApplicationEvent event) {
         LinkedList<ApplicationListener> allListeners = new LinkedList<>();
         for (ApplicationListener<ApplicationEvent> listener : applicationListeners) {
@@ -66,8 +65,8 @@ public abstract class AbstractApplicationEventMulticaster implements Application
      * 监听器是否对该事件感兴趣
      */
     protected boolean supportsEvent(ApplicationListener<ApplicationEvent> applicationListener, ApplicationEvent event) {
+        @SuppressWarnings("all")
         Class<? extends ApplicationListener> listenerClass = applicationListener.getClass();
-
         // 按照 CglibSubclassingInstantiationStrategy、SimpleInstantiationStrategy 不同的实例化类型，需要判断后获取目标 class
         Class<?> targetClass = ClassUtils.isCglibProxyClass(listenerClass) ? listenerClass.getSuperclass() : listenerClass;
         Type genericInterface = targetClass.getGenericInterfaces()[0];

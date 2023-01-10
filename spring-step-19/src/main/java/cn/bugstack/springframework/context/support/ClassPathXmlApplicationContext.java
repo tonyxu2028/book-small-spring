@@ -17,14 +17,15 @@ public class ClassPathXmlApplicationContext extends AbstractXmlApplicationContex
 
     private String[] configLocations;
 
+    @SuppressWarnings("unused")
     public ClassPathXmlApplicationContext() {
     }
 
     /**
      * 从 XML 中加载 BeanDefinition，并刷新上下文
      *
-     * @param configLocations
-     * @throws BeansException
+     * @param configLocations           XML 配置文件路径
+     * @throws BeansException           异常
      */
     public ClassPathXmlApplicationContext(String configLocations) throws BeansException {
         this(new String[]{configLocations});
@@ -32,8 +33,8 @@ public class ClassPathXmlApplicationContext extends AbstractXmlApplicationContex
 
     /**
      * 从 XML 中加载 BeanDefinition，并刷新上下文
-     * @param configLocations
-     * @throws BeansException
+     * @param configLocations           XML 配置文件路径
+     * @throws BeansException           异常
      */
     public ClassPathXmlApplicationContext(String[] configLocations) throws BeansException {
         this.configLocations = configLocations;

@@ -5,12 +5,9 @@ import cn.bugstack.springframework.tx.transaction.interceptor.TransactionAttribu
 import java.lang.reflect.AnnotatedElement;
 
 /**
- *
- * @author naixixu
  * @description 用于解析已知事务注释类型的策略接口
- * @date 2022/3/16
- *  /CodeDesignTutorials
- *
+ * @author naixixu
+ * @date 2022/3/16 16:00
  */
 public interface TransactionAnnotationParser {
 

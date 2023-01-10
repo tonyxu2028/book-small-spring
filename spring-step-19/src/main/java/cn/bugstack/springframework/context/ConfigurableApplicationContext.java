@@ -18,13 +18,14 @@ public interface ConfigurableApplicationContext extends ApplicationContext {
     /**
      * 刷新容器
      *
-     * @throws BeansException
+     * @throws BeansException       if the context could not be initialized
      */
     void refresh() throws BeansException;
 
     /**
      * 刷新关闭容器
      */
+    @SuppressWarnings("unused")
     void registerShutdownHook();
 
     /**

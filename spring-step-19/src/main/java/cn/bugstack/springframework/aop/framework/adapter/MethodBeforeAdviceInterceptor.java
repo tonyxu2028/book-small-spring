@@ -14,14 +14,15 @@ import org.aopalliance.intercept.MethodInvocation;
  *  /CodeDesignTutorials
  *
  */
-@SuppressWarnings("unused")
 public class MethodBeforeAdviceInterceptor implements MethodInterceptor {
 
     private MethodBeforeAdvice advice;
 
+    @SuppressWarnings("unused")
     public MethodBeforeAdviceInterceptor() {
     }
 
+    @SuppressWarnings("unused")
     public MethodBeforeAdviceInterceptor(MethodBeforeAdvice advice) {
         this.advice = advice;
     }

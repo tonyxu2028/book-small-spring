@@ -13,17 +13,11 @@ import java.nio.file.Files;
  *
  *
  */
-@SuppressWarnings("unused")
 public class FileSystemResource implements Resource {
 
     private final File file;
 
     private final String path;
-
-    public FileSystemResource(File file) {
-        this.file = file;
-        this.path = file.getPath();
-    }
 
     public FileSystemResource(String path) {
         this.file = new File(path);
@@ -35,6 +29,13 @@ public class FileSystemResource implements Resource {
         return Files.newInputStream(this.file.toPath());
     }
 
+    @SuppressWarnings("unused")
+    public FileSystemResource(File file) {
+        this.file = file;
+        this.path = file.getPath();
+    }
+
+    @SuppressWarnings("unused")
     public final String getPath() {
         return this.path;
     }
