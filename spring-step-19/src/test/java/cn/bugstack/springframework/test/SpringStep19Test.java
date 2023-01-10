@@ -62,6 +62,7 @@ public class SpringStep19Test {
         noTransaction(proxy_cglib);
     }
 
+    @SuppressWarnings("unused")
     private void hasTransaction(JdbcService proxy_cglib) {
         // 测试调用，有事务【不能同时提交2条有主键冲突的数据】
         try {

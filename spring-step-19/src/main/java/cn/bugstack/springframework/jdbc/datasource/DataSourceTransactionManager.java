@@ -22,11 +22,11 @@ import java.sql.Statement;
  *  /CodeDesignTutorials
  *
  */
-@SuppressWarnings("all")
 public class DataSourceTransactionManager extends AbstractPlatformTransactionManager implements InitializingBean {
 
     private DataSource dataSource;
 
+    @SuppressWarnings("unused")
     public DataSourceTransactionManager() {
     }
 
@@ -115,21 +115,22 @@ public class DataSourceTransactionManager extends AbstractPlatformTransactionMan
         }
     }
 
+    @SuppressWarnings("all")
     protected void prepareTransactionalConnection(Connection con, TransactionDefinition definition) throws SQLException {
         if (definition.isReadOnly()) {
             try (Statement stmt = con.createStatement()) {
-                stmt.execute("set transaction read only");
+                stmt.execute("SET TRANSACTION READ ONLY");
             }
         }
     }
 
     public static class DataSourceTransactionObject extends JdbcTransactionObjectSupport {
-        private boolean newConnectionHolder;
+        @SuppressWarnings("unused")
         private boolean mustRestoreAutoCommit;
 
+        @SuppressWarnings("unused")
         public void setConnectionHolder(ConnectionHolder connectionHolder, boolean newConnectionHolder) {
             super.setConnectionHolder(connectionHolder);
-            this.newConnectionHolder = newConnectionHolder;
         }
     }
 
