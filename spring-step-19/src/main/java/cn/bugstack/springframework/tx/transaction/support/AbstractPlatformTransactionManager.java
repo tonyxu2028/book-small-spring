@@ -8,14 +8,10 @@ import cn.bugstack.springframework.tx.transaction.TransactionStatus;
 import java.io.Serializable;
 
 /**
- *
- * @author naixixu
  * @description 抽象事务管理器平台
+ * @author naixixu
  * @date 2022/3/16
- *  /CodeDesignTutorials
- *
  */
-@SuppressWarnings("all")
 public abstract class AbstractPlatformTransactionManager implements PlatformTransactionManager, Serializable {
 
     @Override
