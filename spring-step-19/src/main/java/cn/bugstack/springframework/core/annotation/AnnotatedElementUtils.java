@@ -60,7 +60,7 @@ public class AnnotatedElementUtils {
                     // Search in local annotations
                     for (Annotation annotation : annotations) {
                         Class<? extends Annotation> currentAnnotationType = annotation.annotationType();
-                        if (!AnnotationUtils.isInJavaLangAnnotationPackage(currentAnnotationType)) {
+                        if (AnnotationUtils.isInJavaLangAnnotationPackage(currentAnnotationType)) {
                             if (annotationTypes.contains(currentAnnotationType) ||
                                     currentAnnotationType.getName().equals(annotationName) ||
                                     processor.alwaysProcesses()) {
@@ -185,7 +185,7 @@ public class AnnotatedElementUtils {
                     }
                 }
             } catch (Throwable ex) {
-                AnnotationUtils.handleIntrospectionFailure(element, ex);
+                AnnotationUtils.handleIntrospectionFailure(ex);
             }
         }
         return null;
@@ -221,7 +221,7 @@ public class AnnotatedElementUtils {
                 return value;
             }
         } catch (Throwable ex) {
-            AnnotationUtils.handleIntrospectionFailure(element, ex);
+            AnnotationUtils.handleIntrospectionFailure(ex);
         }
         // Unable to read value from repeating annotation container -> ignore it.
         return (A[]) EMPTY_ANNOTATION_ARRAY;

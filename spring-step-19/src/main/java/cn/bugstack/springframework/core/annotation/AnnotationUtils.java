@@ -22,7 +22,6 @@ import java.util.*;
  *  /CodeDesignTutorials
  *
  */
-@SuppressWarnings("all")
 public class AnnotationUtils {
 
     /**
@@ -30,6 +29,7 @@ public class AnnotationUtils {
      */
     public static final String VALUE = "value";
 
+    @SuppressWarnings("all")
     private static final Map<AnnotationCacheKey, Annotation> findAnnotationCache =
             new ConcurrentReferenceHashMap<>(256);
 
@@ -72,7 +72,7 @@ public class AnnotationUtils {
             return (annotation != null ? synthesizeAnnotation(annotation, annotatedElement) : null);
         }
         catch (Throwable ex) {
-            handleIntrospectionFailure(annotatedElement, ex);
+            handleIntrospectionFailure(ex);
             return null;
         }
     }
@@ -118,7 +118,7 @@ public class AnnotationUtils {
                 }
             }
             catch (Throwable ex) {
-                handleIntrospectionFailure(baseMethod, ex);
+                handleIntrospectionFailure(ex);
             }
         }
         if (annotatedMethods == null) {
@@ -131,9 +131,6 @@ public class AnnotationUtils {
 
     private static boolean hasSearchableAnnotations(Method ifcMethod) {
         Annotation[] anns = getDeclaredAnnotations(ifcMethod);
-        if (anns.length == 0) {
-            return false;
-        }
         for (Annotation ann : anns) {
             String name = ann.annotationType().getName();
             if (!name.startsWith("java.lang.") && !name.startsWith("org.springframework.lang.")) {
@@ -162,7 +159,7 @@ public class AnnotationUtils {
 
     @SuppressWarnings("unchecked")
     private static <A extends Annotation> A findAnnotation(
-            Class<?> clazz,  Class<A> annotationType, boolean synthesize) {
+            Class<?> clazz,  Class<A> annotationType) {
 
         Assert.notNull(clazz, "Class must not be null");
         if (annotationType == null) {
@@ -173,10 +170,6 @@ public class AnnotationUtils {
         A result = (A) findAnnotationCache.get(cacheKey);
         if (result == null) {
             result = findAnnotation(clazz, annotationType, new HashSet<>());
-            if (result != null && synthesize) {
-                result = synthesizeAnnotation(result, clazz);
-                findAnnotationCache.put(cacheKey, result);
-            }
         }
         return result;
     }
@@ -189,7 +182,7 @@ public class AnnotationUtils {
             }
             for (Annotation declaredAnn : getDeclaredAnnotations(clazz)) {
                 Class<? extends Annotation> declaredType = declaredAnn.annotationType();
-                if (!isInJavaLangAnnotationPackage(declaredType) && visited.add(declaredAnn)) {
+                if (isInJavaLangAnnotationPackage(declaredType) && visited.add(declaredAnn)) {
                     annotation = findAnnotation(declaredType, annotationType, visited);
                     if (annotation != null) {
                         return annotation;
@@ -198,7 +191,7 @@ public class AnnotationUtils {
             }
         }
         catch (Throwable ex) {
-            handleIntrospectionFailure(clazz, ex);
+            handleIntrospectionFailure(ex);
             return null;
         }
 
@@ -230,7 +223,7 @@ public class AnnotationUtils {
             return metaPresent;
         }
         metaPresent = Boolean.FALSE;
-        if (findAnnotation(annotationType, metaAnnotationType, false) != null) {
+        if (findAnnotation(annotationType, metaAnnotationType) != null) {
             metaPresent = Boolean.TRUE;
         }
         metaPresentCache.put(cacheKey, metaPresent);
@@ -253,7 +246,7 @@ public class AnnotationUtils {
     }
 
     static boolean isInJavaLangAnnotationPackage( Class<? extends Annotation> annotationType) {
-        return (annotationType != null && isInJavaLangAnnotationPackage(annotationType.getName()));
+        return (annotationType == null || !isInJavaLangAnnotationPackage(annotationType.getName()));
     }
 
 
@@ -262,11 +255,11 @@ public class AnnotationUtils {
     }
 
     private static AnnotationAttributes getAnnotationAttributes(Object annotatedElement,
-                                                                Annotation annotation, boolean classValuesAsString, boolean nestedAnnotationsAsMap) {
+                                                                Annotation annotation, boolean classValuesAsString) {
 
         AnnotationAttributes attributes =
-                retrieveAnnotationAttributes(annotatedElement, annotation, classValuesAsString, nestedAnnotationsAsMap);
-        postProcessAnnotationAttributes(annotatedElement, attributes, classValuesAsString, nestedAnnotationsAsMap);
+                retrieveAnnotationAttributes(annotatedElement, annotation, classValuesAsString, true);
+        postProcessAnnotationAttributes(annotatedElement, attributes, classValuesAsString);
         return attributes;
     }
 
@@ -319,7 +312,7 @@ public class AnnotationUtils {
         if (value instanceof Annotation) {
             Annotation annotation = (Annotation) value;
             if (nestedAnnotationsAsMap) {
-                return getAnnotationAttributes(annotatedElement, annotation, classValuesAsString, true);
+                return getAnnotationAttributes(annotatedElement, annotation, classValuesAsString);
             }
             else {
                 return synthesizeAnnotation(annotation, annotatedElement);
@@ -332,7 +325,7 @@ public class AnnotationUtils {
                 AnnotationAttributes[] mappedAnnotations = new AnnotationAttributes[annotations.length];
                 for (int i = 0; i < annotations.length; i++) {
                     mappedAnnotations[i] =
-                            getAnnotationAttributes(annotatedElement, annotations[i], classValuesAsString, true);
+                            getAnnotationAttributes(annotatedElement, annotations[i], classValuesAsString);
                 }
                 return mappedAnnotations;
             }
@@ -346,7 +339,7 @@ public class AnnotationUtils {
     }
 
     static void postProcessAnnotationAttributes(Object annotatedElement,
-                                                AnnotationAttributes attributes, boolean classValuesAsString, boolean nestedAnnotationsAsMap) {
+                                                AnnotationAttributes attributes, boolean classValuesAsString) {
 
         if (attributes == null) {
             return;
@@ -391,13 +384,13 @@ public class AnnotationUtils {
                         else if (aliasPresent) {
                             // Replace value with aliasedValue
                             attributes.put(attributeName,
-                                    adaptValue(annotatedElement, aliasedValue, classValuesAsString, nestedAnnotationsAsMap));
+                                    adaptValue(annotatedElement, aliasedValue, classValuesAsString, true));
                             valuesAlreadyReplaced.add(attributeName);
                         }
                         else {
                             // Replace aliasedValue with value
                             attributes.put(aliasedAttributeName,
-                                    adaptValue(annotatedElement, value, classValuesAsString, nestedAnnotationsAsMap));
+                                    adaptValue(annotatedElement, value, classValuesAsString, true));
                             valuesAlreadyReplaced.add(aliasedAttributeName);
                         }
                     }
@@ -416,7 +409,7 @@ public class AnnotationUtils {
             if (value instanceof DefaultValueHolder) {
                 value = ((DefaultValueHolder) value).defaultValue;
                 attributes.put(attributeName,
-                        adaptValue(annotatedElement, value, classValuesAsString, nestedAnnotationsAsMap));
+                        adaptValue(annotatedElement, value, classValuesAsString, true));
             }
         }
     }
@@ -443,11 +436,12 @@ public class AnnotationUtils {
                     attributeName + "' in " + annotation, ex);
         }
         catch (Throwable ex) {
-            handleIntrospectionFailure(annotation.getClass(), ex);
+            handleIntrospectionFailure(ex);
             return null;
         }
     }
 
+    @SuppressWarnings("unused")
     public static Object getDefaultValue( Annotation annotation,  String attributeName) {
         return (annotation != null ? getDefaultValue(annotation.annotationType(), attributeName) : null);
     }
@@ -462,7 +456,7 @@ public class AnnotationUtils {
             return annotationType.getDeclaredMethod(attributeName).getDefaultValue();
         }
         catch (Throwable ex) {
-            handleIntrospectionFailure(annotationType, ex);
+            handleIntrospectionFailure(ex);
             return null;
         }
     }
@@ -608,6 +602,7 @@ public class AnnotationUtils {
         return (method != null && method.getName().equals("annotationType") && method.getParameterCount() == 0);
     }
 
+    @SuppressWarnings("unused")
     static Class<? extends Annotation> resolveContainerAnnotationType(Class<? extends Annotation> annotationType) {
         Repeatable repeatable = getAnnotation(annotationType, Repeatable.class);
         return (repeatable != null ? repeatable.value() : null);
@@ -619,7 +614,7 @@ public class AnnotationUtils {
         }
     }
 
-    static void handleIntrospectionFailure( AnnotatedElement element, Throwable ex) {
+    static void handleIntrospectionFailure( Throwable ex) {
         rethrowAnnotationConfigurationException(ex);
 
     }

@@ -37,10 +37,10 @@ public class SpringStep19JdbcTest {
         connection.setAutoCommit(false);
 
         try {
-            statement.execute("insert into user (id, userId, userHead, createTime, updateTime) " +
-                    "values (1, '184172133','01_50', now(), now())");
-            statement.execute("insert into user (id, userId, userHead, createTime, updateTime) " +
-                    "values (1, '184172133','01_50', now(), now())");
+            statement.execute("insert into user (userId, userHead, createTime, updateTime) " +
+                    "values ('184172136','01_50', now(), now())");
+            statement.execute("insert into user (userId, userHead, createTime, updateTime) " +
+                    "values ('184172137','01_50', now(), now())");
         } catch (Exception e) {
             e.printStackTrace();
             connection.rollback();
