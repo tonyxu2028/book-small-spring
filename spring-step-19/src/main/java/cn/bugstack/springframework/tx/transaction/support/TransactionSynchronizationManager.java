@@ -15,7 +15,7 @@ import java.util.Map;
  *  /CodeDesignTutorials
  *
  */
-@SuppressWarnings("all")
+
 public abstract class TransactionSynchronizationManager {
 
     /**
@@ -26,21 +26,25 @@ public abstract class TransactionSynchronizationManager {
     /**
      * 事务的名称
      */
+    @SuppressWarnings("unused")
     private static final ThreadLocal<String> currentTransactionName = new NamedThreadLocal<>("Current transaction name");
 
     /**
      * 事务是否是只读
      */
+    @SuppressWarnings("unused")
     private static final ThreadLocal<Boolean> currentTransactionReadOnly = new NamedThreadLocal<>("Current transaction read-only status");
 
     /**
      * 事务的隔离级别
      */
+    @SuppressWarnings("unused")
     private static final ThreadLocal<Integer> currentTransactionIsolationLevel = new NamedThreadLocal<>("Current transaction isolation level");
 
     /**
      * 事务是否开启
      */
+    @SuppressWarnings("unused")
     private static final ThreadLocal<Boolean> actualTransactionActive = new NamedThreadLocal<>("Actual transaction active");
 
     public static Object getResource(Object key) {

@@ -13,21 +13,17 @@ import cn.hutool.core.thread.threadlocal.NamedThreadLocal;
 import java.lang.reflect.Method;
 
 /**
- *
+ * @description 事务的控制都需要被切面支撑类TransactionAspectSupport来进行包装处理,
+ * 以便提交和回归事务。
  * @author naixixu
- * @description Base class for transactional aspects, such as the {@link TransactionInterceptor}
- * or an AspectJ aspect.
  * @date 2022/3/16
  *  /CodeDesignTutorials
  *
  */
-@SuppressWarnings("all")
 public abstract class TransactionAspectSupport implements BeanFactoryAware, InitializingBean {
 
     private static final ThreadLocal<TransactionInfo> transactionInfoHolder =
             new NamedThreadLocal<>("Current aspect-driven transaction");
-
-    private BeanFactory beanFactory;
 
     private TransactionAttributeSource transactionAttributeSource;
 
@@ -142,7 +138,6 @@ public abstract class TransactionAspectSupport implements BeanFactoryAware, Init
 
     @Override
     public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
-        this.beanFactory = beanFactory;
     }
 
     @Override
@@ -170,10 +165,12 @@ public abstract class TransactionAspectSupport implements BeanFactoryAware, Init
             return transactionManager;
         }
 
+        @SuppressWarnings("unused")
         public String getJoinPointIdentification() {
             return joinPointIdentification;
         }
 
+        @SuppressWarnings("unused")
         public TransactionAttribute getTransactionAttribute() {
             return transactionAttribute;
         }
@@ -186,6 +183,7 @@ public abstract class TransactionAspectSupport implements BeanFactoryAware, Init
             return transactionStatus;
         }
 
+        @SuppressWarnings("unused")
         public boolean hasTransaction() {
             return null != this.transactionStatus;
         }

@@ -16,36 +16,34 @@ import java.util.*;
  *  /CodeDesignTutorials
  *
  */
-@SuppressWarnings("all")
 public class AnnotatedElementUtils {
 
     private static final Annotation[] EMPTY_ANNOTATION_ARRAY = new Annotation[0];
 
     public static AnnotationAttributes findMergedAnnotationAttributes(AnnotatedElement element,
                                                                       Class<? extends Annotation> annotationType, boolean classValuesAsString, boolean nestedAnnotationsAsMap) {
-        return searchWithFindSemantics(element, annotationType, null, new MergedAnnotationAttributesProcessor(classValuesAsString, nestedAnnotationsAsMap));
+        return searchWithFindSemantics(element, annotationType, new MergedAnnotationAttributesProcessor(classValuesAsString, nestedAnnotationsAsMap));
     }
 
     private static <T> T searchWithFindSemantics(AnnotatedElement element,
                                                  Class<? extends Annotation> annotationType,
-                                                 String annotationName, Processor<T> processor) {
+                                                 Processor<T> processor) {
         return searchWithFindSemantics(element, (null != annotationType ? Collections.singleton(annotationType) : Collections.emptySet()),
-                annotationName, null, processor);
+                processor);
     }
 
     private static <T> T searchWithFindSemantics(AnnotatedElement element,
                                                  Set<Class<? extends Annotation>> annotationType,
-                                                 String annotationName,
-                                                 Class<? extends Annotation> containerType,
                                                  Processor<T> processor) {
-        if (containerType != null && !processor.aggregates()) {
+        if (!processor.aggregates()) {
             throw new IllegalArgumentException("Search for repeatable annotations must supply an aggregating Processor");
         }
 
-        return searchWithFindSemantics(element, annotationType, annotationName, containerType, processor, new HashSet<>(), 0);
+        return searchWithFindSemantics(element, annotationType, null, null, processor, new HashSet<>(), 0);
 
     }
 
+    @SuppressWarnings("all")
     private static <T> T searchWithFindSemantics(AnnotatedElement element,
                                                  Set<Class<? extends Annotation>> annotationTypes, String annotationName,
                                                  Class<? extends Annotation> containerType, Processor<T> processor,
@@ -75,7 +73,7 @@ public class AnnotatedElementUtils {
                             }
                             // Repeatable annotations in container?
                             else if (currentAnnotationType == containerType) {
-                                for (Annotation contained : getRawAnnotationsFromContainer(element, annotation)) {
+                                for (Annotation contained : getRawAnnotationsFromContainer(annotation)) {
                                     T result = processor.process(element, contained, metaDepth);
                                     if (aggregatedResults != null && result != null) {
                                         // No need to post-process since repeatable annotations within a
@@ -213,24 +211,19 @@ public class AnnotatedElementUtils {
         return null;
     }
 
-    private static <A extends Annotation> A[] getRawAnnotationsFromContainer(AnnotatedElement element, Annotation container) {
-
-        try {
+    @SuppressWarnings("unchecked")
+    private static <A extends Annotation> A[] getRawAnnotationsFromContainer(Annotation container) {
             A[] value = (A[]) AnnotationUtils.getValue(container);
             if (value != null) {
                 return value;
             }
-        } catch (Throwable ex) {
-            AnnotationUtils.handleIntrospectionFailure(ex);
-        }
         // Unable to read value from repeating annotation container -> ignore it.
         return (A[]) EMPTY_ANNOTATION_ARRAY;
     }
 
 
+    @SuppressWarnings({"unused","unchecked"})
     public static AnnotatedElement forAnnotations(final Annotation... annotations) {
-
-
         return new AnnotatedElement() {
             @Override
             public <T extends Annotation> T getAnnotation(Class<T> annotationClass) {
@@ -264,6 +257,7 @@ public class AnnotatedElementUtils {
 
         private final List<AnnotationAttributes> aggregatedResults;
 
+        @SuppressWarnings("unused")
         MergedAnnotationAttributesProcessor() {
             this(false, false, false);
         }
