@@ -16,7 +16,6 @@ public class JdbcService {
      * 使用注解事务
      */
     @Transactional(rollbackFor = Exception.class)
-    @SuppressWarnings("unused")
     public void saveData(JdbcTemplate jdbcTemplate) {
         jdbcTemplate.execute("insert into user (userId, userHead, createTime, updateTime) values ('184172133','01_50', now(), now())");
         jdbcTemplate.execute("insert into user (userId, userHead, createTime, updateTime) values ('184172133','01_50', now(), now())");

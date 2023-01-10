@@ -17,35 +17,35 @@ import java.sql.Statement;
  *  /CodeDesignTutorials
  *
  */
-@SuppressWarnings("all")
 public class SpringStep19JdbcTest {
 
     private DruidDataSource dataSource;
-    private Connection connection;
-    private Statement statement;
 
     @Before
-    public void init() throws SQLException {
+    public void init() {
         dataSource = new DruidDataSource();
-        dataSource.setDriver(new Driver());
-        dataSource.setUrl("jdbc:mysql://localhost:3306/spring?useSSL=false");
-        dataSource.setPassword("123456");
+        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
+        dataSource.setUrl("jdbc:mysql://localhost:3307/spring?useSSL=false");
         dataSource.setUsername("root");
+        dataSource.setPassword("123456");
     }
 
     @Test
     public void test_translation() throws SQLException {
-        connection = dataSource.getConnection().getConnection();
-        statement = connection.createStatement();
-
+        Connection connection = dataSource.getConnection();
+        Statement statement = connection.createStatement();
         connection.setAutoCommit(false);
+
         try {
-            statement.execute("insert into user (id, userId, userHead, createTime, updateTime) values (1, '184172133','01_50', now(), now())");
-            statement.execute("insert into user (id, userId, userHead, createTime, updateTime) values (1, '184172133','01_50', now(), now())");
+            statement.execute("insert into user (id, userId, userHead, createTime, updateTime) " +
+                    "values (1, '184172133','01_50', now(), now())");
+            statement.execute("insert into user (id, userId, userHead, createTime, updateTime) " +
+                    "values (1, '184172133','01_50', now(), now())");
         } catch (Exception e) {
             e.printStackTrace();
             connection.rollback();
         }
+
         connection.commit();
     }
 
