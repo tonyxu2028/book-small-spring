@@ -5,6 +5,7 @@ import cn.bugstack.springframework.aop.TargetSource;
 import cn.bugstack.springframework.aop.aspectj.AspectJExpressionPointcut;
 import cn.bugstack.springframework.aop.framework.Cglib2AopProxy;
 import cn.bugstack.springframework.context.support.ClassPathXmlApplicationContext;
+import cn.bugstack.springframework.jdbc.UncategorizedSQLException;
 import cn.bugstack.springframework.jdbc.core.JdbcTemplate;
 import cn.bugstack.springframework.jdbc.datasource.DataSourceTransactionManager;
 import cn.bugstack.springframework.test.bean.JdbcService;
@@ -55,10 +56,28 @@ public class SpringStep19Test {
         JdbcService proxy_cglib = (JdbcService) new Cglib2AopProxy(advisedSupport).getProxy();
 
         // 测试调用，有事务【不能同时提交2条有主键冲突的数据】
-        // proxy_cglib.saveData(jdbcTemplate);
+        // hasTransaction(proxy_cglib);
 
         // 测试调用，无事务【提交2条有主键冲突的数据成功一条】
-        proxy_cglib.saveDataNoTransaction(jdbcTemplate);
+        noTransaction(proxy_cglib);
+    }
+
+    private void hasTransaction(JdbcService proxy_cglib) {
+        // 测试调用，有事务【不能同时提交2条有主键冲突的数据】
+        try {
+            proxy_cglib.saveData(jdbcTemplate);
+        } catch (Exception e) {
+            System.out.println("【有事务】不能同时提交2条有主键冲突的数据");
+        }
+    }
+
+    private void noTransaction(JdbcService proxy_cglib) {
+        // 测试调用，无事务【提交2条有主键冲突的数据成功一条】
+        try {
+            proxy_cglib.saveDataNoTransaction(jdbcTemplate);
+        }catch (UncategorizedSQLException e) {
+            System.out.println("【无事务】提交2条有主键冲突的数据成功一条");
+        }
     }
 
 }

@@ -41,3 +41,10 @@ BEGIN;
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;
+
+# ALTER TABLE `t_student` ADD CONSTRAINT unique_taskCode UNIQUE(taskCode);
+
+# ALTER TABLE <表名称> ADD CONSTRAINT <约束名称> UNIQUE(<约束字段>);
+
+ALTER TABLE `user` MODIFY COLUMN  `userId` varchar(9) UNIQUE;
+
