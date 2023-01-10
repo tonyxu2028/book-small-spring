@@ -3,13 +3,13 @@
 <mapper namespace="cn.bugstack.middleware.mybatis.test.dao.IUserDao">
 
     <select id="queryUserInfoById" parameterType="java.lang.Long" resultType="cn.bugstack.middleware.mybatis.test.po.User">
-        SELECT id, userId, userHead, createTime
+        SELECT id, userId, userHead
         FROM user
         where id = #{id}
     </select>
 
     <select id="queryUserList" parameterType="cn.bugstack.middleware.mybatis.test.po.User" resultType="cn.bugstack.middleware.mybatis.test.po.User">
-        SELECT id, userId, userHead, createTime, updateTime
+        SELECT id, userId, userHead
         FROM user
         where userId = #{userId}
     </select>
