@@ -4,12 +4,9 @@ import cn.bugstack.springframework.beans.BeansException;
 import cn.bugstack.springframework.beans.factory.config.BeanDefinition;
 
 /**
- *
+ * @description Bean 定义注册接口 BeanDefinitionRegistry
  * @author naixixu
- * @description Bean 定义注册接口
  * @date 2022/03/07
- *
- *
  */
 public interface BeanDefinitionRegistry {
 
@@ -20,6 +17,12 @@ public interface BeanDefinitionRegistry {
      * @param beanDefinition        Bean 定义
      */
     void registerBeanDefinition(String beanName, BeanDefinition beanDefinition);
+    /**
+     * 判断是否包含指定名称的BeanDefinition
+     * @param beanName              Bean 名称
+     * @return                      是否包含
+     */
+    boolean containsBeanDefinition(String beanName);
 
     /**
      * 使用Bean名称查询BeanDefinition
@@ -31,12 +34,6 @@ public interface BeanDefinitionRegistry {
     @SuppressWarnings("unused")
     BeanDefinition getBeanDefinition(String beanName) throws BeansException;
 
-    /**
-     * 判断是否包含指定名称的BeanDefinition
-     * @param beanName              Bean 名称
-     * @return                      是否包含
-     */
-    boolean containsBeanDefinition(String beanName);
 
     /**
      * Return the names of all beans defined in this registry.

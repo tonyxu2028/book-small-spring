@@ -10,12 +10,9 @@ import cn.bugstack.springframework.core.io.Resource;
 import java.io.InputStream;
 
 /**
- *
- * @author naixixu
  * @description SqlSession 工厂
+ * @author naixixu
  * @date 2022/3/18
- *
- *
  */
 public class SqlSessionFactoryBean implements FactoryBean<SqlSessionFactory>, InitializingBean {
 
@@ -26,7 +23,6 @@ public class SqlSessionFactoryBean implements FactoryBean<SqlSessionFactory>, In
     public void afterPropertiesSet() {
         DefaultResourceLoader defaultResourceLoader = new DefaultResourceLoader();
         Resource resource = defaultResourceLoader.getResource(this.resource);
-
         try (InputStream inputStream = resource.getInputStream()) {
             this.sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
         } catch (Exception e) {

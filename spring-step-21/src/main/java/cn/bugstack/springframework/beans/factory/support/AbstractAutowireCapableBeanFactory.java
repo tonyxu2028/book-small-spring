@@ -21,12 +21,9 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 
 /**
- *
- * @author naixixu
  * @description 实现默认bean创建的抽象bean工厂超类
+ * @author naixixu
  * @date 2022/03/07
- *
- *
  */
 @SuppressWarnings({"unchecked","unused"})
 public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFactory implements AutowireCapableBeanFactory {

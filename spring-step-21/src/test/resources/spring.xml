@@ -9,10 +9,10 @@
     </bean>
 
     <bean class="cn.bugstack.springframework.mybatis.MapperScannerConfigurer">
-        <!-- 注入sqlSessionFactory -->
-        <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
         <!-- 给出需要扫描Dao接口包 -->
         <property name="basePackage" value="cn.bugstack.springframework.test.dao"/>
+        <!-- 注入sqlSessionFactory -->
+        <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
     </bean>
 
 </beans>

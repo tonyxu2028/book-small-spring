@@ -14,18 +14,24 @@ import java.lang.reflect.Proxy;
  *
  *
  */
-@SuppressWarnings("unused")
 public class MapperFactoryBean<T> implements FactoryBean<T> {
 
     private Class<T> mapperInterface;
     private SqlSessionFactory sqlSessionFactory;
 
+    @SuppressWarnings("unused")
     public MapperFactoryBean() {
     }
 
+    @SuppressWarnings("unused")
     public MapperFactoryBean(Class<T> mapperInterface, SqlSessionFactory sqlSessionFactory) {
         this.mapperInterface = mapperInterface;
         this.sqlSessionFactory = sqlSessionFactory;
+    }
+
+    @SuppressWarnings("unused")
+    public Class<T> getMapperInterface() {
+        return mapperInterface;
     }
 
     @Override
@@ -57,18 +63,17 @@ public class MapperFactoryBean<T> implements FactoryBean<T> {
         return true;
     }
 
-    public Class<T> getMapperInterface() {
-        return mapperInterface;
-    }
-
+    @SuppressWarnings("unused")
     public void setMapperInterface(Class<T> mapperInterface) {
         this.mapperInterface = mapperInterface;
     }
 
+    @SuppressWarnings("unused")
     public SqlSessionFactory getSqlSessionFactory() {
         return sqlSessionFactory;
     }
 
+    @SuppressWarnings("unused")
     public void setSqlSessionFactory(SqlSessionFactory sqlSessionFactory) {
         this.sqlSessionFactory = sqlSessionFactory;
     }

@@ -13,12 +13,9 @@ import cn.hutool.core.lang.ClassScanner;
 import java.util.Set;
 
 /**
- *
- * @author naixixu
  * @description Mapper 扫描配置，根据包信息扫描接口类并注册
+ * @author naixixu
  * @date 2022/3/18
- *
- *
  */
 public class MapperScannerConfigurer implements BeanDefinitionRegistryPostProcessor {
 
