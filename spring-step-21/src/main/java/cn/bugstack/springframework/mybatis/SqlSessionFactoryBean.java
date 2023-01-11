@@ -1,7 +1,7 @@
 package cn.bugstack.springframework.mybatis;
 
-import cn.bugstack.middleware.mybatis.SqlSessionFactory;
-import cn.bugstack.middleware.mybatis.SqlSessionFactoryBuilder;
+import cn.bugstack.middleware.mybatis.factory.SqlSessionFactory;
+import cn.bugstack.middleware.mybatis.factory.SqlSessionFactoryBuilder;
 import cn.bugstack.springframework.beans.factory.FactoryBean;
 import cn.bugstack.springframework.beans.factory.InitializingBean;
 import cn.bugstack.springframework.core.io.DefaultResourceLoader;
@@ -23,7 +23,7 @@ public class SqlSessionFactoryBean implements FactoryBean<SqlSessionFactory>, In
     private SqlSessionFactory sqlSessionFactory;
 
     @Override
-    public void afterPropertiesSet() throws Exception {
+    public void afterPropertiesSet() {
         DefaultResourceLoader defaultResourceLoader = new DefaultResourceLoader();
         Resource resource = defaultResourceLoader.getResource(this.resource);
 
@@ -35,7 +35,7 @@ public class SqlSessionFactoryBean implements FactoryBean<SqlSessionFactory>, In
     }
 
     @Override
-    public SqlSessionFactory getObject() throws Exception {
+    public SqlSessionFactory getObject() {
         return sqlSessionFactory;
     }
 

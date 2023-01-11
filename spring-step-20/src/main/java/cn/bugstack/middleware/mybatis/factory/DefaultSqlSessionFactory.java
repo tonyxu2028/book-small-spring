@@ -1,4 +1,8 @@
-package cn.bugstack.middleware.mybatis;
+package cn.bugstack.middleware.mybatis.factory;
+
+import cn.bugstack.middleware.mybatis.beans.Configuration;
+import cn.bugstack.middleware.mybatis.session.DefaultSqlSession;
+import cn.bugstack.middleware.mybatis.session.SqlSession;
 
 /**
  *

@@ -1,6 +1,6 @@
 package cn.bugstack.springframework.mybatis;
 
-import cn.bugstack.middleware.mybatis.SqlSessionFactory;
+import cn.bugstack.middleware.mybatis.factory.SqlSessionFactory;
 import cn.bugstack.springframework.beans.factory.FactoryBean;
 
 import java.lang.reflect.InvocationHandler;

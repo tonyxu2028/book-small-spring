@@ -1,9 +1,9 @@
 package cn.bugstack.middleware.mybatis.test;
 
-import cn.bugstack.middleware.mybatis.Resources;
-import cn.bugstack.middleware.mybatis.SqlSession;
-import cn.bugstack.middleware.mybatis.SqlSessionFactory;
-import cn.bugstack.middleware.mybatis.SqlSessionFactoryBuilder;
+import cn.bugstack.middleware.mybatis.factory.Resources;
+import cn.bugstack.middleware.mybatis.session.SqlSession;
+import cn.bugstack.middleware.mybatis.factory.SqlSessionFactory;
+import cn.bugstack.middleware.mybatis.factory.SqlSessionFactoryBuilder;
 import cn.bugstack.middleware.mybatis.test.po.User;
 import com.alibaba.fastjson.JSON;
 import org.junit.Test;
@@ -20,10 +20,10 @@ public class SpringStep20Test {
         try {
             reader = Resources.getResourceAsReader(resource);
             SqlSessionFactory sqlMapper = new SqlSessionFactoryBuilder().build(reader);
-
             SqlSession session = sqlMapper.openSession();
             try {
-                User user = session.selectOne("cn.bugstack.middleware.mybatis.test.dao.IUserDao.queryUserInfoById", 1);
+                User user = session.selectOne(
+                        "cn.bugstack.middleware.mybatis.test.dao.IUserDao.queryUserInfoById", 1);
                 if(user!=null) {
                     System.out.println(JSON.toJSONString(user));
                 }
@@ -49,7 +49,8 @@ public class SpringStep20Test {
             try {
                 User req = new User();
                 req.setUserId("184172133");
-                List<User> userList = session.selectList("cn.bugstack.middleware.mybatis.test.dao.IUserDao.queryUserList", req);
+                List<User> userList = session.selectList(
+                        "cn.bugstack.middleware.mybatis.test.dao.IUserDao.queryUserList", req);
                 System.out.println(JSON.toJSONString(userList));
             } finally {
                 session.close();

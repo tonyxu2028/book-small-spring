@@ -1,21 +1,32 @@
-package cn.bugstack.middleware.mybatis;
+package cn.bugstack.middleware.mybatis.session;
+
+import cn.bugstack.middleware.mybatis.beans.XNode;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
- *
+ * @description DefaultSqlSession是SqlSession接口的实现类，用于处理数据库的操作。
  * @author naixixu
- * @description DefaultSqlSession
  * @date 2022/3/16
- *  /CodeDesignTutorials
  *
  */
 public class DefaultSqlSession implements SqlSession {
 
+    /**
+     * 数据库连接 connection
+     */
     private final Connection connection;
     private final Map<String, XNode> mapperElement;
 

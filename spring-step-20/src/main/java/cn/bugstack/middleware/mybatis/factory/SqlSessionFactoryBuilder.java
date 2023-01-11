@@ -1,5 +1,7 @@
-package cn.bugstack.middleware.mybatis;
+package cn.bugstack.middleware.mybatis.factory;
 
+import cn.bugstack.middleware.mybatis.beans.Configuration;
+import cn.bugstack.middleware.mybatis.beans.XNode;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
@@ -18,17 +20,26 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- *
+ * @description SqlSessionFactoryBuilder类包含的核心方法有
+ * build(构建实例化元素),
+ * parseConfiguration(解析配置文件),
+ * dataSource(获取数据源配置),
+ * connection(获取数据库连接 Map dataSource 链接数据库),
+ * mapperElement(解析SQL语句)。
  * @author naixixu
- * @description SqlSessionFactoryBuilder
  * @date 2022/3/16
- *
- *
  */
 public class SqlSessionFactoryBuilder {
 
     private static final Pattern PATTERN = Pattern.compile("(#\\{(.*?)})");
 
+    // ############################## 构建实例化元素 parseConfiguration ##############################
+
+    /**
+     * 构建SqlSessionFactory          (构建实例化元素)
+     * @param reader                    配置文件
+     * @return                          SqlSessionFactory
+     */
     public DefaultSqlSessionFactory build(Reader reader) {
         SAXReader saxReader = new SAXReader();
         try {
@@ -53,6 +64,13 @@ public class SqlSessionFactoryBuilder {
         return null;
     }
 
+   // ############################## 解析配置 parseConfiguration ##############################
+
+    /**
+     * 解析配置文件
+     * @param root                      根节点
+     * @return                          Configuration
+     */
     private Configuration parseConfiguration(Element root) {
         Configuration configuration = new Configuration();
         configuration.setDataSource(dataSource(root.element("environments").element("environment").element("dataSource")));
@@ -63,8 +81,8 @@ public class SqlSessionFactoryBuilder {
 
     /**
      * 获取数据源配置信息
-     * @param element       数据源配置信息
-     * @return              数据源
+     * @param element                   数据源配置信息
+     * @return                          数据源
      */
     private Map<String, String> dataSource(Element element) {
         Map<String, String> dataSource = new HashMap<>(4);
@@ -77,28 +95,33 @@ public class SqlSessionFactoryBuilder {
         return dataSource;
     }
 
+    // ############################## 链接数据库 connection ##############################
+
     private Connection connection(Map<String, String> dataSource) {
         try {
             Class.forName(dataSource.get("driver"));
-            return DriverManager.getConnection(dataSource.get("url"), dataSource.get("username"), dataSource.get("password"));
+            return DriverManager.getConnection(
+                    dataSource.get("url"),
+                    dataSource.get("username"),
+                    dataSource.get("password"));
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
         return null;
     }
 
+    // ############################## 解析SQL语句 mapperElement ##############################
+
     /**
      * 获取SQL语句信息
-     * @param mappers       SQL语句信息
-     * @return              SQL语句信息
+     * @param mappers               SQL语句信息
+     * @return                      SQL语句信息
      */
     private Map<String, XNode> mapperElement(Element mappers) {
         Map<String, XNode> map = new HashMap<>(100);
-
         List<Element> mapperList = mappers.elements("mapper");
         for (Element e : mapperList) {
             String resource = e.attributeValue("resource");
-
             try {
                 Reader reader = Resources.getResourceAsReader(resource);
                 SAXReader saxReader = new SAXReader();
@@ -106,7 +129,6 @@ public class SqlSessionFactoryBuilder {
                 Element root = document.getRootElement();
                 //命名空间
                 String namespace = root.attributeValue("namespace");
-
                 // SELECT
                 List<Element> selectNodes = root.elements("select");
                 for (Element node : selectNodes) {
@@ -139,7 +161,6 @@ public class SqlSessionFactoryBuilder {
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
-
         }
         return map;
     }

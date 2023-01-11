@@ -1,4 +1,4 @@
-package cn.bugstack.middleware.mybatis;
+package cn.bugstack.middleware.mybatis.beans;
 
 import lombok.Getter;
 import lombok.Setter;

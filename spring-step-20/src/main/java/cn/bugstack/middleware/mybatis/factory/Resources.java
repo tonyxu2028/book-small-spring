@@ -1,4 +1,4 @@
-package cn.bugstack.middleware.mybatis;
+package cn.bugstack.middleware.mybatis.factory;
 
 import java.io.IOException;
 import java.io.InputStream;
