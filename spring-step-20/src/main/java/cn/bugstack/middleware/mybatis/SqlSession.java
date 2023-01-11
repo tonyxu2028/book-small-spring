@@ -10,13 +10,14 @@ import java.util.List;
  *
  *
  */
-@SuppressWarnings("all")
 public interface SqlSession {
 
+    @SuppressWarnings("unused")
     <T> T selectOne(String statement);
 
     <T> T selectOne(String statement, Object parameter);
 
+    @SuppressWarnings("unused")
     <T> List<T> selectList(String statement);
 
     <T> List<T> selectList(String statement, Object parameter);
