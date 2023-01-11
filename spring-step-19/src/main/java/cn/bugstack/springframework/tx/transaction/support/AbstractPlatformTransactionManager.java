@@ -25,8 +25,10 @@ public abstract class AbstractPlatformTransactionManager implements PlatformTran
         }
         // 暂定事务传播为默认的行为
         DefaultTransactionStatus status = newTransactionStatus(transaction);
+
         // 开始事务
         doBegin(transaction, definition);
+
         return status;
     }
 

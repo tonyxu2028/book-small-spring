@@ -35,19 +35,7 @@ public class DataSourceTransactionManager extends AbstractPlatformTransactionMan
         afterPropertiesSet();
     }
 
-    public void setDataSource(DataSource dataSource) {
-        this.dataSource = dataSource;
-    }
 
-    public DataSource getDataSource() {
-        return dataSource;
-    }
-
-    protected DataSource obtainDataSource() {
-        DataSource dataSource = getDataSource();
-        Assert.notNull(dataSource, "No DataSource set");
-        return dataSource;
-    }
 
     @Override
     protected Object doGetTransaction() throws TransactionException {
@@ -124,6 +112,12 @@ public class DataSourceTransactionManager extends AbstractPlatformTransactionMan
         }
     }
 
+    protected DataSource obtainDataSource() {
+        DataSource dataSource = getDataSource();
+        Assert.notNull(dataSource, "No DataSource set");
+        return dataSource;
+    }
+
     public static class DataSourceTransactionObject extends JdbcTransactionObjectSupport {
         @SuppressWarnings("unused")
         private boolean mustRestoreAutoCommit;
@@ -132,6 +126,14 @@ public class DataSourceTransactionManager extends AbstractPlatformTransactionMan
         public void setConnectionHolder(ConnectionHolder connectionHolder, boolean newConnectionHolder) {
             super.setConnectionHolder(connectionHolder);
         }
+    }
+
+    public void setDataSource(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
+
+    public DataSource getDataSource() {
+        return dataSource;
     }
 
 }
