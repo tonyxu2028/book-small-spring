@@ -7,7 +7,7 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Proxy;
 
 /**
- @description 数据库操作映射工厂对象，每一个 DAO 接口对应 Mapper 的代理对象。通过代理对象完成数据库的操作。
+ * @description 数据库操作映射工厂对象，每一个 DAO 接口对应 Mapper 的代理对象。通过代理对象完成数据库的操作。
  * @author naixixu
  * @date 2022/3/18
  */
@@ -15,21 +15,6 @@ public class MapperFactoryBean<T> implements FactoryBean<T> {
 
     private Class<T> mapperInterface;
     private SqlSessionFactory sqlSessionFactory;
-
-    @SuppressWarnings("unused")
-    public MapperFactoryBean() {
-    }
-
-    @SuppressWarnings("unused")
-    public MapperFactoryBean(Class<T> mapperInterface, SqlSessionFactory sqlSessionFactory) {
-        this.mapperInterface = mapperInterface;
-        this.sqlSessionFactory = sqlSessionFactory;
-    }
-
-    @SuppressWarnings("unused")
-    public Class<T> getMapperInterface() {
-        return mapperInterface;
-    }
 
     @Override
     @SuppressWarnings("unchecked")
@@ -74,4 +59,20 @@ public class MapperFactoryBean<T> implements FactoryBean<T> {
     public void setSqlSessionFactory(SqlSessionFactory sqlSessionFactory) {
         this.sqlSessionFactory = sqlSessionFactory;
     }
+
+    @SuppressWarnings("unused")
+    public MapperFactoryBean() {
+    }
+
+    @SuppressWarnings("unused")
+    public MapperFactoryBean(Class<T> mapperInterface, SqlSessionFactory sqlSessionFactory) {
+        this.mapperInterface = mapperInterface;
+        this.sqlSessionFactory = sqlSessionFactory;
+    }
+
+    @SuppressWarnings("unused")
+    public Class<T> getMapperInterface() {
+        return mapperInterface;
+    }
+
 }
