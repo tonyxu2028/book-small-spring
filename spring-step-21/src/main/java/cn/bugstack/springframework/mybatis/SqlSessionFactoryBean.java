@@ -10,7 +10,7 @@ import cn.bugstack.springframework.core.io.Resource;
 import java.io.InputStream;
 
 /**
- * @description SqlSession 工厂
+ * @description SqlSessionFactoryBean 代理工厂类
  * @author naixixu
  * @date 2022/3/18
  */
