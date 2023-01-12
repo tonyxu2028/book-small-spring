@@ -38,6 +38,7 @@ CREATE TABLE `user` (
 -- Records of user
 -- ----------------------------
 BEGIN;
+INSERT INTO `user` VALUES (1, '184172133', '01_50', '2022-03-18', '2022-03-19');
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;

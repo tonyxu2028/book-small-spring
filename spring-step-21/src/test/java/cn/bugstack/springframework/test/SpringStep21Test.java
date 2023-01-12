@@ -21,7 +21,9 @@ public class SpringStep21Test {
         BeanFactory beanFactory = new ClassPathXmlApplicationContext("classpath:spring.xml");
         IUserDao userDao = beanFactory.getBean("IUserDao", IUserDao.class);
         User user = userDao.queryUserInfoById(1L);
-        System.out.println("测试结果：" + JSON.toJSONString(user));
+        if(user!=null){
+            System.out.println("测试结果：" + JSON.toJSONString(user));
+        }
     }
 
 }

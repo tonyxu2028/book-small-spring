@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -175,7 +176,7 @@ public class DefaultSqlSession implements SqlSession {
                     String columnName = metaData.getColumnName(i);
                     String setMethod = "set" + columnName.substring(0, 1).toUpperCase() + columnName.substring(1);
                     Method method;
-                    if (value instanceof Timestamp) {
+                    if (value instanceof LocalDateTime) {
                         method = clazz.getMethod(setMethod, Date.class);
                     } else {
                         method = clazz.getMethod(setMethod, value.getClass());
